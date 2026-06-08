@@ -1,121 +1,105 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
+import { secciones } from './data/contenido'
+import Bloque from './components/Bloque'
+import Perceptron from './components/Perceptron'
+import PromptBuilder from './components/PromptBuilder'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [activa, setActiva] = useState(secciones[0].id)
+  const [menuAbierto, setMenuAbierto] = useState(false)
+  const seccion = secciones.find((s) => s.id === activa) ?? secciones[0]
+
+  function ir(id) {
+    setActiva(id)
+    setMenuAbierto(false)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
+    <div className="layout">
+      <header className="topbar">
         <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
+          className="topbar__burger"
+          onClick={() => setMenuAbierto((v) => !v)}
+          aria-label="Abrir menú"
         >
-          Count is {count}
+          ☰
         </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+        <div className="topbar__marca">
+          <span className="topbar__logo">🌲</span>
+          <div>
+            <strong>Taller de IA</strong>
+            <span className="topbar__sub">UIA · CONAF</span>
+          </div>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      </header>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      <aside className={'nav' + (menuAbierto ? ' nav--abierto' : '')}>
+        <nav>
+          {secciones.map((s, i) => (
+            <button
+              key={s.id}
+              className={'nav__item' + (s.id === activa ? ' nav__item--activa' : '')}
+              onClick={() => ir(s.id)}
+            >
+              <span className="nav__num">{String(i + 1).padStart(2, '0')}</span>
+              <span className="nav__icono">{s.icono}</span>
+              <span className="nav__txt">{s.titulo}</span>
+            </button>
+          ))}
+        </nav>
+        <p className="nav__pie">UIA · CONAF · 2026</p>
+      </aside>
+
+      {menuAbierto && <div className="overlay" onClick={() => setMenuAbierto(false)} />}
+
+      <main className="contenido">
+        <div className="seccion">
+          <header className="seccion__cabecera">
+            <span className="seccion__icono-grande">{seccion.icono}</span>
+            <div>
+              <h1>{seccion.titulo}</h1>
+              {seccion.subtitulo && <p className="seccion__sub">{seccion.subtitulo}</p>}
+            </div>
+          </header>
+
+          {seccion.bloques.map((b, i) => (
+            <Bloque key={i} bloque={b} />
+          ))}
+
+          {seccion.interactivo === 'perceptron' && <Perceptron />}
+          {seccion.interactivo === 'prompt' && <PromptBuilder />}
+
+          <Navegacion activa={activa} ir={ir} />
+        </div>
+      </main>
+    </div>
+  )
+}
+
+// Botones anterior / siguiente al pie de cada sección.
+function Navegacion({ activa, ir }) {
+  const idx = secciones.findIndex((s) => s.id === activa)
+  const prev = secciones[idx - 1]
+  const next = secciones[idx + 1]
+  return (
+    <div className="seccion__nav">
+      {prev ? (
+        <button className="btn" onClick={() => ir(prev.id)}>
+          ← {prev.titulo}
+        </button>
+      ) : (
+        <span />
+      )}
+      {next ? (
+        <button className="btn btn--primary" onClick={() => ir(next.id)}>
+          {next.titulo} →
+        </button>
+      ) : (
+        <span />
+      )}
+    </div>
   )
 }
 
