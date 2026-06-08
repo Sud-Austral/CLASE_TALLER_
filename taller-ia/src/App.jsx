@@ -5,6 +5,7 @@ import Bloque from './components/Bloque'
 import Perceptron from './components/Perceptron'
 import PromptBuilder from './components/PromptBuilder'
 import AnalisisLey from './components/AnalisisLey'
+import CompararIA from './components/CompararIA'
 
 function App() {
   const [activa, setActiva] = useState(secciones[0].id)
@@ -72,6 +73,7 @@ function App() {
           {seccion.interactivo === 'perceptron' && <Perceptron />}
           {seccion.interactivo === 'prompt' && <PromptBuilder />}
           {seccion.interactivo === 'analisisLey' && <AnalisisLey />}
+          {seccion.interactivo === 'compararIA' && <CompararIA />}
 
           <Navegacion activa={activa} ir={ir} />
         </div>

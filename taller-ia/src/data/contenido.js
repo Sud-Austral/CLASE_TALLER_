@@ -284,6 +284,23 @@ export const secciones = [
   },
 
   {
+    id: 'comparar-ia',
+    icono: '🤖',
+    titulo: 'Ejercicio: distintos modelos',
+    subtitulo: 'Mismo prompt, tres IA, tres respuestas',
+    interactivo: 'compararIA',
+    bloques: [
+      {
+        tipo: 'parrafo',
+        texto:
+          'Le hicimos exactamente la misma petición —"Realiza un análisis de la Ley N.º 20.283"— ' +
+          'a tres IA distintas, con el mismo PDF. Las tres respuestas son válidas… y muy ' +
+          'diferentes. Recórrelas en las pestañas y fíjate en qué se distingue cada una.',
+      },
+    ],
+  },
+
+  {
     id: 'analisis-ley',
     icono: '⚖️',
     titulo: 'Ejercicio: una palabra lo cambia todo',
@@ -366,6 +383,62 @@ export const analisisLey = {
     'La misma IA, el mismo documento, casi el mismo prompt. Una sola palabra —"crítico"— ' +
     'reorientó por completo el análisis: de describir, a evaluar y cuestionar. Así de ' +
     'determinante es cómo formulamos la instrucción.',
+}
+
+// Ejercicio "distintos modelos, distintas respuestas" — comparador de IA.
+// Mismo prompt sobre la Ley 20.283 enviado a ChatGPT, Claude y Gemini.
+export const compararIA = {
+  prompt: 'Realiza un análisis de la Ley N.º 20.283 sobre Recuperación del Bosque Nativo y Fomento Forestal de Chile.',
+  modelos: [
+    {
+      id: 'chatgpt',
+      nombre: 'ChatGPT',
+      icono: '💬',
+      estilo: 'Pedagógico y accesible',
+      color: '#10a37f',
+      ideal: 'Entender la ley desde cero y explicarla a otros.',
+      rasgos: [
+        'Estructura clara por temas: objetivo, clasificación, plan de manejo, sanciones.',
+        'Separa fortalezas y desafíos en secciones propias.',
+        'Lenguaje cercano, sin tecnicismos jurídicos pesados.',
+        'Cierra con una conclusión equilibrada y fácil de citar.',
+      ],
+    },
+    {
+      id: 'claude',
+      nombre: 'Claude',
+      icono: '📚',
+      estilo: 'Jurídico y exhaustivo',
+      color: '#d97757',
+      ideal: 'Un análisis técnico-legal profundo, con respaldo en el articulado.',
+      rasgos: [
+        'Cita artículos concretos (Art. 2, 5, 17, 19, 21, 23, 40…).',
+        'Detecta modificaciones recientes: Ley 21.770 (2025), Ley 21.600 (SBAP).',
+        'Incluye tablas de montos (UTM/há) y umbrales de pequeño propietario.',
+        'Plantea tensiones finas: acreditadores, delegación al reglamento, Convenio 169 OIT.',
+        'Es, con diferencia, la respuesta más larga y detallada.',
+      ],
+    },
+    {
+      id: 'gemini',
+      nombre: 'Gemini',
+      icono: '✨',
+      estilo: 'Conciso y al grano',
+      color: '#4285f4',
+      ideal: 'Una lectura rápida y ordenada, ceñida al documento.',
+      rasgos: [
+        'Va directo a lo esencial: objetivos, categorías, fondo, sanciones.',
+        'Usa tablas limpias para las categorías de bosque y los montos.',
+        'Se apega a lo que dice el PDF, sin extenderse en análisis crítico.',
+        'Termina ofreciendo profundizar en algún aspecto (interacción).',
+      ],
+    },
+  ],
+  leccion:
+    'Ninguna de las tres es "la respuesta correcta": son tres formas válidas y útiles de ' +
+    'responder lo mismo. La IA no es una bola de cristal con una única respuesta mágica — es ' +
+    'una herramienta con la que hay que aprender a dialogar, y conviene elegir el modelo (y el ' +
+    'prompt) según lo que necesitas. CONAF tiene licencia paga para Gemini Pro.',
 }
 
 // Los cuatro ingredientes de un buen prompt (sección interactiva "prompt").

@@ -701,6 +701,130 @@
   padding: 14px 16px;
 }
 
+/* ===== Comparador de IA ===== */
+.comparar {
+  margin-top: 8px;
+}
+.comparar__prompt {
+  background: #1e2a22;
+  color: #e8f3e9;
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 18px;
+}
+.comparar__prompt-tag {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 6px;
+}
+.comparar__prompt p {
+  margin: 0;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.comparar__tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.comparar__tab {
+  background: var(--panel);
+  border: 2px solid var(--borde);
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  padding: 11px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--texto-suave);
+  margin-bottom: -2px;
+  transition: color 0.15s;
+}
+.comparar__tab-icono {
+  margin-right: 4px;
+}
+.comparar__tab--activo {
+  background: var(--panel);
+  border-bottom: 2px solid var(--panel);
+  position: relative;
+  z-index: 2;
+}
+
+.comparar__panel {
+  background: var(--panel);
+  border: 2px solid var(--borde);
+  border-top: 4px solid var(--verde-claro);
+  border-radius: 0 12px 12px 12px;
+  padding: 24px;
+  box-shadow: var(--sombra);
+}
+.comparar__cabecera {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.comparar__icono-grande {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.comparar__cabecera h3 {
+  margin: 0;
+  font-size: 22px;
+  color: var(--texto);
+}
+.comparar__estilo {
+  font-size: 14px;
+  font-weight: 600;
+}
+.comparar__ideal {
+  background: var(--verde-pastel);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 15px;
+  margin: 0 0 16px;
+}
+.comparar__rasgos {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.comparar__rasgos li {
+  position: relative;
+  padding: 8px 12px 8px 32px;
+  background: #f7faf7;
+  border-radius: 8px;
+  font-size: 15px;
+}
+.comparar__rasgos li::before {
+  content: "→";
+  position: absolute;
+  left: 12px;
+  color: var(--verde-claro);
+  font-weight: 700;
+}
+.comparar__leccion {
+  margin-top: 18px;
+  font-size: 15px;
+  color: var(--texto-suave);
+  background: var(--amarillo);
+  border-radius: 10px;
+  padding: 14px 16px;
+  line-height: 1.6;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 860px) {
   .layout {
