@@ -557,6 +557,150 @@
   color: var(--texto-suave);
 }
 
+/* ===== Ejercicio análisis de ley ===== */
+.analisis {
+  margin-top: 8px;
+}
+.analisis__prompt {
+  background: #1e2a22;
+  color: #e8f3e9;
+  border-radius: 12px;
+  padding: 18px 20px;
+  font-size: 17px;
+  font-family: ui-monospace, Consolas, monospace;
+  line-height: 1.7;
+}
+.analisis__palabra {
+  color: #ffca28;
+  font-weight: 700;
+  transition: color 0.2s;
+}
+.analisis__palabra--on {
+  background: rgba(255, 202, 40, 0.18);
+  border-radius: 4px;
+  padding: 0 4px;
+}
+
+.analisis__toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0 22px;
+}
+.analisis__toggle-txt {
+  font-size: 15px;
+  color: var(--texto-suave);
+}
+.switch {
+  width: 56px;
+  height: 30px;
+  border-radius: 30px;
+  border: none;
+  background: #c8d2ca;
+  position: relative;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.switch--on {
+  background: var(--verde);
+}
+.switch__bola {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+.switch--on .switch__bola {
+  transform: translateX(26px);
+}
+
+.analisis__panel {
+  background: var(--panel);
+  border: 1px solid var(--borde);
+  border-top: 4px solid var(--verde-claro);
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: var(--sombra);
+  transition: border-color 0.2s;
+}
+.analisis__panel--critico {
+  border-top-color: #ef6c00;
+}
+.analisis__cabecera h3 {
+  margin: 0 0 4px;
+  font-size: 20px;
+}
+.analisis__panel--critico .analisis__cabecera h3 {
+  color: #ef6c00;
+}
+.analisis__tono {
+  margin: 0 0 16px;
+  color: var(--texto-suave);
+  font-size: 14px;
+}
+.analisis__puntos {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.analisis__punto {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #f7faf7;
+  font-size: 15px;
+}
+.analisis__punto--nuevo {
+  background: #fff3e0;
+  animation: entra 0.35s ease;
+}
+@keyframes entra {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.analisis__punto-icono {
+  flex-shrink: 0;
+}
+.analisis__badge {
+  margin-left: auto;
+  background: #ef6c00;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+.analisis__conclusion {
+  background: var(--verde-pastel);
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.analisis__panel--critico .analisis__conclusion {
+  background: #fff3e0;
+}
+.analisis__leccion {
+  margin-top: 18px;
+  font-size: 15px;
+  color: var(--texto-suave);
+  background: var(--amarillo);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 860px) {
   .layout {

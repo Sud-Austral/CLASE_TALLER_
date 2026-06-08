@@ -4,6 +4,7 @@ import { secciones } from './data/contenido'
 import Bloque from './components/Bloque'
 import Perceptron from './components/Perceptron'
 import PromptBuilder from './components/PromptBuilder'
+import AnalisisLey from './components/AnalisisLey'
 
 function App() {
   const [activa, setActiva] = useState(secciones[0].id)
@@ -70,6 +71,7 @@ function App() {
 
           {seccion.interactivo === 'perceptron' && <Perceptron />}
           {seccion.interactivo === 'prompt' && <PromptBuilder />}
+          {seccion.interactivo === 'analisisLey' && <AnalisisLey />}
 
           <Navegacion activa={activa} ir={ir} />
         </div>

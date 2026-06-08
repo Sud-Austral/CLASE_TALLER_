@@ -1,2 +1,12 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Archivos binarios: git NO debe normalizar saltos de línea (los corrompería)
+*.pdf   binary
+*.pptx  binary
+*.ppt   binary
+*.docx  binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.svg   text

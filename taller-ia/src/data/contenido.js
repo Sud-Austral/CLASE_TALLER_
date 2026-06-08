@@ -284,6 +284,24 @@ export const secciones = [
   },
 
   {
+    id: 'analisis-ley',
+    icono: '⚖️',
+    titulo: 'Ejercicio: una palabra lo cambia todo',
+    subtitulo: 'Caso real: la Ley 20.283 del Bosque Nativo',
+    interactivo: 'analisisLey',
+    bloques: [
+      {
+        tipo: 'parrafo',
+        texto:
+          'Le pasamos a una IA el PDF de la Ley N.º 20.283 (Recuperación del Bosque Nativo y ' +
+          'Fomento Forestal) y le pedimos un análisis. Luego repetimos exactamente la misma ' +
+          'petición, agregando una sola palabra: "crítico". Observa cómo cambia por completo el ' +
+          'resultado.',
+      },
+    ],
+  },
+
+  {
     id: 'perceptron',
     icono: '🔵',
     titulo: 'Ejercicio: el perceptrón',
@@ -300,6 +318,55 @@ export const secciones = [
     ],
   },
 ]
+
+// Ejercicio "una palabra lo cambia todo" — análisis de la Ley 20.283.
+// Texto resumido a partir de las dos respuestas reales de ChatGPT sobre el PDF
+// LEY-20283_30-JUL-2008.pdf.
+export const analisisLey = {
+  promptBase: 'Realiza un análisis',
+  palabra: ' crítico',
+  promptCola: ' de la Ley N.º 20.283 sobre Recuperación del Bosque Nativo.',
+
+  neutral: {
+    titulo: 'Análisis (neutral)',
+    tono: 'Descriptivo y equilibrado: explica qué dice la ley.',
+    puntos: [
+      { icono: '🎯', texto: 'Objetivo: proteger, recuperar y manejar de forma sustentable el bosque nativo.' },
+      { icono: '🌳', texto: 'Clasifica los bosques: preservación, conservación/protección y uso múltiple.' },
+      { icono: '📋', texto: 'Eje central: toda corta requiere un Plan de Manejo aprobado por CONAF.' },
+      { icono: '💧', texto: 'Protege suelos, aguas, glaciares (franja de 500 m) y especies amenazadas.' },
+      { icono: '💰', texto: 'Crea un Fondo concursable de incentivos económicos a la conservación.' },
+      { icono: '👥', texto: 'Gobernanza: Consejo Consultivo del Bosque Nativo; fiscalización por CONAF.' },
+    ],
+    conclusion:
+      'La ley es un instrumento que combina protección ambiental, manejo sustentable e ' +
+      'incentivos económicos, reconociendo el bosque nativo como patrimonio estratégico.',
+  },
+
+  critico: {
+    titulo: 'Análisis CRÍTICO',
+    tono: 'Mismo documento, pero ahora evalúa fortalezas Y debilidades.',
+    // Los puntos con `nuevo: true` no aparecían en la versión neutral.
+    puntos: [
+      { icono: '🎯', texto: 'Mantiene el reconocimiento del valor ecológico y los planes de manejo.' },
+      { icono: '✅', texto: 'Fortalezas: incentivos, protección de especies, investigación y participación.' },
+      { icono: '⚠️', nuevo: true, texto: 'Financiamiento insuficiente: el Fondo recibió mucho menos de lo proyectado.' },
+      { icono: '⚠️', nuevo: true, texto: 'Excesiva burocracia: los planes de manejo son una barrera para pequeños propietarios.' },
+      { icono: '⚠️', nuevo: true, texto: 'No paga por resultados ambientales (captura de carbono, servicios ecosistémicos).' },
+      { icono: '⚠️', nuevo: true, texto: 'Débil frente al cambio climático: diseñada antes de que fuera prioridad.' },
+      { icono: '⚠️', nuevo: true, texto: 'Fiscalización limitada: pocos fiscalizadores para una enorme superficie.' },
+    ],
+    conclusion:
+      'Tras 15 años, su debilidad no está en los objetivos sino en la implementación: ' +
+      'fondos insuficientes, complejidad administrativa y falta de herramientas climáticas. ' +
+      'Requiere modernización.',
+  },
+
+  leccion:
+    'La misma IA, el mismo documento, casi el mismo prompt. Una sola palabra —"crítico"— ' +
+    'reorientó por completo el análisis: de describir, a evaluar y cuestionar. Así de ' +
+    'determinante es cómo formulamos la instrucción.',
+}
 
 // Los cuatro ingredientes de un buen prompt (sección interactiva "prompt").
 export const ingredientesPrompt = [
