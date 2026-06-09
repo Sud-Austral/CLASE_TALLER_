@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 // Renderiza un bloque de contenido según su `tipo`.
 // Los tipos vienen de src/data/contenido.js.
 // `ir(id)` permite que un bloque enlace a otra sección (p. ej. demo → ejercicio).
@@ -89,10 +91,9 @@ export default function Bloque({ bloque, ir }) {
         </div>
       )
 
-    case 'formula':
-      return (
-        <div className="bloque-formula">
-          {bloque.titulo && <h3 className="bloque-titulo">{bloque.titulo}</h3>}
+    case 'formula': {
+      const cuerpo = (
+        <>
           <code className="bloque-formula__eq">{bloque.formula}</code>
           {bloque.items && (
             <ul className="bloque-formula__items">
@@ -101,8 +102,29 @@ export default function Bloque({ bloque, ir }) {
               ))}
             </ul>
           )}
+        </>
+      )
+      // Plegable: el no-técnico lo salta; el ingeniero lo abre.
+      if (bloque.plegable) {
+        return (
+          <details className="bloque-formula bloque-formula--plegable">
+            <summary className="bloque-formula__summary">
+              🔬 {bloque.titulo || 'El detalle'} · para los más técnicos
+            </summary>
+            {cuerpo}
+          </details>
+        )
+      }
+      return (
+        <div className="bloque-formula">
+          {bloque.titulo && <h3 className="bloque-titulo">{bloque.titulo}</h3>}
+          {cuerpo}
         </div>
       )
+    }
+
+    case 'autoevaluacion':
+      return <AutoEvaluacion bloque={bloque} />
 
     case 'enlaceVideo':
       return (
@@ -133,4 +155,37 @@ export default function Bloque({ bloque, ir }) {
     default:
       return null
   }
+}
+
+// Checklist de autoevaluación: el participante marca lo que ya sabría hacer.
+// No califica ni guarda nada; solo da una señal honesta de logro.
+function AutoEvaluacion({ bloque }) {
+  const [marcados, setMarcados] = useState({})
+  const n = Object.values(marcados).filter(Boolean).length
+  return (
+    <div className="autoeval">
+      {bloque.titulo && <h3 className="bloque-titulo">{bloque.titulo}</h3>}
+      <ul className="autoeval__lista">
+        {bloque.items.map((it, i) => (
+          <li key={i}>
+            <label className="autoeval__item">
+              <input
+                type="checkbox"
+                checked={!!marcados[i]}
+                onChange={() => setMarcados((m) => ({ ...m, [i]: !m[i] }))}
+              />
+              <span>{it}</span>
+            </label>
+          </li>
+        ))}
+      </ul>
+      {n > 0 && (
+        <p className="autoeval__msg">
+          {n === bloque.items.length
+            ? '🎉 ¡Las cuatro! Estás listo para usarlo en tu trabajo.'
+            : `Marcaste ${n} de ${bloque.items.length}. Lo que falte, vuelve al ejercicio — para eso está el Laboratorio.`}
+        </p>
+      )}
+    </div>
+  )
 }

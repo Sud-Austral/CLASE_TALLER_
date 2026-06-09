@@ -1,24 +1,28 @@
 import { useState } from 'react'
 import { privacidad } from '../data/contenido'
 
-// Ejercicio "qué NO contarle a la IA": el usuario marca los fragmentos sensibles
-// del correo. Al comprobar, se revela qué debía ocultarse.
+// Ejercicio "qué NO contarle a la IA": el usuario marca los fragmentos sensibles.
+// Hay señuelos (datos públicos) que NO deben marcarse — así la evaluación mide juicio.
 export default function Privacidad() {
   const [marcados, setMarcados] = useState({})
   const [revelado, setRevelado] = useState(false)
 
-  // Índices de los tokens sensibles (los que NO son texto de relleno).
-  const sensibles = privacidad.tokens
-    .map((t, i) => (t.sensible ? i : -1))
+  const clicable = (rol) => rol === 'sensible' || rol === 'senuelo'
+  const idxSensibles = privacidad.tokens
+    .map((t, i) => (t.rol === 'sensible' ? i : -1))
     .filter((i) => i >= 0)
 
   const toggle = (i) => {
-    // sólo se pueden marcar fragmentos sensibles, y sólo antes de revelar
-    if (revelado || !privacidad.tokens[i].sensible) return
+    if (revelado || !clicable(privacidad.tokens[i].rol)) return
     setMarcados((m) => ({ ...m, [i]: !m[i] }))
   }
 
-  const aciertos = sensibles.filter((i) => marcados[i]).length
+  // Análisis al comprobar.
+  const bien = idxSensibles.filter((i) => marcados[i]) // sensibles marcados
+  const escapados = idxSensibles.filter((i) => !marcados[i]) // sensibles NO marcados
+  const deMas = privacidad.tokens
+    .map((t, i) => (t.rol === 'senuelo' && marcados[i] ? i : -1))
+    .filter((i) => i >= 0) // señuelos marcados por error
 
   return (
     <div className="privacidad">
@@ -26,14 +30,18 @@ export default function Privacidad() {
 
       <div className="privacidad__correo">
         {privacidad.tokens.map((tok, i) => {
-          if (!tok.sensible) return <span key={i}>{tok.t}</span>
+          if (!clicable(tok.rol)) return <span key={i}>{tok.t}</span>
           const marcado = !!marcados[i]
           let clase = 'privacidad__dato'
-          if (revelado) clase += ' privacidad__dato--revelado'
-          else if (marcado) clase += ' privacidad__dato--marcado'
+          if (revelado) {
+            if (tok.rol === 'sensible') clase += marcado ? ' privacidad__dato--ok' : ' privacidad__dato--fallo'
+            else clase += marcado ? ' privacidad__dato--demas' : ' privacidad__dato--senuelo-ok'
+          } else if (marcado) {
+            clase += ' privacidad__dato--marcado'
+          }
           return (
             <button key={i} className={clase} onClick={() => toggle(i)} disabled={revelado}>
-              {revelado ? `[${tok.tipo.toUpperCase()}]` : marcado ? '████' : tok.t}
+              {!revelado && marcado ? '████' : tok.t}
             </button>
           )
         })}
@@ -41,15 +49,30 @@ export default function Privacidad() {
 
       {!revelado ? (
         <button className="btn btn--primary" onClick={() => setRevelado(true)}>
-          🔒 Ocultar datos sensibles
+          🔒 Comprobar
         </button>
       ) : (
         <div className="privacidad__resultado">
-          <strong>Marcaste {aciertos} de {sensibles.length}</strong> datos sensibles. Así, anonimizado,
-          el correo ya se puede pegar en una IA.
+          <p className="privacidad__score">
+            <strong>Ocultaste {bien.length} de {idxSensibles.length}</strong> datos sensibles.
+          </p>
+          {escapados.length > 0 && (
+            <p className="privacidad__fila privacidad__fila--mal">
+              🚨 Se te escapó: {escapados.map((i) => privacidad.tokens[i].tipo).join(', ')}.
+            </p>
+          )}
+          {deMas.length > 0 && (
+            <p className="privacidad__fila privacidad__fila--demas">
+              ✂️ Marcaste de más (es información pública): {deMas.map((i) => privacidad.tokens[i].tipo).join(', ')}.
+            </p>
+          )}
+          {escapados.length === 0 && deMas.length === 0 && (
+            <p className="privacidad__fila privacidad__fila--ok">
+              🎯 Perfecto: ocultaste todo lo sensible y respetaste lo público.
+            </p>
+          )}
           <button
             className="btn"
-            style={{ marginLeft: 12 }}
             onClick={() => {
               setRevelado(false)
               setMarcados({})

@@ -12,6 +12,8 @@ import Publicos from './components/Publicos'
 import Privacidad from './components/Privacidad'
 import DocAccion from './components/DocAccion'
 import RedNeuronal from './components/RedNeuronal'
+import Attention from './components/Attention'
+import Alucina from './components/Alucina'
 
 // Mapa de id de interactivo → componente.
 const INTERACTIVOS = {
@@ -25,6 +27,8 @@ const INTERACTIVOS = {
   privacidad: Privacidad,
   docAccion: DocAccion,
   redNeuronal: RedNeuronal,
+  attention: Attention,
+  alucina: Alucina,
 }
 
 const GRUPOS = [

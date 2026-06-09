@@ -17,17 +17,16 @@ export const secciones = [
         kicker: 'TALLER DE INTELIGENCIA ARTIFICIAL · UIA CONAF',
         titulo: 'En los próximos 20 minutos vas a perderle el miedo a la IA',
         texto:
-          'Nada de ciencia ficción ni tecnicismos. Vas a entender qué es realmente la IA, vas a ' +
-          'verla resolver casos reales de CONAF y vas a practicar tú mismo en 9 ejercicios ' +
-          'interactivos. Al final, la IA dejará de ser una caja negra: será una herramienta más ' +
-          'en tu escritorio.',
+          'Nada de ciencia ficción. Vas a entender qué es realmente la IA, vas a verla resolver ' +
+          'casos reales de CONAF y vas a practicar tú mismo en 12 ejercicios interactivos. Al ' +
+          'final, la IA dejará de ser una caja negra: será una herramienta más en tu escritorio.',
       },
       {
         tipo: 'tarjetas',
         titulo: 'Este taller tiene dos partes',
         items: [
           { icono: '📖', titulo: 'El Taller', texto: 'Qué es la IA, sus riesgos y cómo la usa la UIA en CONAF.' },
-          { icono: '🧪', titulo: 'El Laboratorio', texto: '7 ejercicios interactivos para practicar tú mismo.' },
+          { icono: '🧪', titulo: 'El Laboratorio', texto: '12 ejercicios interactivos para practicar tú mismo.' },
         ],
       },
       {
@@ -54,8 +53,9 @@ export const secciones = [
         tipo: 'parrafo',
         texto:
           'La IA que usaremos es, en esencia, un asistente ultrarrápido que ha leído millones ' +
-          'de documentos. No piensa, no siente. Predice cuál es la mejor respuesta basándose en ' +
-          'todo lo que ha procesado.',
+          'de documentos. No piensa, no siente. Predice, palabra a palabra, la continuación más ' +
+          'probable de lo que lee — lo más probable, no necesariamente lo verdadero (a eso ' +
+          'volveremos al hablar de alucinaciones).',
       },
       {
         tipo: 'destacado',
@@ -98,7 +98,7 @@ export const secciones = [
         texto:
           'Un prompt genérico ("hazme una presentación sobre presupuestos") entrega algo vago. ' +
           'Un prompt preciso —rol + cantidad + foco + formato— entrega algo que sí se puede usar.',
-        clave: 'La calidad del resultado depende 100% de las instrucciones que damos. Eso se llama prompt, y es la habilidad más importante que vamos a desarrollar juntos.',
+        clave: 'El prompt es el factor que TÚ controlas, y el que más cambia el resultado. Esa habilidad —escribir buenas instrucciones— es la más importante que vamos a desarrollar juntos.',
         irA: 'prompt',
         irTexto: 'Arma tu propio prompt',
       },
@@ -433,6 +433,71 @@ export const secciones = [
   },
 
   {
+    id: 'perceptron',
+    grupo: 'lab',
+    icono: '🔵',
+    titulo: 'El perceptrón',
+    subtitulo: 'Mira bajo el capó: la neurona artificial',
+    interactivo: 'perceptron',
+    bloques: [
+      {
+        tipo: 'destacado',
+        icono: '🔧',
+        titulo: 'Ya sabes USARLA; ahora, 2 minutos para mirar qué hay dentro',
+        texto:
+          'Una neurona artificial pondera unas pocas señales, las suma y, si pasan un umbral, ' +
+          'dice sí o no — como un evaluador que pesa criterios y decide aprobar o rechazar. Eso ' +
+          'es todo. Abajo puedes jugar con una sin leer una sola fórmula; el detalle técnico ' +
+          'queda plegado para quien lo quiera.',
+      },
+      {
+        tipo: 'parrafo',
+        texto:
+          'El perceptrón es la primera "neurona artificial", propuesta por Frank Rosenblatt en ' +
+          '1958. Toma varias entradas, calcula una suma ponderada y la pasa por una función de ' +
+          'activación tipo escalón. Geométricamente, eso equivale a trazar una recta que separa ' +
+          'dos grupos.',
+      },
+      {
+        tipo: 'formula',
+        plegable: true,
+        titulo: 'Cómo decide',
+        formula: 'z = w₁·x₁ + w₂·x₂ + b      →      ŷ = +1 si z ≥ 0,  si no −1',
+        items: [
+          'x₁, x₂ — entradas (las características del dato).',
+          'w₁, w₂ — pesos: cuánto influye cada entrada.',
+          'b — sesgo (bias): desplaza la frontera de decisión.',
+          'función escalón — convierte la suma z en una salida de dos clases (+1 / −1).',
+        ],
+      },
+      {
+        tipo: 'formula',
+        plegable: true,
+        titulo: 'Cómo aprende (regla de Rosenblatt)',
+        formula: 'wᵢ ← wᵢ + η · yᵢ · xᵢ      (solo en los puntos mal clasificados)',
+        items: [
+          'Por cada dato mal clasificado, empuja los pesos hacia su clase correcta yᵢ ∈ {−1, +1}.',
+          'η (eta) es la tasa de aprendizaje: el tamaño del paso.',
+          'Si los dos grupos se pueden separar con una recta, el algoritmo siempre converge.',
+          'Si NO son separables, el perceptrón nunca se detiene — y esa limitación es justo la que motivó las redes multicapa.',
+        ],
+      },
+      {
+        tipo: 'enlaceVideo',
+        titulo: 'Video de referencia',
+        texto: 'Perceptrón — Machine Learning | aprendizaje automático',
+        url: 'https://www.youtube.com/watch?v=e9JYMng977Q',
+      },
+      {
+        tipo: 'parrafo',
+        texto:
+          'Abajo lo tienes en vivo: mueve los pesos y el sesgo para inclinar y desplazar la ' +
+          'frontera, observa el valor de z, o deja que aplique la regla de aprendizaje y converja solo.',
+      },
+    ],
+  },
+
+  {
     id: 'red-neuronal',
     grupo: 'lab',
     icono: '🧠',
@@ -452,53 +517,100 @@ export const secciones = [
   },
 
   {
-    id: 'perceptron',
+    id: 'attention',
     grupo: 'lab',
-    icono: '🔵',
-    titulo: 'El perceptrón',
-    subtitulo: 'La neurona artificial de Rosenblatt (1958)',
-    interactivo: 'perceptron',
+    icono: '🎯',
+    titulo: 'Attention',
+    subtitulo: 'Cómo el modelo decide a qué palabras prestar atención',
+    interactivo: 'attention',
     bloques: [
       {
         tipo: 'parrafo',
         texto:
-          'El perceptrón es la unidad básica de inferencia: la primera "neurona artificial", ' +
-          'propuesta por Frank Rosenblatt en 1958. Toma varias entradas, calcula una combinación ' +
-          'lineal ponderada y la pasa por una función de activación tipo escalón. Geométricamente, ' +
-          'eso equivale a trazar una recta (un hiperplano) que separa dos clases.',
+          'Ya viste cómo un perceptrón decide con una suma ponderada y cómo una red apila muchos ' +
+          'de esos perceptrones. Falta una pieza para entender un LLM: el significado de una ' +
+          'palabra depende de las que la rodean. "Corta" no es lo mismo en "corta el árbol" que ' +
+          'en "la corta del expediente". Attention es el mecanismo que deja que cada palabra mire ' +
+          'a todas las demás de la frase y decida a cuáles prestar atención —repartiendo un 100% ' +
+          'de atención, como un fiscalizador que pesa más unos documentos que otros— para ' +
+          'recargarse con lo relevante. Y por debajo no hay magia nueva: es el mismo producto ' +
+          'punto y la misma suma ponderada del perceptrón, solo que ahora los pesos se calculan ' +
+          'al vuelo según lo que dice la frase.',
       },
       {
         tipo: 'formula',
-        titulo: 'Cómo decide',
-        formula: 'z = w₁·x₁ + w₂·x₂ + b      →      ŷ = 1 si z ≥ 0,  si no 0',
+        plegable: true,
+        titulo: 'Cómo funciona (self-attention)',
+        formula: 'A = softmax( Q·Kᵀ / √d ) ·V        Q = X·Wq   K = X·Wk   V = X·Wv',
         items: [
-          'x₁, x₂ — entradas (las características del dato).',
-          'w₁, w₂ — pesos: cuánto influye cada entrada.',
-          'b — sesgo (bias): desplaza la frontera de decisión.',
-          'función escalón — convierte la suma z en una salida binaria (clase A / clase B).',
+          'Q "qué busco", K "qué ofrezco", V "qué aporto" — tres versiones de cada token, con pesos aprendidos (como las w).',
+          'Q·Kᵀ — producto punto: mide cuánto le importa cada otro token (es el mismo w·x).',
+          'softmax — reparte el 100% de la atención: cada fila suma 1.',
+          'A·V — suma ponderada de los Value, igual que Σ wᵢ·xᵢ, pero con pesos dinámicos.',
+          'predecir la siguiente palabra: logits = salida·W + b → softmax sobre el vocabulario → elegir.',
         ],
       },
       {
-        tipo: 'formula',
-        titulo: 'Cómo aprende (regla de Rosenblatt)',
-        formula: 'wᵢ ← wᵢ + η · (y − ŷ) · xᵢ        b ← b + η · (y − ŷ)',
-        items: [
-          'Por cada dato mal clasificado, ajusta los pesos en la dirección del error.',
-          'η (eta) es la tasa de aprendizaje: el tamaño del paso.',
-          'Si las clases son linealmente separables, el algoritmo converge (lo prueba el teorema de convergencia del perceptrón).',
-        ],
+        tipo: 'destacado',
+        icono: '📂',
+        titulo: 'Cómo un fiscalizador arma un caso',
+        texto:
+          'Tienes una pregunta concreta (la Query: "¿esta corta requiere plan de manejo?") y ' +
+          'repasas el expediente; cada documento se anuncia con su encabezado (la Key). No lees ' +
+          'todo con la misma intensidad: das 60% de tu atención al artículo y al informe, 10% al ' +
+          'resto — eso es el softmax. La conclusión que escribes (el Value ponderado) es la mezcla ' +
+          'de cada documento pesada por su relevancia. Cambia la pregunta y cambias a qué papeles ' +
+          'atiendes: el mismo expediente, otra mirada.',
       },
-      {
-        tipo: 'enlaceVideo',
-        titulo: 'Video de referencia',
-        texto: 'Perceptrón — Machine Learning | aprendizaje automático',
-        url: 'https://www.youtube.com/watch?v=e9JYMng977Q',
-      },
+    ],
+  },
+
+  {
+    id: 'alucina',
+    grupo: 'lab',
+    icono: '🎲',
+    titulo: 'Por qué sabe pero alucina',
+    subtitulo: 'Optimizado para sonar plausible, no para decir verdad',
+    interactivo: 'alucina',
+    bloques: [
       {
         tipo: 'parrafo',
         texto:
-          'Abajo lo tienes en vivo: mueve los pesos y el sesgo para inclinar y desplazar la ' +
-          'frontera, observa el valor de z, o deja que aplique la regla de aprendizaje y converja solo.',
+          'Ya sabes cómo el LLM elige la siguiente palabra. Ahora la pregunta que de verdad ' +
+          'importa para tu trabajo: ¿por qué sabe tanto y, aun así, a veces inventa con total ' +
+          'seguridad? La respuesta está en lo único que se le pidió al entrenarlo: dar la palabra ' +
+          'siguiente más plausible. Plausible, no verdadera. Por eso recuerda bien lo que aparecía ' +
+          'mucho en sus textos, pero cuando le pides un artículo exacto o una cifra que casi no ' +
+          'vio, no tiene un botón "no sé": rellena con algo que suena a ley chilena. El ' +
+          'fine-tuning y el entrenamiento con retroalimentación humana (RLHF) lo hacen más útil y ' +
+          'honesto, pero no le enseñan datos nuevos —solo cambian cómo prioriza lo que ya tenía—. ' +
+          'Por eso el modelo sigue pudiendo equivocarse, y por eso la firma sigue siendo tuya.',
+      },
+      {
+        tipo: 'formula',
+        plegable: true,
+        titulo: 'Lo que el entrenamiento minimizó',
+        formula: 'L = −log p(palabra_siguiente)        w ← w − η · ∂L/∂w',
+        items: [
+          'Premia PLAUSIBILIDAD, nunca VERDAD → sabe lo frecuente; ante lo ausente, rellena con lo más plausible = alucinación.',
+          'Ronda 2 — misma actualización de pesos (el gesto de Rosenblatt), otra señal de error:',
+          'Fine-tuning: pares "instrucción → buena respuesta" escritos por humanos.',
+          'RLHF: humanos comparan respuestas A vs B → un modelo de recompensa R → subir R.',
+          'No añade hechos nuevos; redistribuye probabilidad. Por eso: verificar siempre.',
+        ],
+      },
+      {
+        tipo: 'destacado',
+        icono: '🎓',
+        titulo: 'El practicante brillante, otra vez',
+        texto:
+          'Leyó toda la biblioteca, pero su único hábito es "terminar la frase como suena mejor". ' +
+          'Le preguntas "¿en qué artículo está la franja de glaciares?" y, en vez de "no lo tengo ' +
+          'a mano", te suelta "Art. 17" con aplomo: inventó un número con forma creíble —igual que ' +
+          'en el ejercicio Detective la ley aparecía "derogada en 2020". No te quiere engañar: ' +
+          'completó el patrón más probable. El fine-tuning es un coaching con casos resueltos por ' +
+          'expertos; el RLHF es el jefe que le dice "esta sí, esta no, y cuando no estés seguro, ' +
+          'dilo". Responde mejor, pero no leyó documentos nuevos: solo cambió cómo prioriza.',
       },
     ],
   },
@@ -516,9 +628,30 @@ export const secciones = [
         kicker: 'LO LOGRASTE',
         titulo: 'La IA dejó de ser una caja negra',
         texto:
-          'Recorriste qué es la IA, sus riesgos y nueve ejercicios prácticos. Ya sabes escribir un ' +
-          'buen prompt, cazar una alucinación, proteger datos sensibles y reconocer cómo "piensa" ' +
-          'una red neuronal. Eso ya te pone por delante de la mayoría.',
+          'Recorriste qué es la IA, sus riesgos y doce ejercicios prácticos. Ahora tienes cuatro ' +
+          'herramientas que antes no usabas: escribir prompts con estructura, detectar ' +
+          'alucinaciones, proteger datos sensibles y entender qué hay bajo el capó.',
+      },
+      {
+        tipo: 'destacado',
+        icono: '🔗',
+        titulo: 'Atando todo: eso era un LLM',
+        texto:
+          'Ese asistente que comparaste —ChatGPT, Claude, Gemini— y que "predice la mejor ' +
+          'respuesta" es exactamente esto: una red neuronal gigantesca, hecha de millones de ' +
+          'neuronas como las que moviste, que usa attention para mirar el contexto y fue entrenada ' +
+          'con millones de textos para predecir la siguiente palabra. A esa familia se le llama ' +
+          'modelo de lenguaje (LLM). Ya no es magia: ahora sabes cómo funciona por dentro.',
+      },
+      {
+        tipo: 'autoevaluacion',
+        titulo: '¿Te lo llevas claro? Marca lo que ya sabrías hacer hoy',
+        items: [
+          'Escribir un prompt con rol + cantidad + foco + formato.',
+          'Detectar una alucinación antes de que llegue a un documento oficial.',
+          'Saber qué datos NO pegar nunca en una IA pública.',
+          'Explicar, a grandes rasgos, por qué un LLM a veces inventa.',
+        ],
       },
       {
         tipo: 'tarjetas',
@@ -650,13 +783,19 @@ export const compararIA = {
 
 // Los cuatro ingredientes de un buen prompt (sección interactiva "prompt").
 export const ingredientesPrompt = [
-  { id: 'rol', etiqueta: 'Rol', icono: '🎭', texto: 'Eres un experto en finanzas públicas.' },
-  { id: 'cantidad', etiqueta: 'Cantidad', icono: '🔢', texto: 'Crea 5 diapositivas' },
-  { id: 'foco', etiqueta: 'Foco', icono: '🎯', texto: 'sobre control del gasto en la segunda mitad del año' },
-  { id: 'formato', etiqueta: 'Formato', icono: '📐', texto: 'con tono ejecutivo y una tabla de seguimiento.' },
+  { id: 'rol', etiqueta: 'Rol', icono: '🎭', pista: 'Dile QUIÉN debe ser ("Actúa como un evaluador de CONAF…").' },
+  { id: 'cantidad', etiqueta: 'Cantidad', icono: '🔢', pista: 'Acota el TAMAÑO ("en 5 puntos", "máximo 1 página").' },
+  { id: 'foco', etiqueta: 'Foco', icono: '🎯', pista: 'Di SOBRE QUÉ exactamente ("…centrado en las obligaciones de fiscalización").' },
+  { id: 'formato', etiqueta: 'Formato', icono: '📐', pista: 'Pide la FORMA ("en una tabla", "tono ejecutivo", "como checklist").' },
 ]
 
-export const promptVago = 'Hazme una presentación sobre la gestión de presupuestos.'
+// Prompt débil con el que arranca el ejercicio (el funcionario lo mejora).
+export const promptVago = 'Hazme un resumen de la Ley 20.283.'
+
+// Ejemplo de un prompt fuerte (se muestra como pista al final).
+export const promptEjemplo =
+  'Actúa como evaluador de CONAF. Resume la Ley 20.283 en 5 viñetas, centrado en las ' +
+  'obligaciones de fiscalización municipal, en tono ejecutivo y como checklist.'
 
 // EJERCICIO 1 — "Sube el nivel del prompt": mismo encargo, tres niveles de detalle.
 export const subeNivel = {
@@ -778,27 +917,34 @@ export const publicos = {
 }
 
 // EJERCICIO 4 — "Qué NO contarle a la IA": marcar datos sensibles.
-// El texto se parte en tokens; los `sensible: true` deben marcarse.
+// Cada token tiene un rol: 'relleno' (no clicable), 'sensible' (debe ocultarse)
+// o 'senuelo' (clicable y parece dato, pero es público → NO hay que ocultarlo).
 export const privacidad = {
-  intro: 'Marca cada dato que NO deberías pegar en una IA pública:',
-  // Cada item es un fragmento del correo; algunos son sensibles.
+  intro: 'Marca SOLO los datos que NO deberías pegar en una IA pública (ojo: no todo lo que parece dato es sensible):',
   tokens: [
-    { t: 'Estimado ', sensible: false },
-    { t: 'Juan Pérez Soto', sensible: true, tipo: 'Nombre' },
-    { t: ', RUT ', sensible: false },
-    { t: '12.345.678-9', sensible: true, tipo: 'RUT' },
-    { t: ', se le notifica que el predio ', sensible: false },
-    { t: 'Rol 245-17 de Curacautín', sensible: true, tipo: 'Identificador de predio' },
-    { t: ' fue fiscalizado. Se detectó una corta no autorizada. Contacto: ', sensible: false },
-    { t: 'jperez@gmail.com', sensible: true, tipo: 'Correo personal' },
-    { t: ' / ', sensible: false },
-    { t: '+56 9 8765 4321', sensible: true, tipo: 'Teléfono' },
-    { t: '. Favor regularizar en 10 días hábiles.', sensible: false },
+    { t: 'Estimado ', rol: 'relleno' },
+    { t: 'Juan Pérez Soto', rol: 'sensible', tipo: 'Nombre' },
+    { t: ', RUT ', rol: 'relleno' },
+    { t: '12.345.678-9', rol: 'sensible', tipo: 'RUT' },
+    { t: ', se le notifica que el predio ', rol: 'relleno' },
+    { t: 'Rol 245-17', rol: 'sensible', tipo: 'Rol del predio' },
+    { t: ' de la comuna de ', rol: 'relleno' },
+    { t: 'Curacautín', rol: 'senuelo', tipo: 'Comuna (dato público)' },
+    { t: ' fue fiscalizado. Se detectó una corta no autorizada según la ', rol: 'relleno' },
+    { t: 'Ley 20.283', rol: 'senuelo', tipo: 'Norma pública' },
+    { t: '. Contacto: ', rol: 'relleno' },
+    { t: 'jperez@gmail.com', rol: 'sensible', tipo: 'Correo personal' },
+    { t: ' / ', rol: 'relleno' },
+    { t: '+56 9 8765 4321', rol: 'sensible', tipo: 'Teléfono' },
+    { t: '. Favor regularizar en ', rol: 'relleno' },
+    { t: '10 días hábiles', rol: 'senuelo', tipo: 'Plazo (no identifica a nadie)' },
+    { t: '.', rol: 'relleno' },
   ],
   leccion:
-    'Todo lo que marcaste (nombre, RUT, rol del predio, correo y teléfono) identifica a una ' +
-    'persona real. Para mejorar la redacción con IA, reemplázalo por marcadores como [NOMBRE] o ' +
-    '[RUT] y recién ahí pega el texto. La IA mejora la forma; los datos sensibles se quedan contigo.',
+    'Lo sensible (nombre, RUT, rol del predio, correo, teléfono) identifica a una persona y debe ' +
+    'ocultarse con marcadores como [NOMBRE] o [RUT]. Pero "Curacautín", "Ley 20.283" o "10 días ' +
+    'hábiles" son información pública: tacharlo de más vuelve el texto inútil. El criterio no es ' +
+    '"¿parece un dato?", sino "¿identifica a una persona o es reservado?".',
 }
 
 // EJERCICIO 5 — "De documento a acción": texto legal denso → checklist accionable.
@@ -822,4 +968,90 @@ export const docAccion = {
     'En segundos, un párrafo legal denso se volvió una lista verificable que puedes usar tal ' +
     'cual en tu trabajo. La IA no reemplaza tu criterio de evaluador: te ahorra el trabajo ' +
     'mecánico de traducir la norma en pasos, para que tú te concentres en decidir.',
+}
+
+// CONCEPTO LLM 1 — "Attention": heatmap de atención + predicción de la siguiente palabra.
+// Pesos precalculados (fieles a la idea, sin modelo real; cada fila suma ~1 = 100%).
+export const attention = {
+  tokens: ['la', 'corta', 'de', 'bosque', 'nativo', 'requiere', 'plan', 'de', 'manejo'],
+  // Cada "cabeza" resalta relaciones distintas. matriz[i][j] = atención de i hacia j (0..1).
+  cabezas: [
+    {
+      nombre: 'Cabeza 1 · sintáctica',
+      descripcion: 'Conecta el verbo y su objeto: "corta → requiere → plan / manejo".',
+      // filas = desde, columnas = hacia (orden de tokens)
+      matriz: [
+        [0.55, 0.20, 0.05, 0.05, 0.03, 0.04, 0.03, 0.02, 0.03],
+        [0.08, 0.40, 0.04, 0.06, 0.04, 0.22, 0.08, 0.02, 0.06],
+        [0.05, 0.30, 0.30, 0.20, 0.05, 0.03, 0.03, 0.02, 0.02],
+        [0.04, 0.10, 0.10, 0.40, 0.28, 0.03, 0.02, 0.01, 0.02],
+        [0.03, 0.08, 0.06, 0.45, 0.30, 0.03, 0.02, 0.01, 0.02],
+        [0.03, 0.30, 0.03, 0.05, 0.04, 0.30, 0.15, 0.03, 0.07],
+        [0.02, 0.10, 0.03, 0.04, 0.03, 0.18, 0.35, 0.05, 0.20],
+        [0.03, 0.05, 0.10, 0.05, 0.04, 0.06, 0.25, 0.22, 0.20],
+        [0.02, 0.08, 0.03, 0.04, 0.03, 0.12, 0.30, 0.08, 0.30],
+      ],
+    },
+    {
+      nombre: 'Cabeza 2 · semántica',
+      descripcion: 'Agrupa el sujeto: "bosque ↔ nativo" se miran fuertemente entre sí.',
+      matriz: [
+        [0.50, 0.10, 0.10, 0.10, 0.08, 0.04, 0.03, 0.02, 0.03],
+        [0.10, 0.45, 0.05, 0.15, 0.10, 0.06, 0.04, 0.02, 0.03],
+        [0.08, 0.08, 0.40, 0.22, 0.14, 0.03, 0.02, 0.01, 0.02],
+        [0.03, 0.06, 0.06, 0.45, 0.36, 0.02, 0.01, 0.005, 0.005],
+        [0.03, 0.05, 0.05, 0.44, 0.40, 0.01, 0.01, 0.005, 0.005],
+        [0.05, 0.10, 0.05, 0.18, 0.15, 0.32, 0.08, 0.03, 0.04],
+        [0.04, 0.06, 0.04, 0.12, 0.10, 0.10, 0.40, 0.04, 0.10],
+        [0.04, 0.05, 0.10, 0.10, 0.08, 0.05, 0.20, 0.28, 0.10],
+        [0.03, 0.05, 0.04, 0.14, 0.12, 0.08, 0.24, 0.06, 0.24],
+      ],
+    },
+  ],
+  // Predicción de la siguiente palabra tras "...plan de manejo".
+  prediccion: [
+    { palabra: 'aprobado', prob: 0.62 },
+    { palabra: 'forestal', prob: 0.21 },
+    { palabra: 'previo', prob: 0.11 },
+    { palabra: 'vigente', prob: 0.06 },
+  ],
+  leccion:
+    'Cada palabra repartió un 100% de atención entre las demás y se "recargó" con las relevantes. ' +
+    'Apila esto muchas veces y tienes un Transformer — la arquitectura detrás de ChatGPT, Claude y ' +
+    'Gemini. Predecir la siguiente palabra vuelve a ser, al final, una suma ponderada y un softmax: ' +
+    'el mismo z = w·x + b del perceptrón, a una escala enorme.',
+}
+
+// CONCEPTO LLM 2 — "Por qué sabe pero alucina": comparación pre-entrenado vs RLHF + paso de recompensa.
+export const alucina = {
+  prompt: '¿Qué exige la Ley 20.283 para cortar bosque nativo?',
+  antes: {
+    etiqueta: 'Antes · solo pre-entrenado',
+    descripcion: 'Autocompleta lo más plausible. Suena bien… pero cuela un dato falso.',
+    // fragmentos; alucinacion:true se resalta en rojo
+    partes: [
+      { t: 'Para cortar bosque nativo, la Ley 20.283 exige un plan de manejo aprobado por CONAF. ' },
+      { t: 'Además, según el Art. 14 bis, se debe pagar una tasa del 3% del valor del predio.', alucinacion: true },
+    ],
+  },
+  despues: {
+    etiqueta: 'Después · fine-tuning + RLHF',
+    descripcion: 'Más estructurada y honesta: marca lo que conviene verificar.',
+    partes: [
+      { t: 'La Ley 20.283 exige, antes de cualquier corta de bosque nativo, un Plan de Manejo aprobado por CONAF. ' },
+      { t: 'Existen además restricciones de protección (suelos, aguas, glaciares) y un fondo de incentivos. ' },
+      { t: '(Verifica los artículos y montos exactos en el texto oficial.)', honesto: true },
+    ],
+  },
+  rlhf: {
+    pregunta: 'Eres el humano que entrena al modelo. ¿Cuál respuesta es mejor?',
+    opciones: ['La de la izquierda (Antes)', 'La de la derecha (Después)'],
+    correcta: 1,
+    feedbackOk: '✅ Subiste la recompensa R. Así, repetido millones de veces, el modelo aprende a preferir respuestas útiles y honestas. Tú eres la señal de error.',
+    feedbackMal: '🤔 La de la izquierda inventa un "Art. 14 bis" y una tasa que no existen. Premiarla le enseñaría a alucinar con más seguridad.',
+  },
+  leccion:
+    'Ni el fine-tuning ni el RLHF garantizan verdad: redistribuyen probabilidad sobre lo que el ' +
+    'modelo ya tenía. Por eso incluso la respuesta pulida puede traer un dato falso plausible —y ' +
+    'por eso "la IA propone, tú confirmas". ¿Te suena? Es exactamente el ejercicio Detective.',
 }
