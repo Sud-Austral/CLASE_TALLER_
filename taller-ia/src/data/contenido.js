@@ -1,31 +1,43 @@
 // Contenido del Taller de IA — UIA / CONAF
 // Extraído del material del repositorio (PPT en /ppt y /MATERIAL_UIA).
 // Cada entrada de `secciones` es una pestaña navegable de la web.
+// `grupo` agrupa las secciones en el menú: 'taller' (contenido) y 'lab' (ejercicios).
 
 export const secciones = [
+  // ===================== TALLER (contenido) =====================
   {
     id: 'inicio',
+    grupo: 'taller',
     icono: '🌲',
     titulo: 'Bienvenida',
     subtitulo: 'Unidad de Información y Análisis · CONAF',
     bloques: [
       {
         tipo: 'hero',
-        kicker: 'PRESENTACIÓN DE LA UNIDAD',
-        titulo: 'Un mes dentro de CONAF',
+        kicker: 'TALLER DE INTELIGENCIA ARTIFICIAL · UIA CONAF',
+        titulo: 'En los próximos 20 minutos vas a perderle el miedo a la IA',
         texto:
-          'No venimos a hacer una presentación institucional aburrida — venimos a mostrarles ' +
-          'algo en vivo que va a cambiar la forma en que trabajamos. Datos, sistemas e ' +
-          'inteligencia artificial al servicio de CONAF.',
+          'Nada de ciencia ficción ni tecnicismos. Vas a entender qué es realmente la IA, vas a ' +
+          'verla resolver casos reales de CONAF y vas a practicar tú mismo en 9 ejercicios ' +
+          'interactivos. Al final, la IA dejará de ser una caja negra: será una herramienta más ' +
+          'en tu escritorio.',
       },
       {
         tipo: 'tarjetas',
-        titulo: 'Cómo recorrer este taller',
+        titulo: 'Este taller tiene dos partes',
         items: [
-          { icono: '🧠', titulo: '¿Qué es la IA?', texto: 'Desmitificamos: qué hace y qué no hace.' },
-          { icono: '🛠️', titulo: 'Demos prácticas', texto: 'Casos reales del día a día en CONAF.' },
-          { icono: '⚠️', titulo: 'Riesgos', texto: 'Alucinaciones, privacidad y responsabilidad.' },
-          { icono: '🔵', titulo: 'Ejercicio', texto: 'Juega con una "neurona" y entiéndela.' },
+          { icono: '📖', titulo: 'El Taller', texto: 'Qué es la IA, sus riesgos y cómo la usa la UIA en CONAF.' },
+          { icono: '🧪', titulo: 'El Laboratorio', texto: '7 ejercicios interactivos para practicar tú mismo.' },
+        ],
+      },
+      {
+        tipo: 'tarjetas',
+        titulo: 'Lo que vas a practicar en el Laboratorio',
+        items: [
+          { icono: '✍️', titulo: 'Escribir prompts', texto: 'La habilidad #1: pedirle bien a la IA.' },
+          { icono: '🕵️', titulo: 'Cazar mentiras', texto: 'Detectar cuándo la IA inventa datos.' },
+          { icono: '🤖', titulo: 'Comparar modelos', texto: 'ChatGPT vs Claude vs Gemini, mismo caso real.' },
+          { icono: '🔒', titulo: 'Proteger datos', texto: 'Qué nunca debes pegar en una IA.' },
         ],
       },
     ],
@@ -33,6 +45,7 @@ export const secciones = [
 
   {
     id: 'que-es-ia',
+    grupo: 'taller',
     icono: '🧠',
     titulo: '¿Qué es la IA?',
     subtitulo: 'Olviden la ciencia ficción',
@@ -62,6 +75,7 @@ export const secciones = [
 
   {
     id: 'demos',
+    grupo: 'taller',
     icono: '🛠️',
     titulo: 'Demos',
     subtitulo: 'La IA aplicada al día a día',
@@ -71,10 +85,11 @@ export const secciones = [
         n: '1',
         titulo: 'Distintos modelos, distintas respuestas',
         texto:
-          'ChatGPT, Claude y Gemini reciben el mismo prompt: "Escribe un correo a un proveedor ' +
-          'que no entregó a tiempo." El resultado: estructura, tono y longitud distintos. Las tres ' +
-          'respuestas son válidas de formas diferentes.',
+          'ChatGPT, Claude y Gemini reciben el mismo prompt. El resultado: estructura, tono y ' +
+          'longitud distintos. Las tres respuestas son válidas de formas diferentes.',
         clave: 'La IA no es una bola de cristal con una única respuesta mágica. Es una herramienta con la que hay que aprender a dialogar. CONAF tiene licencia paga para Gemini Pro.',
+         irA: 'comparar-ia',
+        irTexto: 'Pruébalo con la Ley 20.283',
       },
       {
         tipo: 'demo',
@@ -84,6 +99,8 @@ export const secciones = [
           'Un prompt genérico ("hazme una presentación sobre presupuestos") entrega algo vago. ' +
           'Un prompt preciso —rol + cantidad + foco + formato— entrega algo que sí se puede usar.',
         clave: 'La calidad del resultado depende 100% de las instrucciones que damos. Eso se llama prompt, y es la habilidad más importante que vamos a desarrollar juntos.',
+        irA: 'prompt',
+        irTexto: 'Arma tu propio prompt',
       },
       {
         tipo: 'demo',
@@ -109,23 +126,8 @@ export const secciones = [
   },
 
   {
-    id: 'prompt',
-    icono: '✍️',
-    titulo: 'El prompt',
-    subtitulo: 'La habilidad más importante',
-    interactivo: 'prompt',
-    bloques: [
-      {
-        tipo: 'parrafo',
-        texto:
-          'Un buen prompt combina cuatro ingredientes. Activa cada uno abajo y observa cómo una ' +
-          'instrucción vaga se transforma en una instrucción precisa y útil.',
-      },
-    ],
-  },
-
-  {
     id: 'riesgos',
+    grupo: 'taller',
     icono: '⚠️',
     titulo: 'Riesgos',
     subtitulo: 'Esto también tiene riesgos',
@@ -165,6 +167,7 @@ export const secciones = [
 
   {
     id: 'unidad',
+    grupo: 'taller',
     icono: '🤝',
     titulo: 'La UIA',
     subtitulo: '¿Para qué sirve nuestra Unidad?',
@@ -196,6 +199,7 @@ export const secciones = [
 
   {
     id: 'plan',
+    grupo: 'taller',
     icono: '🗺️',
     titulo: 'Plan UIA 2026–2030',
     subtitulo: 'Datos, sistemas e IA al servicio de CONAF',
@@ -251,6 +255,7 @@ export const secciones = [
 
   {
     id: 'gobernanza',
+    grupo: 'taller',
     icono: '📊',
     titulo: 'Gobernanza de datos',
     subtitulo: 'PMG-MEI 2025 · Horizonte 2026–2028',
@@ -283,10 +288,64 @@ export const secciones = [
     ],
   },
 
+  // ===================== LABORATORIO (ejercicios) =====================
+  {
+    id: 'prompt',
+    grupo: 'lab',
+    icono: '✍️',
+    titulo: 'Arma tu prompt',
+    subtitulo: 'La habilidad más importante',
+    interactivo: 'prompt',
+    bloques: [
+      {
+        tipo: 'parrafo',
+        texto:
+          'Un buen prompt combina cuatro ingredientes. Activa cada uno abajo y observa cómo una ' +
+          'instrucción vaga se transforma en una instrucción precisa y útil.',
+      },
+    ],
+  },
+
+  {
+    id: 'sube-nivel',
+    grupo: 'lab',
+    icono: '📈',
+    titulo: 'Sube el nivel del prompt',
+    subtitulo: 'Del prompt flojo al prompt experto',
+    interactivo: 'subeNivel',
+    bloques: [
+      {
+        tipo: 'parrafo',
+        texto:
+          'El mismo encargo, pedido en tres niveles de detalle. Mueve el deslizador y observa ' +
+          'cómo, a más precisión en la instrucción, más útil es la respuesta que entrega la IA.',
+      },
+    ],
+  },
+
+  {
+    id: 'detective',
+    grupo: 'lab',
+    icono: '🕵️',
+    titulo: 'Detective de alucinaciones',
+    subtitulo: 'Caza los datos que la IA inventó',
+    interactivo: 'detective',
+    bloques: [
+      {
+        tipo: 'parrafo',
+        texto:
+          'La IA puede mentir con total seguridad. Abajo hay un "análisis" de la Ley 20.283 ' +
+          'generado por IA: la mayoría es correcto, pero algunas frases tienen datos inventados. ' +
+          'Haz clic en las que creas FALSAS. Luego comprueba tu olfato de fiscalizador.',
+      },
+    ],
+  },
+
   {
     id: 'comparar-ia',
+    grupo: 'lab',
     icono: '🤖',
-    titulo: 'Ejercicio: distintos modelos',
+    titulo: 'Distintos modelos',
     subtitulo: 'Mismo prompt, tres IA, tres respuestas',
     interactivo: 'compararIA',
     bloques: [
@@ -302,8 +361,9 @@ export const secciones = [
 
   {
     id: 'analisis-ley',
+    grupo: 'lab',
     icono: '⚖️',
-    titulo: 'Ejercicio: una palabra lo cambia todo',
+    titulo: 'Una palabra lo cambia todo',
     subtitulo: 'Caso real: la Ley 20.283 del Bosque Nativo',
     interactivo: 'analisisLey',
     bloques: [
@@ -319,26 +379,175 @@ export const secciones = [
   },
 
   {
+    id: 'publicos',
+    grupo: 'lab',
+    icono: '👥',
+    titulo: 'Misma ley, distintos públicos',
+    subtitulo: 'La IA adapta el lenguaje a quien escucha',
+    interactivo: 'publicos',
+    bloques: [
+      {
+        tipo: 'parrafo',
+        texto:
+          'La misma Ley 20.283, explicada para cuatro audiencias distintas. Elige a quién le ' +
+          'hablas y mira cómo la IA cambia el tono, el vocabulario y el nivel de detalle — sin ' +
+          'cambiar los hechos.',
+      },
+    ],
+  },
+
+  {
+    id: 'privacidad',
+    grupo: 'lab',
+    icono: '🔒',
+    titulo: 'Qué NO contarle a la IA',
+    subtitulo: 'Limpia los datos sensibles antes de pegar',
+    interactivo: 'privacidad',
+    bloques: [
+      {
+        tipo: 'parrafo',
+        texto:
+          'Vas a pegar este correo de fiscalización en una IA para mejorar su redacción. Pero ' +
+          'antes: marca todos los datos sensibles que hay que ocultar. Trata a la IA como a un ' +
+          'conocido de la calle.',
+      },
+    ],
+  },
+
+  {
+    id: 'doc-accion',
+    grupo: 'lab',
+    icono: '⚙️',
+    titulo: 'De documento a acción',
+    subtitulo: 'De texto legal a checklist accionable',
+    interactivo: 'docAccion',
+    bloques: [
+      {
+        tipo: 'parrafo',
+        texto:
+          'La IA no solo resume: transforma. Toma un párrafo denso de la ley y, con el prompt ' +
+          'correcto, lo convierte en una lista de tareas concretas para ti como evaluador. ' +
+          'Pulsa el botón y mira la transformación.',
+      },
+    ],
+  },
+
+  {
+    id: 'red-neuronal',
+    grupo: 'lab',
+    icono: '🧠',
+    titulo: 'Red neuronal',
+    subtitulo: 'De una neurona a muchas, en capas',
+    interactivo: 'redNeuronal',
+    bloques: [
+      {
+        tipo: 'parrafo',
+        texto:
+          'Un perceptrón solo traza una recta. Pero si conectamos muchas neuronas en capas, la ' +
+          'red puede aprender fronteras curvas y patrones complejos: así reconoce imágenes, ' +
+          'entiende texto o clasifica expedientes. Cada conexión tiene un peso; la información ' +
+          'fluye de izquierda a derecha (forward pass). Pulsa para verla "pensar".',
+      },
+    ],
+  },
+
+  {
     id: 'perceptron',
+    grupo: 'lab',
     icono: '🔵',
-    titulo: 'Ejercicio: el perceptrón',
-    subtitulo: 'Juega con una "neurona artificial"',
+    titulo: 'El perceptrón',
+    subtitulo: 'La neurona artificial de Rosenblatt (1958)',
     interactivo: 'perceptron',
     bloques: [
       {
         tipo: 'parrafo',
         texto:
-          'Una "neurona artificial" no es magia: es simplemente una línea que separa dos grupos. ' +
-          '"Aprender" es mover esa línea hasta que separe bien los colores. Prueba moviendo los ' +
-          'controles, o deja que la máquina aprenda sola.',
+          'El perceptrón es la unidad básica de inferencia: la primera "neurona artificial", ' +
+          'propuesta por Frank Rosenblatt en 1958. Toma varias entradas, calcula una combinación ' +
+          'lineal ponderada y la pasa por una función de activación tipo escalón. Geométricamente, ' +
+          'eso equivale a trazar una recta (un hiperplano) que separa dos clases.',
+      },
+      {
+        tipo: 'formula',
+        titulo: 'Cómo decide',
+        formula: 'z = w₁·x₁ + w₂·x₂ + b      →      ŷ = 1 si z ≥ 0,  si no 0',
+        items: [
+          'x₁, x₂ — entradas (las características del dato).',
+          'w₁, w₂ — pesos: cuánto influye cada entrada.',
+          'b — sesgo (bias): desplaza la frontera de decisión.',
+          'función escalón — convierte la suma z en una salida binaria (clase A / clase B).',
+        ],
+      },
+      {
+        tipo: 'formula',
+        titulo: 'Cómo aprende (regla de Rosenblatt)',
+        formula: 'wᵢ ← wᵢ + η · (y − ŷ) · xᵢ        b ← b + η · (y − ŷ)',
+        items: [
+          'Por cada dato mal clasificado, ajusta los pesos en la dirección del error.',
+          'η (eta) es la tasa de aprendizaje: el tamaño del paso.',
+          'Si las clases son linealmente separables, el algoritmo converge (lo prueba el teorema de convergencia del perceptrón).',
+        ],
+      },
+      {
+        tipo: 'enlaceVideo',
+        titulo: 'Video de referencia',
+        texto: 'Perceptrón — Machine Learning | aprendizaje automático',
+        url: 'https://www.youtube.com/watch?v=e9JYMng977Q',
+      },
+      {
+        tipo: 'parrafo',
+        texto:
+          'Abajo lo tienes en vivo: mueve los pesos y el sesgo para inclinar y desplazar la ' +
+          'frontera, observa el valor de z, o deja que aplique la regla de aprendizaje y converja solo.',
+      },
+    ],
+  },
+
+  // ===================== CIERRE =====================
+  {
+    id: 'cierre',
+    grupo: 'lab',
+    icono: '🚀',
+    titulo: 'Y ahora, ¿qué?',
+    subtitulo: 'Lo que te llevas de este taller',
+    bloques: [
+      {
+        tipo: 'hero',
+        kicker: 'LO LOGRASTE',
+        titulo: 'La IA dejó de ser una caja negra',
+        texto:
+          'Recorriste qué es la IA, sus riesgos y nueve ejercicios prácticos. Ya sabes escribir un ' +
+          'buen prompt, cazar una alucinación, proteger datos sensibles y reconocer cómo "piensa" ' +
+          'una red neuronal. Eso ya te pone por delante de la mayoría.',
+      },
+      {
+        tipo: 'tarjetas',
+        titulo: 'Tres pasos para empezar mañana mismo',
+        items: [
+          { icono: '1️⃣', titulo: 'Conózcannos', texto: 'Vengan a preguntarnos, sin protocolo. La UIA está para eso.' },
+          { icono: '2️⃣', titulo: 'Identifiquen una fricción', texto: 'Ese proceso que da lata. Ese documento que nadie quiere redactar.' },
+          { icono: '3️⃣', titulo: 'Trabajemos juntos', texto: 'Les acompañamos a resolverla con las herramientas correctas.' },
+        ],
+      },
+      {
+        tipo: 'frase',
+        texto: 'Su trabajo tiene fricciones que parecen inevitables. Sí hay otra forma — eso es exactamente lo que vinimos a demostrar.',
+      },
+      {
+        tipo: 'destacado',
+        icono: '✉️',
+        titulo: 'La UIA es tu puente hacia las herramientas',
+        texto:
+          'Somos la Unidad de Información y Análisis Institucional de CONAF. Estamos aquí para ' +
+          'reducir la fricción y multiplicar el impacto de tu trabajo. Muchas gracias. ¿Preguntas?',
       },
     ],
   },
 ]
 
+// ===================== Datos de los ejercicios =====================
+
 // Ejercicio "una palabra lo cambia todo" — análisis de la Ley 20.283.
-// Texto resumido a partir de las dos respuestas reales de ChatGPT sobre el PDF
-// LEY-20283_30-JUL-2008.pdf.
 export const analisisLey = {
   promptBase: 'Realiza un análisis',
   palabra: ' crítico',
@@ -363,7 +572,6 @@ export const analisisLey = {
   critico: {
     titulo: 'Análisis CRÍTICO',
     tono: 'Mismo documento, pero ahora evalúa fortalezas Y debilidades.',
-    // Los puntos con `nuevo: true` no aparecían en la versión neutral.
     puntos: [
       { icono: '🎯', texto: 'Mantiene el reconocimiento del valor ecológico y los planes de manejo.' },
       { icono: '✅', texto: 'Fortalezas: incentivos, protección de especies, investigación y participación.' },
@@ -386,7 +594,6 @@ export const analisisLey = {
 }
 
 // Ejercicio "distintos modelos, distintas respuestas" — comparador de IA.
-// Mismo prompt sobre la Ley 20.283 enviado a ChatGPT, Claude y Gemini.
 export const compararIA = {
   prompt: 'Realiza un análisis de la Ley N.º 20.283 sobre Recuperación del Bosque Nativo y Fomento Forestal de Chile.',
   modelos: [
@@ -450,3 +657,169 @@ export const ingredientesPrompt = [
 ]
 
 export const promptVago = 'Hazme una presentación sobre la gestión de presupuestos.'
+
+// EJERCICIO 1 — "Sube el nivel del prompt": mismo encargo, tres niveles de detalle.
+export const subeNivel = {
+  niveles: [
+    {
+      etiqueta: 'Nivel 1 · Flojo',
+      prompt: 'Resume la Ley 20.283.',
+      tono: '#e53935',
+      respuesta:
+        'La Ley 20.283 trata sobre el bosque nativo en Chile. Busca protegerlo y permite su ' +
+        'uso sustentable. Establece reglas y un fondo de incentivos.',
+      critica: 'Genérico. No sé para quién es, ni qué destacar. Sirve de poco.',
+    },
+    {
+      etiqueta: 'Nivel 2 · Mejor',
+      prompt: 'Resume la Ley 20.283 para un alcalde, en lenguaje simple.',
+      tono: '#fb8c00',
+      respuesta:
+        'Alcalde: la Ley 20.283 protege el bosque nativo de su comuna. Toda corta necesita un ' +
+        'permiso (Plan de Manejo) aprobado por CONAF, y existe un fondo estatal que financia a ' +
+        'propietarios que conserven o manejen bien su bosque.',
+      critica: 'Ya tiene audiencia y tono. Mejor, pero aún falta foco y formato.',
+    },
+    {
+      etiqueta: 'Nivel 3 · Experto',
+      prompt:
+        'Resume la Ley 20.283 para un alcalde, en 4 viñetas de máximo una línea, destacando las ' +
+        'obligaciones de fiscalización municipal y los incentivos disponibles para vecinos.',
+      tono: '#2e7d32',
+      respuesta:
+        '• Toda corta de bosque nativo requiere Plan de Manejo aprobado por CONAF.\n' +
+        '• El municipio puede denunciar cortas ilegales: multa hasta el doble del valor cortado.\n' +
+        '• Vecinos propietarios acceden a un fondo concursable (hasta 10 UTM/há).\n' +
+        '• Pequeños propietarios tienen un concurso exclusivo y +15% de bonificación.',
+      critica: 'Audiencia + cantidad + foco + formato. Esto se puede usar tal cual. ✅',
+    },
+  ],
+  leccion:
+    'No cambió la ley ni la IA: cambió cómo pediste. A más rol, cantidad, foco y formato en tu ' +
+    'instrucción, más cerca queda la respuesta de lo que de verdad necesitas.',
+}
+
+// EJERCICIO 2 — "Detective de alucinaciones": frases verdaderas y falsas mezcladas.
+// El usuario debe identificar las FALSAS (falsa: true).
+export const detective = {
+  intro: 'Análisis de la Ley 20.283 — generado por IA. ¿Cuáles frases son inventadas?',
+  frases: [
+    { texto: 'Toda corta de bosque nativo requiere un Plan de Manejo aprobado por CONAF.', falsa: false },
+    { texto: 'Se prohíbe cortar árboles nativos en una franja de 500 metros alrededor de los glaciares.', falsa: false },
+    {
+      texto: 'La ley obliga a plantar exactamente 3 árboles nuevos por cada árbol nativo cortado.',
+      falsa: true,
+      porque: 'Inventado. La ley exige programas de reforestación con el mismo tipo forestal, pero NO fija una proporción de "3 por 1".',
+    },
+    { texto: 'Crea un Fondo concursable que bonifica la conservación y el manejo sustentable.', falsa: false },
+    {
+      texto: 'El incumplimiento puede llevar pena de cárcel de hasta 20 años para el propietario.',
+      falsa: true,
+      porque: 'Falso. Hay sanciones penales por antecedentes falsos, pero no existe una pena de "20 años" en esta ley.',
+    },
+    { texto: 'Los pequeños propietarios reciben hasta un 15% más de bonificación.', falsa: false },
+    {
+      texto: 'La Ley 20.283 fue derogada en 2020 y reemplazada por la Ley del Clima.',
+      falsa: true,
+      porque: 'Falso. La ley sigue vigente; solo ha tenido modificaciones puntuales, no fue derogada.',
+    },
+    { texto: 'Prohíbe alterar el hábitat de especies clasificadas en peligro o vulnerables.', falsa: false },
+  ],
+  leccion:
+    'Las frases falsas sonaban totalmente creíbles — ese es justo el peligro de las ' +
+    'alucinaciones. Por eso, ante cualquier dato que vaya a un documento oficial: verificar ' +
+    'siempre contra la fuente. La IA propone; tú confirmas.',
+}
+
+// EJERCICIO 3 — "Misma ley, distintos públicos": la IA adapta el registro.
+export const publicos = {
+  audiencias: [
+    {
+      id: 'funcionario',
+      etiqueta: 'Funcionario CONAF',
+      icono: '🪖',
+      respuesta:
+        'La Ley 20.283 establece el marco para autorizar y fiscalizar intervenciones en bosque ' +
+        'nativo. Como evaluador, verifica que cada Plan de Manejo cumpla las categorías del Art. 2, ' +
+        'las restricciones del Art. 17 (glaciares) y Art. 19 (especies amenazadas) antes de aprobar.',
+    },
+    {
+      id: 'propietario',
+      etiqueta: 'Pequeño propietario',
+      icono: '🧑‍🌾',
+      respuesta:
+        'Si tiene bosque nativo y quiere cortar, primero necesita un permiso (Plan de Manejo) de ' +
+        'CONAF. La buena noticia: hay un fondo que le paga por cuidar o manejar bien su bosque, y ' +
+        'como pequeño propietario tiene un concurso solo para usted y un 15% más de bono.',
+    },
+    {
+      id: 'nino',
+      etiqueta: 'Estudiante de colegio',
+      icono: '🎒',
+      respuesta:
+        'Imagina que el bosque nativo es un tesoro de Chile lleno de árboles, animales y agua ' +
+        'limpia. Esta ley es como un reglamento que dice: nadie puede cortar esos árboles sin ' +
+        'permiso, y si alguien cuida bien el bosque, el Estado le da un premio.',
+    },
+    {
+      id: 'abogado',
+      etiqueta: 'Abogado',
+      icono: '⚖️',
+      respuesta:
+        'La Ley 20.283 articula un régimen de planificación (Plan de Manejo, Art. 5), restricciones ' +
+        'ambientales absolutas (Art. 17, 19), fomento vía fondo concursable (Título IV) y un régimen ' +
+        'sancionatorio administrativo-penal (Título VII), con remisión al Art. 193 del Código Penal.',
+    },
+  ],
+  leccion:
+    'Los hechos son los mismos; cambia el registro. Decirle a la IA PARA QUIÉN es el texto es ' +
+    'tan importante como el contenido — es lo que separa un borrador genérico de uno que tu ' +
+    'audiencia entiende a la primera.',
+}
+
+// EJERCICIO 4 — "Qué NO contarle a la IA": marcar datos sensibles.
+// El texto se parte en tokens; los `sensible: true` deben marcarse.
+export const privacidad = {
+  intro: 'Marca cada dato que NO deberías pegar en una IA pública:',
+  // Cada item es un fragmento del correo; algunos son sensibles.
+  tokens: [
+    { t: 'Estimado ', sensible: false },
+    { t: 'Juan Pérez Soto', sensible: true, tipo: 'Nombre' },
+    { t: ', RUT ', sensible: false },
+    { t: '12.345.678-9', sensible: true, tipo: 'RUT' },
+    { t: ', se le notifica que el predio ', sensible: false },
+    { t: 'Rol 245-17 de Curacautín', sensible: true, tipo: 'Identificador de predio' },
+    { t: ' fue fiscalizado. Se detectó una corta no autorizada. Contacto: ', sensible: false },
+    { t: 'jperez@gmail.com', sensible: true, tipo: 'Correo personal' },
+    { t: ' / ', sensible: false },
+    { t: '+56 9 8765 4321', sensible: true, tipo: 'Teléfono' },
+    { t: '. Favor regularizar en 10 días hábiles.', sensible: false },
+  ],
+  leccion:
+    'Todo lo que marcaste (nombre, RUT, rol del predio, correo y teléfono) identifica a una ' +
+    'persona real. Para mejorar la redacción con IA, reemplázalo por marcadores como [NOMBRE] o ' +
+    '[RUT] y recién ahí pega el texto. La IA mejora la forma; los datos sensibles se quedan contigo.',
+}
+
+// EJERCICIO 5 — "De documento a acción": texto legal denso → checklist accionable.
+export const docAccion = {
+  promptUsado:
+    'Convierte este artículo de la Ley 20.283 en una checklist de pasos concretos para mí, ' +
+    'que soy evaluador de CONAF revisando un Plan de Manejo.',
+  textoLegal:
+    '"El plan de manejo deberá contemplar las medidas de protección de los suelos y de los ' +
+    'cuerpos y cursos naturales de agua, evitando que las intervenciones provoquen erosión ' +
+    'manifiesta. Tratándose de bosques de preservación, sólo se admitirá su manejo con fines de ' +
+    'conservación de la diversidad biológica, requiriéndose informe del Servicio de Biodiversidad."',
+  checklist: [
+    '¿El plan incluye medidas explícitas de protección de suelos?',
+    '¿Identifica los cursos y cuerpos de agua del predio y cómo se protegen?',
+    '¿Justifica que la intervención no provocará erosión manifiesta?',
+    '¿El bosque es de preservación? Si es así, ¿el manejo es solo de conservación?',
+    '¿Se adjunta el informe del Servicio de Biodiversidad y Áreas Protegidas?',
+  ],
+  leccion:
+    'En segundos, un párrafo legal denso se volvió una lista verificable que puedes usar tal ' +
+    'cual en tu trabajo. La IA no reemplaza tu criterio de evaluador: te ahorra el trabajo ' +
+    'mecánico de traducir la norma en pasos, para que tú te concentres en decidir.',
+}

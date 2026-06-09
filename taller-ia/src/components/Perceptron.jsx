@@ -163,9 +163,19 @@ export default function Perceptron() {
       </div>
 
       <div className="perceptron__controles">
-        <Slider label="Peso w1 (eje horizontal)" value={w1} onChange={setW1} />
-        <Slider label="Peso w2 (eje vertical)" value={w2} onChange={setW2} />
-        <Slider label="Umbral (bias)" value={b} onChange={setB} />
+        <Slider label="Peso w₁ (entrada x₁)" value={w1} onChange={setW1} />
+        <Slider label="Peso w₂ (entrada x₂)" value={w2} onChange={setW2} />
+        <Slider label="Sesgo b (bias)" value={b} onChange={setB} />
+
+        <div className="perceptron__eq">
+          <code>
+            z = ({w1.toFixed(2)})·x₁ + ({w2.toFixed(2)})·x₂ + ({b.toFixed(2)})
+          </code>
+          <span className="perceptron__eq-nota">
+            La función escalón devuelve <strong>clase roja</strong> si z ≥ 0, y{' '}
+            <strong>clase azul</strong> si z &lt; 0. La recta verde es el lugar donde z = 0.
+          </span>
+        </div>
 
         <div className="perceptron__botones">
           <button
@@ -173,15 +183,15 @@ export default function Perceptron() {
             onClick={() => setEntrenando(true)}
             disabled={entrenando || perfecto}
           >
-            {entrenando ? 'Aprendiendo…' : '▶ Que aprenda solo'}
+            {entrenando ? 'Aprendiendo…' : '▶ Aplicar regla de aprendizaje'}
           </button>
           <button className="btn" onClick={reiniciar}>↺ Reiniciar</button>
         </div>
 
         <p className="perceptron__nota">
-          <strong>🔵 azul</strong> y <strong>🔴 rojo</strong> son dos grupos. La línea verde es la
-          decisión de la neurona. Muévela con los controles… o deja que aprenda sola. Esto es{' '}
-          <em>una</em> neurona: tu cerebro tiene 86 mil millones.
+          Ajusta los pesos para inclinar la frontera y el sesgo para desplazarla, o deja que el
+          algoritmo aplique <code>wᵢ ← wᵢ + η·(y − ŷ)·xᵢ</code> hasta converger. Como las clases
+          son linealmente separables, el perceptrón siempre encuentra una solución.
         </p>
       </div>
     </div>

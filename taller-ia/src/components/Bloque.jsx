@@ -1,6 +1,7 @@
 // Renderiza un bloque de contenido según su `tipo`.
 // Los tipos vienen de src/data/contenido.js.
-export default function Bloque({ bloque }) {
+// `ir(id)` permite que un bloque enlace a otra sección (p. ej. demo → ejercicio).
+export default function Bloque({ bloque, ir }) {
   switch (bloque.tipo) {
     case 'hero':
       return (
@@ -37,6 +38,11 @@ export default function Bloque({ bloque }) {
           </div>
           <p>{bloque.texto}</p>
           {bloque.clave && <p className="bloque-demo__clave">💡 {bloque.clave}</p>}
+          {bloque.irA && ir && (
+            <button className="bloque-demo__cta" onClick={() => ir(bloque.irA)}>
+              {bloque.irTexto || 'Ir al ejercicio'} →
+            </button>
+          )}
         </div>
       )
 
@@ -81,6 +87,32 @@ export default function Bloque({ bloque }) {
             ))}
           </div>
         </div>
+      )
+
+    case 'formula':
+      return (
+        <div className="bloque-formula">
+          {bloque.titulo && <h3 className="bloque-titulo">{bloque.titulo}</h3>}
+          <code className="bloque-formula__eq">{bloque.formula}</code>
+          {bloque.items && (
+            <ul className="bloque-formula__items">
+              {bloque.items.map((it, i) => (
+                <li key={i}>{it}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )
+
+    case 'enlaceVideo':
+      return (
+        <a className="bloque-video" href={bloque.url} target="_blank" rel="noreferrer">
+          <span className="bloque-video__play">▶</span>
+          <span>
+            <span className="bloque-video__tit">{bloque.titulo}</span>
+            <span className="bloque-video__txt">{bloque.texto}</span>
+          </span>
+        </a>
       )
 
     case 'timeline':
