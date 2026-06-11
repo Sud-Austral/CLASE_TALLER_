@@ -2,94 +2,78 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8" />
-<title>Guía de fricciones y oportunidades · UIA CONAF</title>
+<title>Fricciones y oportunidades · UIA CONAF</title>
 <style>
-  @page { size: letter; margin: 16mm 16mm; }
+  @page { size: letter landscape; margin: 10mm 12mm; }
   * { box-sizing: border-box; }
   body {
     font-family: "Segoe UI", system-ui, Roboto, Arial, sans-serif;
-    color: #1f2421; margin: 0; font-size: 12.5px;
+    color: #1f2421; margin: 0; font-size: 13px;
   }
   .cabecera {
     background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
-    color: #fff; border-radius: 14px; padding: 20px 26px; margin-bottom: 14px;
+    color: #fff; border-radius: 12px; padding: 14px 22px; margin-bottom: 12px;
+    display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
   }
-  .kicker { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; opacity: .85; margin: 0 0 5px; }
-  h1 { margin: 0 0 4px; font-size: 21px; }
+  h1 { margin: 0; font-size: 22px; }
   .sub { margin: 0; opacity: .95; font-size: 12px; }
-  .instruccion {
-    background: #e8f3e9; border-radius: 10px; padding: 10px 14px;
-    font-size: 11.5px; color: #1b5e20; margin-bottom: 14px;
+  .grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 9px;
   }
   .pregunta {
-    border: 1px solid #e1e8e2; border-left: 4px solid #2e7d32;
-    border-radius: 10px; padding: 12px 14px; margin-bottom: 11px;
-    page-break-inside: avoid;
+    border: 1px solid #e1e8e2; border-left: 5px solid #2e7d32;
+    border-radius: 10px; padding: 11px 14px; background: #fbfdfb;
   }
-  .pregunta h3 { margin: 0 0 2px; font-size: 13.5px; color: #1b5e20; }
-  .pista { margin: 0 0 8px; font-size: 11px; color: #55605a; }
-  .lineas { border-bottom: 1px solid #c8d2ca; height: 22px; }
-  .lineas + .lineas { margin-top: 0; }
-  .cats { font-size: 10.5px; color: #55605a; margin-top: 8px; }
-  .pie { margin-top: 12px; text-align: center; color: #55605a; font-size: 10px; }
+  .pregunta h3 { margin: 0 0 3px; font-size: 15.5px; color: #1b5e20; line-height: 1.3; }
+  .pista { margin: 0; font-size: 11.5px; color: #55605a; }
+  .pregunta--full { grid-column: 1 / -1; border-left-color: #ef6c00; background: #fffaf4; }
+  .pregunta--full h3 { color: #ef6c00; font-size: 16.5px; }
+  .pie {
+    margin-top: 10px; display: flex; justify-content: space-between; align-items: center;
+    font-size: 11px; color: #55605a;
+  }
 </style>
 </head>
 <body>
   <div class="cabecera">
-    <p class="kicker">Unidad de Información y Análisis · CONAF</p>
     <h1>🗣️ Fricciones y oportunidades</h1>
-    <p class="sub">Guía de levantamiento — responde pensando en TU trabajo de las últimas semanas</p>
+    <p class="sub">Piensa en TU trabajo de las últimas semanas — no hay respuestas malas, mientras más concreta la fricción, mejor</p>
   </div>
 
-  <p class="instruccion">
-    ✍️ No hay respuestas malas: mientras más concreta la fricción ("cada lunes copio 200 filas
-    de la planilla X al sistema Y"), más fácil es que la UIA pueda ayudarte. Si una pregunta no
-    aplica a tu trabajo, sáltala.
-  </p>
-
-  <div class="pregunta">
-    <h3>1 · ¿Qué tarea repetitiva te quita más tiempo cada semana?</h3>
-    <p class="pista">¿Cuántas horas le dedicas? ¿Hace cuánto tiempo es así?</p>
-    <div class="lineas"></div><div class="lineas"></div>
+  <div class="grid">
+    <div class="pregunta">
+      <h3>1 · ¿Qué tarea repetitiva te quita más tiempo cada semana?</h3>
+      <p class="pista">¿Cuántas horas le dedicas? ¿Hace cuánto tiempo es así?</p>
+    </div>
+    <div class="pregunta">
+      <h3>2 · ¿Qué dato necesitas seguido y nunca está donde debería?</h3>
+      <p class="pista">¿Dónde terminas buscándolo? ¿A quién terminas preguntándole?</p>
+    </div>
+    <div class="pregunta">
+      <h3>3 · ¿Qué documento se posterga siempre porque nadie quiere redactarlo?</h3>
+      <p class="pista">Oficios, respuestas, informes de gestión, actas…</p>
+    </div>
+    <div class="pregunta">
+      <h3>4 · ¿Dónde copias o retipeas información de un sistema a otro, a mano?</h3>
+      <p class="pista">Ese traspaso que "siempre se ha hecho así".</p>
+    </div>
+    <div class="pregunta">
+      <h3>5 · ¿Qué pregunta te hacen una y otra vez, que podría responderse sola?</h3>
+      <p class="pista">De otras áreas, de regiones, de la ciudadanía…</p>
+    </div>
+    <div class="pregunta">
+      <h3>6 · ¿En qué decisión de tu área desconfías de los datos disponibles?</h3>
+      <p class="pista">¿Por qué? ¿Hay versiones distintas del mismo dato?</p>
+    </div>
+    <div class="pregunta pregunta--full">
+      <h3>7 · Si pudieras eliminar UNA fricción mañana, ¿cuál sería?</h3>
+      <p class="pista">¿Qué cambiaría en tu semana si desapareciera?</p>
+    </div>
   </div>
 
-  <div class="pregunta">
-    <h3>2 · ¿Qué dato necesitas seguido y nunca está donde debería?</h3>
-    <p class="pista">¿Dónde terminas buscándolo? ¿A quién terminas preguntándole?</p>
-    <div class="lineas"></div><div class="lineas"></div>
+  <div class="pie">
+    <span>Clasifica cada fricción: 📊 Datos · 📄 Documentos · 🔁 Procesos repetitivos · 💬 Otra</span>
+    <span>UIA · CONAF · 2026</span>
   </div>
-
-  <div class="pregunta">
-    <h3>3 · ¿Qué documento o informe se posterga siempre porque nadie quiere redactarlo?</h3>
-    <p class="pista">Oficios, respuestas, informes de gestión, actas…</p>
-    <div class="lineas"></div><div class="lineas"></div>
-  </div>
-
-  <div class="pregunta">
-    <h3>4 · ¿Dónde copias o retipeas información de un sistema (o planilla) a otro, a mano?</h3>
-    <p class="pista">Ese traspaso que "siempre se ha hecho así".</p>
-    <div class="lineas"></div><div class="lineas"></div>
-  </div>
-
-  <div class="pregunta">
-    <h3>5 · ¿Qué pregunta te hacen una y otra vez, que podría responderse sola con buena información?</h3>
-    <p class="pista">De otras áreas, de regiones, de la ciudadanía…</p>
-    <div class="lineas"></div><div class="lineas"></div>
-  </div>
-
-  <div class="pregunta">
-    <h3>6 · ¿En qué decisión de tu área desconfías de los datos disponibles?</h3>
-    <p class="pista">¿Por qué? ¿Hay versiones distintas del mismo dato?</p>
-    <div class="lineas"></div><div class="lineas"></div>
-  </div>
-
-  <div class="pregunta">
-    <h3>7 · Si pudieras eliminar UNA fricción mañana, ¿cuál sería?</h3>
-    <p class="pista">¿Qué cambiaría en tu semana si desapareciera?</p>
-    <div class="lineas"></div><div class="lineas"></div>
-  </div>
-
-  <p class="cats">Al compartirla con la UIA, clasifica cada fricción si puedes: 📊 Datos · 📄 Documentos · 🔁 Procesos repetitivos · 💬 Otra</p>
-  <p class="pie">UIA · CONAF · 2026 — Material del taller: https://sud-austral.github.io/CLASE_TALLER_/</p>
 </body>
 </html>
