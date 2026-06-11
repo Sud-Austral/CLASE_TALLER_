@@ -14,6 +14,10 @@ import DocAccion from './components/DocAccion'
 import RedNeuronal from './components/RedNeuronal'
 import Attention from './components/Attention'
 import Alucina from './components/Alucina'
+import DetectiveDatos from './components/DetectiveDatos'
+import RolesDatos from './components/RolesDatos'
+import MadurezDatos from './components/MadurezDatos'
+import Dolencias from './components/Dolencias'
 
 // Mapa de id de interactivo → componente.
 const INTERACTIVOS = {
@@ -29,12 +33,25 @@ const INTERACTIVOS = {
   redNeuronal: RedNeuronal,
   attention: Attention,
   alucina: Alucina,
+  detectiveDatos: DetectiveDatos,
+  rolesDatos: RolesDatos,
+  madurezDatos: MadurezDatos,
+  dolencias: Dolencias,
 }
 
 const GRUPOS = [
-  { id: 'taller', etiqueta: 'El Taller', icono: '📖' },
+  { id: 'inicio', etiqueta: 'Inicio', icono: '🌲' },
+  { id: 'gobernanza', etiqueta: 'Gobernanza de datos', icono: '🗂️' },
+  { id: 'taller', etiqueta: 'El Taller de IA', icono: '📖' },
   { id: 'lab', etiqueta: 'El Laboratorio', icono: '🧪' },
+  { id: 'final', etiqueta: 'Para cerrar', icono: '🏁' },
 ]
+
+// Badge mostrado bajo la cabecera según el grupo de la sección.
+const BADGES = {
+  gobernanza: '🗂️ Actividad de gobernanza',
+  lab: '🧪 Laboratorio',
+}
 
 function App() {
   const [activa, setActiva] = useState(secciones[0].id)
@@ -107,7 +124,9 @@ function App() {
           <header className="seccion__cabecera">
             <span className="seccion__icono-grande">{seccion.icono}</span>
             <div>
-              {seccion.grupo === 'lab' && <span className="seccion__badge">🧪 Laboratorio</span>}
+              {seccion.interactivo && BADGES[seccion.grupo] && (
+                <span className="seccion__badge">{BADGES[seccion.grupo]}</span>
+              )}
               <h1>{seccion.titulo}</h1>
               {seccion.subtitulo && <p className="seccion__sub">{seccion.subtitulo}</p>}
             </div>

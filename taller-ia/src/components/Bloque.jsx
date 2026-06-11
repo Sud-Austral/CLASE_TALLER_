@@ -123,8 +123,45 @@ export default function Bloque({ bloque, ir }) {
       )
     }
 
+    case 'programa':
+      return (
+        <div className="programa">
+          {bloque.items.map((it, i) => (
+            <div className={'programa__item' + (it.quien ? '' : ' programa__item--pausa')} key={i}>
+              <div className="programa__hora">
+                <strong>{it.hora}</strong>
+                <span>{it.dur}</span>
+              </div>
+              <span className="programa__icono">{it.icono}</span>
+              <div className="programa__detalle">
+                <div className="programa__cabecera">
+                  <h4>{it.titulo}</h4>
+                  {it.quien && <span className="programa__quien">{it.quien}</span>}
+                </div>
+                <p>{it.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )
+
     case 'autoevaluacion':
       return <AutoEvaluacion bloque={bloque} />
+
+    case 'descarga':
+      return (
+        <a
+          className="bloque-descarga"
+          href={import.meta.env.BASE_URL + bloque.archivo}
+          download
+        >
+          <span className="bloque-descarga__icono">⬇️</span>
+          <span>
+            <span className="bloque-descarga__tit">{bloque.titulo}</span>
+            <span className="bloque-descarga__txt">{bloque.texto}</span>
+          </span>
+        </a>
+      )
 
     case 'enlaceVideo':
       return (
@@ -182,7 +219,7 @@ function AutoEvaluacion({ bloque }) {
       {n > 0 && (
         <p className="autoeval__msg">
           {n === bloque.items.length
-            ? '🎉 ¡Las cuatro! Estás listo para usarlo en tu trabajo.'
+            ? '🎉 ¡Todas! Estás listo para usarlo en tu trabajo.'
             : `Marcaste ${n} de ${bloque.items.length}. Lo que falte, vuelve al ejercicio — para eso está el Laboratorio.`}
         </p>
       )}

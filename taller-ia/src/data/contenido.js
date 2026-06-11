@@ -1,47 +1,197 @@
 // Contenido del Taller de IA — UIA / CONAF
 // Extraído del material del repositorio (PPT en /ppt y /MATERIAL_UIA).
 // Cada entrada de `secciones` es una pestaña navegable de la web.
-// `grupo` agrupa las secciones en el menú: 'taller' (contenido) y 'lab' (ejercicios).
+// `grupo` agrupa las secciones en el menú: 'inicio', 'gobernanza', 'taller',
+// 'lab' (ejercicios de IA) y 'final' (dolencias + cierre).
 
 export const secciones = [
-  // ===================== TALLER (contenido) =====================
+  // ===================== INICIO =====================
   {
     id: 'inicio',
-    grupo: 'taller',
+    grupo: 'inicio',
     icono: '🌲',
     titulo: 'Bienvenida',
     subtitulo: 'Unidad de Información y Análisis · CONAF',
     bloques: [
       {
         tipo: 'hero',
-        kicker: 'TALLER DE INTELIGENCIA ARTIFICIAL · UIA CONAF',
-        titulo: 'En los próximos 20 minutos vas a perderle el miedo a la IA',
+        kicker: 'JORNADA DE DATOS E INTELIGENCIA ARTIFICIAL · UIA CONAF',
+        titulo: 'Hoy vas a perderle el miedo a la IA',
         texto:
-          'Nada de ciencia ficción. Vas a entender qué es realmente la IA, vas a verla resolver ' +
-          'casos reales de CONAF y vas a practicar tú mismo en 12 ejercicios interactivos. Al ' +
-          'final, la IA dejará de ser una caja negra: será una herramienta más en tu escritorio.',
+          'Nada de ciencia ficción. Primero vamos a poner los cimientos —los datos y cómo ' +
+          'gobernarlos—, después vas a entender qué es realmente la IA, verla resolver casos ' +
+          'reales de CONAF y practicar tú mismo en 15 actividades interactivas. Al final, la IA ' +
+          'dejará de ser una caja negra: será una herramienta más en tu escritorio.',
       },
       {
         tipo: 'tarjetas',
-        titulo: 'Este taller tiene dos partes',
+        titulo: 'El recorrido de hoy',
         items: [
-          { icono: '📖', titulo: 'El Taller', texto: 'Qué es la IA, sus riesgos y cómo la usa la UIA en CONAF.' },
-          { icono: '🧪', titulo: 'El Laboratorio', texto: '12 ejercicios interactivos para practicar tú mismo.' },
+          { icono: '🗂️', titulo: '1 · Gobernanza de datos', texto: 'Los cimientos: 3 actividades para entender por qué los datos importan (15–20 min).' },
+          { icono: '📖', titulo: '2 · El Taller de IA', texto: 'Qué es la IA, demos en vivo, sus riesgos y cómo la usa la UIA.' },
+          { icono: '🧪', titulo: '3 · El Laboratorio', texto: '12 ejercicios interactivos de IA para practicar tú mismo.' },
+          { icono: '🗣️', titulo: '4 · Tus dolencias', texto: 'Levantamos las fricciones reales de tu área y cerramos con compromisos.' },
         ],
       },
       {
         tipo: 'tarjetas',
-        titulo: 'Lo que vas a practicar en el Laboratorio',
+        titulo: 'Lo que vas a practicar hoy',
         items: [
+          { icono: '🔍', titulo: 'Cuidar los datos', texto: 'Detectar inconsistencias y saber quién responde por cada dato.' },
           { icono: '✍️', titulo: 'Escribir prompts', texto: 'La habilidad #1: pedirle bien a la IA.' },
           { icono: '🕵️', titulo: 'Cazar mentiras', texto: 'Detectar cuándo la IA inventa datos.' },
-          { icono: '🤖', titulo: 'Comparar modelos', texto: 'ChatGPT vs Claude vs Gemini, mismo caso real.' },
           { icono: '🔒', titulo: 'Proteger datos', texto: 'Qué nunca debes pegar en una IA.' },
         ],
       },
     ],
   },
 
+  {
+    id: 'programa',
+    grupo: 'inicio',
+    icono: '🗓️',
+    titulo: 'Programa del día',
+    subtitulo: 'Media jornada · horario referencial',
+    bloques: [
+      {
+        tipo: 'parrafo',
+        texto:
+          'Así se organiza la sesión. Los horarios son referenciales y se ajustan según la ' +
+          'dinámica de cada gerencia; lo importante es el orden: primero los datos, después la ' +
+          'IA, y al final las dolencias de tu área.',
+      },
+      {
+        tipo: 'programa',
+        items: [
+          { hora: '09:00', dur: '15 min', icono: '👋', titulo: 'Bienvenida y presentación de la jornada', quien: 'Rodrigo', desc: 'Apertura, contexto institucional y qué esperamos de la sesión.' },
+          { hora: '09:15', dur: '30 min', icono: '🎤', titulo: 'Charla: datos y transformación digital en el Estado', quien: 'Patricio', desc: 'El marco general: por qué el Estado —y CONAF— está moviéndose hacia la gestión de datos.' },
+          { hora: '09:45', dur: '20 min', icono: '🗂️', titulo: 'Gobernanza de datos', quien: 'Luis', desc: 'Los cimientos antes de la IA: 3 actividades prácticas — detectar datos inconsistentes, roles del dato y autodiagnóstico de madurez.' },
+          { hora: '10:05', dur: '40 min', icono: '🧠', titulo: 'Taller de IA', quien: 'Luis', desc: 'Qué es (y qué no es) la IA, demos en vivo con casos CONAF y los tres riesgos clave.' },
+          { hora: '10:45', dur: '15 min', icono: '☕', titulo: 'Pausa', quien: '', desc: 'Café y conversación.' },
+          { hora: '11:00', dur: '50 min', icono: '🧪', titulo: 'Laboratorio interactivo', quien: 'Luis + todos', desc: 'Ejercicios guiados: prompts, alucinaciones, privacidad, perceptrón y cómo funciona un LLM.' },
+          { hora: '11:50', dur: '25 min', icono: '🗣️', titulo: 'Levantamiento de dolencias', quien: 'Todos', desc: 'Las fricciones reales del área: qué procesos duelen y dónde los datos o la IA podrían ayudar.' },
+          { hora: '12:15', dur: '15 min', icono: '🏁', titulo: 'Cierre y compromisos', quien: 'Luis y Rodrigo', desc: 'Síntesis, kit para llevar y un compromiso concreto por participante.' },
+        ],
+      },
+      {
+        tipo: 'descarga',
+        archivo: 'programa-jornada.pdf',
+        titulo: 'Programa en PDF',
+        texto: 'Descarga el programa de la jornada para imprimir o compartir.',
+      },
+      {
+        tipo: 'destacado',
+        icono: '💡',
+        titulo: 'Para quien facilita',
+        texto:
+          'La sección de gobernanza usa las 3 actividades del bloque "Gobernanza de datos" de ' +
+          'este sitio; el taller y el laboratorio usan las secciones siguientes en orden. La ' +
+          'sección "Levantamiento de dolencias" tiene su propia pantalla para proyectar y anotar ' +
+          'en vivo.',
+      },
+    ],
+  },
+
+  // ===================== GOBERNANZA DE DATOS (antes de la IA) =====================
+  {
+    id: 'gobernanza',
+    grupo: 'gobernanza',
+    icono: '📊',
+    titulo: 'Por qué gobernanza, por qué ahora',
+    subtitulo: 'PMG-MEI 2025 · meta: nivel "básico" a diciembre de 2026',
+    bloques: [
+      {
+        tipo: 'parrafo',
+        texto:
+          'Antes de hablar de inteligencia artificial, hablemos de su alimento: los datos. Una ' +
+          'IA entrenada o alimentada con datos inconsistentes produce resultados inconsistentes ' +
+          '— con más confianza y a más velocidad. Por eso la gobernanza de datos no es un trámite ' +
+          'administrativo: es el cimiento de todo lo que viene después en esta jornada.',
+      },
+      {
+        tipo: 'destacado',
+        icono: '📅',
+        titulo: 'Objetivo: nivel de madurez "BÁSICO"',
+        texto:
+          'CONAF debe alcanzar el nivel básico en gestión de datos como parte del PMG-MEI 2025. ' +
+          'Plazo máximo: 31 de diciembre de 2026 (con 2 meses de holgura para validación).',
+      },
+      {
+        tipo: 'lista',
+        titulo: 'Las 5 actividades del plan',
+        items: [
+          'A1 · Talleres directivos — exposición de beneficios al equipo directivo.',
+          'A2 · Personas clave — identificar y designar para capacitación en MGDE.',
+          'A3 · Alianza interinstitucional — intercambio de datos con otro órgano del Estado.',
+          'A4 · Métricas de éxito — definir indicadores SMART.',
+          'A5 · Capacitación en gobernanza — seminarios para toda la institución.',
+        ],
+      },
+      {
+        tipo: 'parrafo',
+        texto:
+          'Métricas SMART: Específicas · Medibles · Alcanzables · Relevantes · con Tiempo definido. ' +
+          'Organismos candidatos para alianzas: SAG, MMA, SENAPRED, INE, MOP. Ahora, a practicar: ' +
+          'las tres actividades que siguen muestran en carne propia por qué esto importa.',
+      },
+    ],
+  },
+
+  {
+    id: 'detective-datos',
+    grupo: 'gobernanza',
+    icono: '🔍',
+    titulo: 'Detective de datos',
+    subtitulo: 'Actividad 1 · ~7 min · el mismo predio, tres versiones',
+    interactivo: 'detectiveDatos',
+    bloques: [
+      {
+        tipo: 'parrafo',
+        texto:
+          'El mismo predio aparece registrado en tres sistemas distintos de CONAF. Algunas ' +
+          'diferencias son solo de formato; otras son conflictos reales que impiden decidir. ' +
+          'Marca las filas donde los datos de verdad se contradicen.',
+      },
+    ],
+  },
+
+  {
+    id: 'roles-datos',
+    grupo: 'gobernanza',
+    icono: '🧑‍⚖️',
+    titulo: '¿Quién responde por este dato?',
+    subtitulo: 'Actividad 2 · ~5 min · los roles de la gobernanza',
+    interactivo: 'rolesDatos',
+    bloques: [
+      {
+        tipo: 'parrafo',
+        texto:
+          'La gobernanza de datos se sostiene en roles claros. El PMG-MEI exige a CONAF ' +
+          'formalizar al menos dos. Conócelos y luego decide: en cada situación, ¿a quién le ' +
+          'toca actuar?',
+      },
+    ],
+  },
+
+  {
+    id: 'madurez-datos',
+    grupo: 'gobernanza',
+    icono: '📏',
+    titulo: '¿Qué tan maduros son tus datos?',
+    subtitulo: 'Actividad 3 · ~5 min · autodiagnóstico exprés',
+    interactivo: 'madurezDatos',
+    bloques: [
+      {
+        tipo: 'parrafo',
+        texto:
+          'Cinco preguntas de sí o no sobre TU área. Es la versión de bolsillo del diagnóstico ' +
+          'de madurez que CONAF debe rendir a fin de 2026. Responde con honestidad: nadie más ve ' +
+          'tu resultado.',
+      },
+    ],
+  },
+
+  // ===================== TALLER DE IA (contenido) =====================
   {
     id: 'que-es-ia',
     grupo: 'taller',
@@ -253,42 +403,7 @@ export const secciones = [
     ],
   },
 
-  {
-    id: 'gobernanza',
-    grupo: 'taller',
-    icono: '📊',
-    titulo: 'Gobernanza de datos',
-    subtitulo: 'PMG-MEI 2025 · Horizonte 2026–2028',
-    bloques: [
-      {
-        tipo: 'destacado',
-        icono: '📅',
-        titulo: 'Objetivo: nivel de madurez "BÁSICO"',
-        texto:
-          'CONAF debe alcanzar el nivel básico en gestión de datos como parte del PMG-MEI 2025. ' +
-          'Plazo máximo: 31 de diciembre de 2026 (con 2 meses de holgura para validación).',
-      },
-      {
-        tipo: 'lista',
-        titulo: 'Las 5 actividades del plan',
-        items: [
-          'A1 · Talleres directivos — exposición de beneficios al equipo directivo.',
-          'A2 · Personas clave — identificar y designar para capacitación en MGDE.',
-          'A3 · Alianza interinstitucional — intercambio de datos con otro órgano del Estado.',
-          'A4 · Métricas de éxito — definir indicadores SMART.',
-          'A5 · Capacitación en gobernanza — seminarios para toda la institución.',
-        ],
-      },
-      {
-        tipo: 'parrafo',
-        texto:
-          'Métricas SMART: Específicas · Medibles · Alcanzables · Relevantes · con Tiempo definido. ' +
-          'Organismos candidatos para alianzas: SAG, MMA, SENAPRED, INE, MOP.',
-      },
-    ],
-  },
-
-  // ===================== LABORATORIO (ejercicios) =====================
+  // ===================== LABORATORIO (ejercicios de IA) =====================
   {
     id: 'prompt',
     grupo: 'lab',
@@ -615,22 +730,52 @@ export const secciones = [
     ],
   },
 
-  // ===================== CIERRE =====================
+  // ===================== PARA CERRAR =====================
+  {
+    id: 'dolencias',
+    grupo: 'final',
+    icono: '🗣️',
+    titulo: 'Levantamiento de dolencias',
+    subtitulo: 'Las fricciones reales de tu área, anotadas en vivo',
+    interactivo: 'dolencias',
+    bloques: [
+      {
+        tipo: 'parrafo',
+        texto:
+          'Ya viste qué pueden hacer los datos bien gobernados y la IA bien usada. Ahora el paso ' +
+          'más importante de la jornada: ¿dónde duele en TU área? Anotemos las fricciones ' +
+          'concretas — esa planilla que se rellena a mano, ese informe que toma días, ese dato ' +
+          'que nadie sabe dónde está. La UIA trabajará sobre esta lista.',
+      },
+      {
+        tipo: 'tarjetas',
+        titulo: 'Preguntas para destrabar la conversación',
+        items: [
+          { icono: '⏱️', titulo: '¿Qué te quita más tiempo?', texto: 'Esa tarea repetitiva que haces cada semana y que una máquina debería hacer.' },
+          { icono: '📊', titulo: '¿Qué dato buscas y no encuentras?', texto: 'Información que existe en CONAF pero nunca está donde la necesitas.' },
+          { icono: '📄', titulo: '¿Qué documento nadie quiere redactar?', texto: 'Informes, oficios o respuestas que se postergan porque dan lata.' },
+          { icono: '🔁', titulo: '¿Dónde se copia a mano?', texto: 'Datos que se traspasan de un sistema (o planilla) a otro, a pulso.' },
+        ],
+      },
+    ],
+  },
+
   {
     id: 'cierre',
-    grupo: 'lab',
+    grupo: 'final',
     icono: '🚀',
     titulo: 'Y ahora, ¿qué?',
-    subtitulo: 'Lo que te llevas de este taller',
+    subtitulo: 'Lo que te llevas de esta jornada',
     bloques: [
       {
         tipo: 'hero',
         kicker: 'LO LOGRASTE',
         titulo: 'La IA dejó de ser una caja negra',
         texto:
-          'Recorriste qué es la IA, sus riesgos y doce ejercicios prácticos. Ahora tienes cuatro ' +
-          'herramientas que antes no usabas: escribir prompts con estructura, detectar ' +
-          'alucinaciones, proteger datos sensibles y entender qué hay bajo el capó.',
+          'Recorriste la gobernanza de datos, qué es la IA, sus riesgos y quince actividades ' +
+          'prácticas. Ahora tienes cinco herramientas que antes no usabas: detectar datos ' +
+          'inconsistentes, escribir prompts con estructura, cazar alucinaciones, proteger datos ' +
+          'sensibles y entender qué hay bajo el capó.',
       },
       {
         tipo: 'destacado',
@@ -647,6 +792,7 @@ export const secciones = [
         tipo: 'autoevaluacion',
         titulo: '¿Te lo llevas claro? Marca lo que ya sabrías hacer hoy',
         items: [
+          'Detectar un dato inconsistente antes de usarlo (o de dárselo a una IA).',
           'Escribir un prompt con rol + cantidad + foco + formato.',
           'Detectar una alucinación antes de que llegue a un documento oficial.',
           'Saber qué datos NO pegar nunca en una IA pública.',
@@ -1054,4 +1200,121 @@ export const alucina = {
     'Ni el fine-tuning ni el RLHF garantizan verdad: redistribuyen probabilidad sobre lo que el ' +
     'modelo ya tenía. Por eso incluso la respuesta pulida puede traer un dato falso plausible —y ' +
     'por eso "la IA propone, tú confirmas". ¿Te suena? Es exactamente el ejercicio Detective.',
+}
+
+// ===================== Actividades de GOBERNANZA DE DATOS =====================
+
+// ACTIVIDAD G1 — "Detective de datos": el mismo predio en 3 sistemas.
+// El usuario marca las filas con conflicto REAL (no solo diferencias de formato).
+export const detectiveDatos = {
+  pregunta: 'Marca las filas donde los datos DE VERDAD se contradicen (no solo cambian de formato):',
+  sistemas: ['Sistema de Planes de Manejo', 'Planilla regional (Excel)', 'Registro SAG'],
+  campos: [
+    {
+      campo: 'Propietario',
+      valores: ['Juan Pérez Soto', 'J. Pérez', 'JUAN PEREZ S.'],
+      conflicto: false,
+      explica:
+        'Es la misma persona escrita de tres formas. No es un conflicto real, pero sin un estándar ' +
+        'de escritura los sistemas no pueden cruzarse automáticamente: alguien termina haciéndolo a mano.',
+    },
+    {
+      campo: 'RUT',
+      valores: ['12.345.678-9', '12345678-9', '12.345.678-9'],
+      conflicto: false,
+      explica:
+        'Mismo RUT, formato distinto. Otra vez: no es contradicción, es falta de estandarización — ' +
+        'y basta para que un cruce automático falle.',
+    },
+    {
+      campo: 'Superficie',
+      valores: ['45,2 ha', '52,4 ha', '45,2 ha'],
+      conflicto: true,
+      explica:
+        '¿45,2 o 52,4 hectáreas? Con 7 ha de diferencia cambia la bonificación, la multa y el plan ' +
+        'de manejo. Conflicto real: alguien tiene que definir cuál es la fuente oficial.',
+    },
+    {
+      campo: 'Comuna',
+      valores: ['Curacautín', 'Curacautín', 'Lonquimay'],
+      conflicto: true,
+      explica:
+        '¿Curacautín o Lonquimay? Cambia la oficina provincial responsable de fiscalizar. ' +
+        'Conflicto real, y de los caros.',
+    },
+  ],
+  leccion:
+    'Esto es exactamente la brecha "datos inconsistentes para decidir" del diagnóstico UIA. La ' +
+    'gobernanza la resuelve con dos herramientas: una FUENTE OFICIAL única por dato y ESTÁNDARES ' +
+    'de registro. Y ojo con lo que viene en esta jornada: si le das estas tres tablas a una IA, ' +
+    'aprenderá la basura con total confianza. La calidad de los datos viene ANTES que la IA.',
+}
+
+// ACTIVIDAD G2 — "¿Quién responde por este dato?": asignar el rol correcto.
+export const rolesDatos = {
+  roles: [
+    { id: 'dueno', nombre: 'Dueño del dato', icono: '👑', desc: 'Del negocio: define qué significa el dato, quién accede y responde por su calidad.' },
+    { id: 'custodio', nombre: 'Custodio técnico', icono: '🛠️', desc: 'De informática: administra los sistemas, respaldos y seguridad donde vive el dato.' },
+    { id: 'usuario', nombre: 'Usuario del dato', icono: '🙋', desc: 'Lo usa para trabajar: debe usarlo bien y reportar errores cuando los detecta.' },
+  ],
+  situaciones: [
+    {
+      texto: 'Otra gerencia pide acceso al registro de Planes de Manejo. ¿Quién autoriza?',
+      correcto: 'dueno',
+      explica: 'El acceso lo decide quien responde por el dato (el negocio), no informática. Informática lo implementa.',
+    },
+    {
+      texto: 'Hay que respaldar la base de datos y migrar el servidor. ¿Quién lo ejecuta?',
+      correcto: 'custodio',
+      explica: 'La infraestructura es del custodio técnico. El dueño define requisitos (cada cuánto respaldar); el custodio ejecuta.',
+    },
+    {
+      texto: 'Preparando un informe, detectas un predio con superficie negativa. ¿A quién le toca reportarlo?',
+      correcto: 'usuario',
+      explica: 'Quien usa el dato y detecta el error, lo reporta. La calidad del dato es tarea de todos, no solo del dueño.',
+    },
+    {
+      texto: 'Se decide que "superficie afectada" se medirá en hectáreas con un decimal en TODOS los sistemas. ¿Quién define eso?',
+      correcto: 'dueno',
+      explica: 'Definir el significado y el estándar de un dato es la esencia del rol de dueño del dato.',
+    },
+  ],
+  leccion:
+    'El PMG-MEI exige a CONAF formalizar al menos 2 roles de datos este año. No es burocracia: ' +
+    'cuando el dato de superficie está malo y nadie es "dueño", nadie lo corrige — y todos lo sufren. ' +
+    'Rol claro = dato confiable.',
+}
+
+// ACTIVIDAD G3 — "¿Qué tan maduros son tus datos?": autodiagnóstico exprés.
+export const madurezDatos = {
+  preguntas: [
+    '¿Tu área tiene claro quién es el responsable de cada dato que produce?',
+    '¿Existe UNA fuente oficial para los datos que usas (y no varias planillas paralelas)?',
+    '¿Hay reglas escritas sobre quién puede ver y quién puede modificar los datos?',
+    '¿Cuando un dato está malo, existe un procedimiento conocido para corregirlo?',
+    '¿Los datos de tu área se cruzan con otros sistemas sin retipearlos a mano?',
+  ],
+  niveles: [
+    { min: 0, max: 1, nombre: 'Inicial', icono: '🌱', texto: 'Los datos dependen de personas, no de procesos. Es el punto de partida de la mayoría — y justo lo que el plan PMG-MEI viene a ordenar.' },
+    { min: 2, max: 3, nombre: 'En desarrollo', icono: '🌿', texto: 'Hay prácticas buenas pero parciales. Formalizar roles y fuentes oficiales te llevaría al siguiente nivel.' },
+    { min: 4, max: 5, nombre: 'Básico logrado', icono: '🌳', texto: 'Tu área ya opera como el PMG-MEI pide para fines de 2026. Ahora el desafío es sostenerlo y cruzar datos con otros.' },
+  ],
+  leccion:
+    'Este mini-test es la versión de bolsillo de la autoevaluación de madurez (MGDE) que CONAF ' +
+    'debe rendir en diciembre de 2026 con nivel "básico". Si tu área respondió "no" en algo, esa ' +
+    'es exactamente la conversación que la UIA quiere tener contigo en el levantamiento de dolencias.',
+}
+
+// SECCIÓN FINAL — "Levantamiento de dolencias": lista en vivo para proyectar.
+export const dolencias = {
+  categorias: [
+    { id: 'datos', etiqueta: 'Datos', icono: '📊' },
+    { id: 'documentos', etiqueta: 'Documentos', icono: '📄' },
+    { id: 'procesos', etiqueta: 'Procesos repetitivos', icono: '🔁' },
+    { id: 'otra', etiqueta: 'Otra', icono: '💬' },
+  ],
+  placeholder: 'Ej.: cada mes copio a mano los datos de incendios desde 3 planillas distintas…',
+  leccion:
+    'Esta lista es el insumo más valioso de la jornada: con ella la UIA prioriza qué resolver ' +
+    'primero. Copia la lista al portapapeles y envíala a la UIA antes de cerrar la sesión.',
 }
