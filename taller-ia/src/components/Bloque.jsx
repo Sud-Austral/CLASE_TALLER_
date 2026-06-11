@@ -127,7 +127,7 @@ export default function Bloque({ bloque, ir }) {
       return (
         <div className="programa">
           {bloque.items.map((it, i) => (
-            <div className={'programa__item' + (it.quien ? '' : ' programa__item--pausa')} key={i}>
+            <div className="programa__item" key={i}>
               <div className="programa__hora">
                 <strong>{it.hora}</strong>
                 <span>{it.dur}</span>
@@ -136,7 +136,6 @@ export default function Bloque({ bloque, ir }) {
               <div className="programa__detalle">
                 <div className="programa__cabecera">
                   <h4>{it.titulo}</h4>
-                  {it.quien && <span className="programa__quien">{it.quien}</span>}
                 </div>
                 <p>{it.desc}</p>
               </div>

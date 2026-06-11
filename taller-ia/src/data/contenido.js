@@ -30,7 +30,7 @@ export const secciones = [
           { icono: '🗂️', titulo: '1 · Gobernanza de datos', texto: 'Los cimientos: 3 actividades para entender por qué los datos importan (15–20 min).' },
           { icono: '📖', titulo: '2 · El Taller de IA', texto: 'Qué es la IA, demos en vivo, sus riesgos y cómo la usa la UIA.' },
           { icono: '🧪', titulo: '3 · El Laboratorio', texto: '12 ejercicios interactivos de IA para practicar tú mismo.' },
-          { icono: '🗣️', titulo: '4 · Tus dolencias', texto: 'Levantamos las fricciones reales de tu área y cerramos con compromisos.' },
+          { icono: '🗣️', titulo: '4 · Fricciones y oportunidades', texto: 'Levantamos las fricciones reales de tu área y cerramos con compromisos.' },
         ],
       },
       {
@@ -51,26 +51,25 @@ export const secciones = [
     grupo: 'inicio',
     icono: '🗓️',
     titulo: 'Programa del día',
-    subtitulo: 'Media jornada · horario referencial',
+    subtitulo: '09:00 – 12:00 · horario referencial',
     bloques: [
       {
         tipo: 'parrafo',
         texto:
-          'Así se organiza la sesión. Los horarios son referenciales y se ajustan según la ' +
-          'dinámica de cada gerencia; lo importante es el orden: primero los datos, después la ' +
-          'IA, y al final las dolencias de tu área.',
+          'Así se organiza la sesión, de 9 a 12. Los horarios son referenciales y se ajustan ' +
+          'según la dinámica de cada gerencia; lo importante es el orden: primero los datos, ' +
+          'después la IA, y al final las fricciones de tu área.',
       },
       {
         tipo: 'programa',
         items: [
-          { hora: '09:00', dur: '15 min', icono: '👋', titulo: 'Bienvenida y presentación de la jornada', quien: 'Rodrigo', desc: 'Apertura, contexto institucional y qué esperamos de la sesión.' },
-          { hora: '09:15', dur: '30 min', icono: '🎤', titulo: 'Charla: datos y transformación digital en el Estado', quien: 'Patricio', desc: 'El marco general: por qué el Estado —y CONAF— está moviéndose hacia la gestión de datos.' },
-          { hora: '09:45', dur: '20 min', icono: '🗂️', titulo: 'Gobernanza de datos', quien: 'Luis', desc: 'Los cimientos antes de la IA: 3 actividades prácticas — detectar datos inconsistentes, roles del dato y autodiagnóstico de madurez.' },
-          { hora: '10:05', dur: '40 min', icono: '🧠', titulo: 'Taller de IA', quien: 'Luis', desc: 'Qué es (y qué no es) la IA, demos en vivo con casos CONAF y los tres riesgos clave.' },
-          { hora: '10:45', dur: '15 min', icono: '☕', titulo: 'Pausa', quien: '', desc: 'Café y conversación.' },
-          { hora: '11:00', dur: '50 min', icono: '🧪', titulo: 'Laboratorio interactivo', quien: 'Luis + todos', desc: 'Ejercicios guiados: prompts, alucinaciones, privacidad, perceptrón y cómo funciona un LLM.' },
-          { hora: '11:50', dur: '25 min', icono: '🗣️', titulo: 'Levantamiento de dolencias', quien: 'Todos', desc: 'Las fricciones reales del área: qué procesos duelen y dónde los datos o la IA podrían ayudar.' },
-          { hora: '12:15', dur: '15 min', icono: '🏁', titulo: 'Cierre y compromisos', quien: 'Luis y Rodrigo', desc: 'Síntesis, kit para llevar y un compromiso concreto por participante.' },
+          { hora: '09:00', dur: '15 min', icono: '👋', titulo: 'Bienvenida y presentación de la jornada', desc: 'Apertura, contexto institucional y qué esperamos de la sesión.' },
+          { hora: '09:15', dur: '30 min', icono: '🎤', titulo: 'Charla: datos y transformación digital en el Estado', desc: 'El marco general: por qué el Estado —y CONAF— está moviéndose hacia la gestión de datos.' },
+          { hora: '09:45', dur: '20 min', icono: '🗂️', titulo: 'Gobernanza de datos', desc: 'Los cimientos antes de la IA: 3 actividades prácticas — detectar datos inconsistentes, roles del dato y autodiagnóstico de madurez.' },
+          { hora: '10:05', dur: '35 min', icono: '🧠', titulo: 'Taller de IA', desc: 'Qué es (y qué no es) la IA, demos en vivo con casos CONAF y los tres riesgos clave.' },
+          { hora: '10:40', dur: '45 min', icono: '🧪', titulo: 'Laboratorio interactivo', desc: 'Ejercicios guiados: prompts, alucinaciones, privacidad, perceptrón y cómo funciona un LLM.' },
+          { hora: '11:25', dur: '25 min', icono: '🗣️', titulo: 'Fricciones y oportunidades', desc: 'Las fricciones reales del área: qué procesos duelen y dónde los datos o la IA podrían ayudar.' },
+          { hora: '11:50', dur: '10 min', icono: '🏁', titulo: 'Cierre y compromisos', desc: 'Síntesis, kit para llevar y un compromiso concreto por participante.' },
         ],
       },
       {
@@ -86,8 +85,8 @@ export const secciones = [
         texto:
           'La sección de gobernanza usa las 3 actividades del bloque "Gobernanza de datos" de ' +
           'este sitio; el taller y el laboratorio usan las secciones siguientes en orden. La ' +
-          'sección "Levantamiento de dolencias" tiene su propia pantalla para proyectar y anotar ' +
-          'en vivo.',
+          'sección "Fricciones y oportunidades" tiene su propia pantalla para proyectar y anotar ' +
+          'en vivo, además de una guía en PDF con 7 preguntas.',
       },
     ],
   },
@@ -735,7 +734,7 @@ export const secciones = [
     id: 'dolencias',
     grupo: 'final',
     icono: '🗣️',
-    titulo: 'Levantamiento de dolencias',
+    titulo: 'Fricciones y oportunidades',
     subtitulo: 'Las fricciones reales de tu área, anotadas en vivo',
     interactivo: 'dolencias',
     bloques: [
@@ -743,9 +742,16 @@ export const secciones = [
         tipo: 'parrafo',
         texto:
           'Ya viste qué pueden hacer los datos bien gobernados y la IA bien usada. Ahora el paso ' +
-          'más importante de la jornada: ¿dónde duele en TU área? Anotemos las fricciones ' +
-          'concretas — esa planilla que se rellena a mano, ese informe que toma días, ese dato ' +
-          'que nadie sabe dónde está. La UIA trabajará sobre esta lista.',
+          'más importante de la jornada: ¿dónde hay fricción en TU área? Anotemos los casos ' +
+          'concretos — esa planilla que se rellena a mano, ese informe que toma días, ese dato ' +
+          'que nadie sabe dónde está. Cada fricción es una oportunidad: la UIA trabajará sobre ' +
+          'esta lista.',
+      },
+      {
+        tipo: 'descarga',
+        archivo: 'guia-fricciones.pdf',
+        titulo: 'Guía de fricciones en PDF',
+        texto: '7 preguntas para hacer el levantamiento en papel o enviarlo por correo.',
       },
       {
         tipo: 'tarjetas',
@@ -1302,7 +1308,7 @@ export const madurezDatos = {
   leccion:
     'Este mini-test es la versión de bolsillo de la autoevaluación de madurez (MGDE) que CONAF ' +
     'debe rendir en diciembre de 2026 con nivel "básico". Si tu área respondió "no" en algo, esa ' +
-    'es exactamente la conversación que la UIA quiere tener contigo en el levantamiento de dolencias.',
+    'es exactamente la conversación que la UIA quiere tener contigo en "Fricciones y oportunidades".',
 }
 
 // SECCIÓN FINAL — "Levantamiento de dolencias": lista en vivo para proyectar.

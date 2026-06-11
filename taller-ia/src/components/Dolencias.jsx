@@ -27,7 +27,7 @@ export default function Dolencias() {
       })
       .join('\n')
     try {
-      await navigator.clipboard.writeText(`Dolencias levantadas en la jornada UIA:\n${cuerpo}`)
+      await navigator.clipboard.writeText(`Fricciones levantadas en la jornada UIA:\n${cuerpo}`)
       setCopiado(true)
       setTimeout(() => setCopiado(false), 2500)
     } catch {
@@ -68,7 +68,7 @@ export default function Dolencias() {
 
       {lista.length === 0 ? (
         <p className="dolencias__vacio">
-          Aún no hay dolencias anotadas. Usa las preguntas de arriba para destrabar la conversación.
+          Aún no hay fricciones anotadas. Usa las preguntas de arriba para destrabar la conversación.
         </p>
       ) : (
         <>
@@ -88,7 +88,7 @@ export default function Dolencias() {
           </ul>
           <div className="dolencias__acciones">
             <span className="dolencias__contador">
-              {lista.length} dolencia{lista.length !== 1 ? 's' : ''} anotada{lista.length !== 1 ? 's' : ''}
+              {lista.length} fricci{lista.length !== 1 ? 'ones' : 'ón'} anotada{lista.length !== 1 ? 's' : ''}
             </span>
             <button className="btn btn--primary" onClick={copiar}>
               {copiado ? '✅ Copiada' : '📋 Copiar lista para la UIA'}
