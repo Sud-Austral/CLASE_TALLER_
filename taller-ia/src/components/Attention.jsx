@@ -1,95 +1,98 @@
 import { useState } from 'react'
 import { attention } from '../data/contenido'
 
-// Concepto LLM 1 — Attention: heatmap interactivo de pesos de atención sobre una
-// frase, con selector de "cabeza" y predicción de la siguiente palabra.
+// Attention simplificado: el usuario elige una palabra → ve qué otras palabras
+// "mira". Menos texto, más interacción directa.
+const TOKENS_CORTO = [1, 3, 4, 5, 6, 8] // índices: corta, bosque, nativo, requiere, plan, manejo
+const ETIQUETAS = ['corta', 'bosque', 'nativo', 'requiere', 'plan', 'manejo']
+
 export default function Attention() {
-  const { tokens, cabezas, prediccion, leccion } = attention
-  const [cabeza, setCabeza] = useState(0)
-  const [fila, setFila] = useState(1) // token-fila resaltado (por defecto "corta")
+  const { tokens, cabezas, prediccion } = attention
+  const [selToken, setSelToken] = useState(0) // índice en ETIQUETAS / TOKENS_CORTO
   const [predicho, setPredicho] = useState(false)
 
-  const M = cabezas[cabeza].matriz
-
-  // Color verde con opacidad proporcional al peso.
-  const celda = (v) => ({
-    background: `rgba(46, 125, 50, ${Math.min(1, v * 1.6)})`,
-    color: v > 0.45 ? '#fff' : 'transparent',
-  })
+  // Tomamos la cabeza 0 (sintáctica) con los 6 tokens clave
+  const M = cabezas[0].matriz
+  const fila = TOKENS_CORTO[selToken]
+  const pesos = TOKENS_CORTO.map((j) => M[fila][j])
+  const max = Math.max(...pesos)
 
   return (
     <div className="attn">
-      <div className="attn__tabs">
-        {cabezas.map((c, i) => (
+      {/* 1. Elige la palabra que "mira" */}
+      <p className="attn__instruccion">
+        Elige una palabra — la IA le da más peso a las que resaltan más:
+      </p>
+      <div className="attn__palabras">
+        {ETIQUETAS.map((t, i) => (
           <button
             key={i}
-            className={'attn__tab' + (i === cabeza ? ' attn__tab--on' : '')}
-            onClick={() => setCabeza(i)}
+            className={'attn__palabra' + (i === selToken ? ' attn__palabra--on' : '')}
+            onClick={() => setSelToken(i)}
           >
-            {c.nombre}
+            {t}
           </button>
         ))}
       </div>
-      <p className="attn__desc">{cabezas[cabeza].descripcion}</p>
 
-      <div className="attn__scroll">
-        <table className="attn__grid">
-          <thead>
-            <tr>
-              <th className="attn__corner">desde \ hacia</th>
-              {tokens.map((t, j) => (
-                <th key={j} className="attn__colhead">{t}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {tokens.map((t, i) => (
-              <tr
-                key={i}
-                className={i === fila ? 'attn__row--on' : ''}
-                onMouseEnter={() => setFila(i)}
-              >
-                <th className="attn__rowhead">{t}</th>
-                {M[i].map((v, j) => (
-                  <td key={j} className="attn__cell" style={celda(v)} title={`${(v * 100).toFixed(0)}%`}>
-                    {Math.round(v * 100)}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      {/* 2. Barras de atención */}
+      <div className="attn__barras-attn">
+        {ETIQUETAS.map((t, i) => {
+          const v = pesos[i]
+          const intensidad = max > 0 ? v / max : 0
+          return (
+            <div className="attn__barra-fila" key={i}>
+              <span className={'attn__barra-tok' + (intensidad > 0.7 ? ' attn__barra-tok--resalta' : '')}>
+                {t}
+              </span>
+              <div className="attn__barra-track">
+                <div
+                  className="attn__barra-fill"
+                  style={{ width: `${intensidad * 100}%`, opacity: 0.35 + intensidad * 0.65 }}
+                />
+              </div>
+              <span className="attn__barra-pct">{Math.round(v * 100)}%</span>
+            </div>
+          )
+        })}
       </div>
 
-      <p className="attn__hint">
-        Pasa el mouse por una fila: ves cómo <strong>"{tokens[fila]}"</strong> reparte su atención
-        (cada número es %, la fila suma 100). Las celdas más verdes son las palabras a las que más
-        "mira".
-      </p>
-
+      {/* 3. Predicción de la siguiente palabra */}
       <div className="attn__pred">
-        <button className="btn btn--primary" onClick={() => setPredicho(true)} disabled={predicho}>
-          🔮 Predecir la siguiente palabra
+        <p className="attn__pred-frase">
+          «la <em>corta</em> de <em>bosque nativo</em> requiere <em>plan</em> de <strong>manejo</strong> ___»
+        </p>
+        <button
+          className="btn btn--primary"
+          onClick={() => setPredicho(true)}
+          disabled={predicho}
+        >
+          🔮 ¿Qué palabra sigue?
         </button>
         {predicho && (
-          <div className="attn__barras">
-            <p className="attn__pred-txt">
-              «la corta de bosque nativo requiere plan de manejo <strong>___</strong>»
-            </p>
+          <div className="attn__pred-barras">
             {prediccion.map((p, i) => (
-              <div className="attn__barra" key={i}>
-                <span className="attn__barra-lbl">{p.palabra}</span>
+              <div className="attn__barra-fila" key={i}>
+                <span className="attn__barra-tok">{p.palabra}</span>
                 <div className="attn__barra-track">
                   <div className="attn__barra-fill" style={{ width: `${p.prob * 100}%` }} />
                 </div>
-                <span className="attn__barra-val">{(p.prob * 100).toFixed(0)}%</span>
+                <span className="attn__barra-pct">{Math.round(p.prob * 100)}%</span>
               </div>
             ))}
+            <p className="attn__pred-nota">
+              El modelo elige <strong>"{prediccion[0].palabra}"</strong> porque es lo más plausible
+              en millones de documentos similares — no porque lo haya verificado.
+            </p>
           </div>
         )}
       </div>
 
-      <p className="attn__leccion">💡 {leccion}</p>
+      <p className="attn__leccion">
+        💡 Cada palabra repartió un 100% de atención entre las demás. Esto se repite cientos de
+        veces en capas → la IA entiende el contexto completo. Predecir la siguiente palabra sigue
+        siendo una suma ponderada: el mismo z = w·x + b del perceptrón, a escala gigante.
+      </p>
     </div>
   )
 }

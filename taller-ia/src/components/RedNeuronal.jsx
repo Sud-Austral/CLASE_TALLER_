@@ -1,19 +1,29 @@
 import { useEffect, useMemo, useState } from 'react'
 
-// Red neuronal animada (decorativa pero correcta): capas de neuronas conectadas,
-// con un "forward pass" que ilumina capa por capa al pulsar el botón.
-const CAPAS = [4, 6, 6, 2] // nº de neuronas por capa
+// Red neuronal con contexto CONAF: detecta riesgo de incendio a partir de
+// 4 entradas (temperatura, humedad, viento, pendiente).
+const CAPAS = [4, 6, 6, 2]
 const W = 620
 const H = 360
 const RADIO = 13
 
-export default function RedNeuronal() {
-  const [activa, setActiva] = useState(-1) // capa iluminada (-1 = ninguna)
-  const [corriendo, setCorriendo] = useState(false)
+const ENTRADAS = ['Temperatura', 'Humedad', 'Viento', 'Pendiente']
+const SALIDAS  = ['🟢 Sin riesgo', '🔴 Con riesgo']
 
-  // Posiciones (x,y) de cada neurona, por capa.
+const PASOS = [
+  'La red recibe los datos del área: temperatura, humedad, viento y pendiente.',
+  'Las primeras neuronas ocultas detectan patrones simples: "hace calor y hay viento".',
+  'La segunda capa combina esos patrones: "calor + viento + sin humedad = peligro".',
+  '¡Decisión! La neurona de salida más activa gana: sin riesgo o con riesgo.',
+]
+
+export default function RedNeuronal() {
+  const [activa, setActiva] = useState(-1)
+  const [corriendo, setCorriendo] = useState(false)
+  const [paso, setPaso] = useState(-1)
+
   const nodos = useMemo(() => {
-    const margenX = 70
+    const margenX = 80
     const anchoUtil = W - margenX * 2
     return CAPAS.map((n, c) => {
       const x = margenX + (anchoUtil * c) / (CAPAS.length - 1)
@@ -22,7 +32,6 @@ export default function RedNeuronal() {
     })
   }, [])
 
-  // Conexiones entre capa c y c+1 (todas con todas).
   const conexiones = useMemo(() => {
     const arr = []
     for (let c = 0; c < nodos.length - 1; c++) {
@@ -35,42 +44,42 @@ export default function RedNeuronal() {
     return arr
   }, [nodos])
 
-  // Forward pass: ilumina una capa cada 450 ms.
   useEffect(() => {
     if (!corriendo) return
     let capa = 0
     setActiva(0)
+    setPaso(0)
     const id = setInterval(() => {
       capa += 1
       if (capa >= CAPAS.length) {
         clearInterval(id)
         setCorriendo(false)
-        setTimeout(() => setActiva(-1), 700)
+        setTimeout(() => { setActiva(-1); setPaso(-1) }, 1200)
       } else {
         setActiva(capa)
+        setPaso(capa)
       }
-    }, 450)
+    }, 600)
     return () => clearInterval(id)
   }, [corriendo])
 
   return (
     <div className="red">
+      {/* Panel de paso actual */}
+      <div className={'red__paso' + (paso >= 0 ? ' red__paso--on' : '')}>
+        {paso >= 0 ? PASOS[paso] : 'Pulsa "Ver el forward pass" para ver cómo fluye la información.'}
+      </div>
+
       <div className="red__lienzo">
         <svg viewBox={`0 0 ${W} ${H}`} className="red__svg" role="img" aria-label="Red neuronal con cuatro capas">
           {/* Conexiones */}
-          {conexiones.map((c) => {
-            const iluminada = activa === c.capa + 1 || activa === c.capa
-            return (
-              <line
-                key={c.key}
-                x1={c.x1}
-                y1={c.y1}
-                x2={c.x2}
-                y2={c.y2}
-                className={'red__conexion' + (iluminada ? ' red__conexion--on' : '')}
-              />
-            )
-          })}
+          {conexiones.map((c) => (
+            <line
+              key={c.key}
+              x1={c.x1} y1={c.y1} x2={c.x2} y2={c.y2}
+              className={'red__conexion' + (activa === c.capa + 1 || activa === c.capa ? ' red__conexion--on' : '')}
+            />
+          ))}
 
           {/* Neuronas */}
           {nodos.map((capa, c) =>
@@ -78,31 +87,41 @@ export default function RedNeuronal() {
               const on = activa === c
               const esEntrada = c === 0
               const esSalida = c === nodos.length - 1
+              const esGanadora = esSalida && on && i === 1
               return (
                 <circle
                   key={`${c}-${i}`}
-                  cx={nodo.x}
-                  cy={nodo.y}
-                  r={RADIO}
+                  cx={nodo.x} cy={nodo.y} r={RADIO}
                   className={
                     'red__neurona' +
                     (on ? ' red__neurona--on' : '') +
                     (esEntrada ? ' red__neurona--entrada' : '') +
-                    (esSalida ? ' red__neurona--salida' : '')
+                    (esSalida ? ' red__neurona--salida' : '') +
+                    (esGanadora ? ' red__neurona--ganadora' : '')
                   }
                 />
               )
             })
           )}
 
-          {/* Etiquetas de capas */}
-          <text x={nodos[0][0].x} y={H - 12} className="red__etiqueta">Entrada</text>
-          <text x={(nodos[1][0].x + nodos[2][0].x) / 2} y={H - 12} className="red__etiqueta" textAnchor="middle">
-            Capas ocultas
-          </text>
-          <text x={nodos[nodos.length - 1][0].x} y={H - 12} className="red__etiqueta" textAnchor="end">
-            Salida
-          </text>
+          {/* Etiquetas entrada */}
+          {nodos[0].map((n, i) => (
+            <text key={i} x={n.x - 18} y={n.y + 4} className="red__label red__label--entrada" textAnchor="end">
+              {ENTRADAS[i]}
+            </text>
+          ))}
+
+          {/* Etiquetas salida */}
+          {nodos[3].map((n, i) => (
+            <text key={i} x={n.x + 18} y={n.y + 4} className="red__label red__label--salida">
+              {SALIDAS[i]}
+            </text>
+          ))}
+
+          {/* Títulos de capa */}
+          <text x={nodos[0][0].x} y={H - 8} className="red__etiqueta" textAnchor="middle">Entrada</text>
+          <text x={(nodos[1][0].x + nodos[2][0].x) / 2} y={H - 8} className="red__etiqueta" textAnchor="middle">Capas ocultas</text>
+          <text x={nodos[3][0].x} y={H - 8} className="red__etiqueta" textAnchor="middle">Salida</text>
         </svg>
       </div>
 
@@ -115,16 +134,17 @@ export default function RedNeuronal() {
           {corriendo ? 'Procesando…' : '▶ Ver el forward pass'}
         </button>
         <div className="red__leyenda">
-          <span><i className="red__punto red__punto--entrada" /> Entradas (los datos)</span>
-          <span><i className="red__punto" /> Neuronas ocultas (extraen patrones)</span>
+          <span><i className="red__punto red__punto--entrada" /> Entradas (datos del área)</span>
+          <span><i className="red__punto" /> Neuronas ocultas (detectan patrones)</span>
           <span><i className="red__punto red__punto--salida" /> Salida (la decisión)</span>
         </div>
       </div>
 
       <p className="red__leccion">
-        💡 Cada neurona es un perceptrón como el del ejercicio anterior. Apiladas en capas y
-        entrenadas con millones de ejemplos, dejan de trazar una simple recta y aprenden a
-        distinguir un incendio de una sombra, o un expediente completo de uno incompleto.
+        💡 Cada neurona es un perceptrón como el del ejercicio anterior: suma sus entradas con
+        distintos pesos y decide si "se activa". La red aprende ajustando <strong>millones</strong> de
+        esos pesos a la vez — eso es el entrenamiento. El resultado: distingue un incendio de una sombra,
+        o un expediente completo de uno incompleto, con mucha más precisión que una sola recta.
       </p>
     </div>
   )

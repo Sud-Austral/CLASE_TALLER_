@@ -28,6 +28,8 @@
   .dur { color: #55605a; font-size: 11px; white-space: nowrap; }
   .titulo { font-weight: 600; font-size: 13.5px; }
   .desc { color: #55605a; font-size: 12px; margin-top: 3px; }
+  .pausa td { background: #fffdf4; }
+  .pausa .hora { color: #8d6e00; }
   .nota {
     margin-top: 14px; background: #fff8e1; border-radius: 10px; padding: 10px 14px;
     font-size: 11px; color: #5d4037;
@@ -49,36 +51,36 @@
 
   <table>
     <thead>
-      <tr><th style="width:70px">Hora</th><th style="width:60px">Duración</th><th>Actividad</th></tr>
+      <tr><th style="width:70px">Hora</th><th style="width:70px">Duración</th><th>Actividad</th></tr>
     </thead>
     <tbody>
       <tr>
-        <td class="hora">09:00</td><td class="dur">15 min</td>
+        <td class="hora">09:00</td><td class="dur">10 min</td>
         <td><div class="titulo">👋 Bienvenida y presentación de la jornada</div>
             <div class="desc">Apertura, contexto institucional y qué esperamos de la sesión.</div></td>
       </tr>
       <tr>
-        <td class="hora">09:15</td><td class="dur">30 min</td>
+        <td class="hora">09:10</td><td class="dur">30 min</td>
         <td><div class="titulo">🎤 Charla: datos y transformación digital en el Estado</div>
             <div class="desc">El marco general: por qué el Estado —y CONAF— está moviéndose hacia la gestión de datos.</div></td>
       </tr>
       <tr>
-        <td class="hora">09:45</td><td class="dur">20 min</td>
+        <td class="hora">09:40</td><td class="dur">20 min</td>
         <td><div class="titulo">🗂️ Gobernanza de datos</div>
             <div class="desc">Los cimientos antes de la IA: 3 actividades prácticas — detectar datos inconsistentes, roles del dato y autodiagnóstico de madurez.</div></td>
       </tr>
-      <tr>
-        <td class="hora">10:05</td><td class="dur">35 min</td>
-        <td><div class="titulo">🧠 Taller de IA</div>
-            <div class="desc">Qué es (y qué no es) la IA, demos en vivo con casos CONAF y los tres riesgos clave: alucinaciones, privacidad y responsabilidad.</div></td>
+      <tr class="pausa">
+        <td class="hora">10:00</td><td class="dur">15 min</td>
+        <td><div class="titulo">☕ Coffee break</div>
+            <div class="desc">Pausa activa.</div></td>
       </tr>
       <tr>
-        <td class="hora">10:40</td><td class="dur">25 min</td>
-        <td><div class="titulo">🧪 Laboratorio interactivo</div>
-            <div class="desc">Ejercicios guiados: prompts, alucinaciones, privacidad, perceptrón y cómo funciona un LLM (12 ejercicios disponibles en el sitio del taller).</div></td>
+        <td class="hora">10:15</td><td class="dur">20 min</td>
+        <td><div class="titulo">🧠🧪 Taller de IA + Laboratorio</div>
+            <div class="desc">Qué es (y qué no es) la IA, demos en vivo, riesgos clave y ejercicios guiados: prompts, alucinaciones, privacidad y cómo funciona un LLM.</div></td>
       </tr>
       <tr>
-        <td class="hora">11:05</td><td class="dur">45 min</td>
+        <td class="hora">10:35</td><td class="dur">1h 15 min</td>
         <td><div class="titulo">🗣️ Fricciones y oportunidades</div>
             <div class="desc">Las fricciones reales del área: qué procesos duelen y dónde los datos o la IA podrían ayudar. La lista se anota en vivo y queda como insumo para la UIA.</div></td>
       </tr>

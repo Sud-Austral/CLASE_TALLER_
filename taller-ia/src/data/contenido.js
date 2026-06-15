@@ -63,12 +63,12 @@ export const secciones = [
       {
         tipo: 'programa',
         items: [
-          { hora: '09:00', dur: '15 min', icono: '👋', titulo: 'Bienvenida y presentación de la jornada', desc: 'Apertura, contexto institucional y qué esperamos de la sesión.' },
-          { hora: '09:15', dur: '30 min', icono: '🎤', titulo: 'Charla: datos y transformación digital en el Estado', desc: 'El marco general: por qué el Estado —y CONAF— está moviéndose hacia la gestión de datos.' },
-          { hora: '09:45', dur: '20 min', icono: '🗂️', titulo: 'Gobernanza de datos', desc: 'Los cimientos antes de la IA: 3 actividades prácticas — detectar datos inconsistentes, roles del dato y autodiagnóstico de madurez.' },
-          { hora: '10:05', dur: '35 min', icono: '🧠', titulo: 'Taller de IA', desc: 'Qué es (y qué no es) la IA, demos en vivo con casos CONAF y los tres riesgos clave.' },
-          { hora: '10:40', dur: '25 min', icono: '🧪', titulo: 'Laboratorio interactivo', desc: 'Ejercicios guiados: prompts, alucinaciones, privacidad, perceptrón y cómo funciona un LLM.' },
-          { hora: '11:05', dur: '45 min', icono: '🗣️', titulo: 'Fricciones y oportunidades', desc: 'Las fricciones reales del área: qué procesos duelen y dónde los datos o la IA podrían ayudar.' },
+          { hora: '09:00', dur: '10 min', icono: '👋', titulo: 'Bienvenida y presentación de la jornada', desc: 'Apertura, contexto institucional y qué esperamos de la sesión.' },
+          { hora: '09:10', dur: '30 min', icono: '🎤', titulo: 'Charla: datos y transformación digital en el Estado', desc: 'El marco general: por qué el Estado —y CONAF— está moviéndose hacia la gestión de datos.' },
+          { hora: '09:40', dur: '20 min', icono: '🗂️', titulo: 'Gobernanza de datos', desc: 'Los cimientos antes de la IA: 3 actividades prácticas — detectar datos inconsistentes, roles del dato y autodiagnóstico de madurez.' },
+          { hora: '10:00', dur: '15 min', icono: '☕', titulo: 'Coffee break', desc: 'Pausa activa.' },
+          { hora: '10:15', dur: '20 min', icono: '🧠🧪', titulo: 'Taller de IA + Laboratorio', desc: 'Qué es (y qué no es) la IA, demos en vivo, riesgos clave y ejercicios guiados: prompts, alucinaciones, privacidad y cómo funciona un LLM.' },
+          { hora: '10:35', dur: '1h 15min', icono: '🗣️', titulo: 'Fricciones y oportunidades', desc: 'Las fricciones reales del área: qué procesos duelen y dónde los datos o la IA podrían ayudar. La lista se anota en vivo.' },
           { hora: '11:50', dur: '10 min', icono: '🏁', titulo: 'Cierre y compromisos', desc: 'Síntesis, kit para llevar y un compromiso concreto por participante.' },
         ],
       },
@@ -753,16 +753,7 @@ export const secciones = [
         titulo: 'Guía de fricciones en PDF',
         texto: '7 preguntas para hacer el levantamiento en papel o enviarlo por correo.',
       },
-      {
-        tipo: 'tarjetas',
-        titulo: 'Preguntas para destrabar la conversación',
-        items: [
-          { icono: '⏱️', titulo: '¿Qué te quita más tiempo?', texto: 'Esa tarea repetitiva que haces cada semana y que una máquina debería hacer.' },
-          { icono: '📊', titulo: '¿Qué dato buscas y no encuentras?', texto: 'Información que existe en CONAF pero nunca está donde la necesitas.' },
-          { icono: '📄', titulo: '¿Qué documento nadie quiere redactar?', texto: 'Informes, oficios o respuestas que se postergan porque dan lata.' },
-          { icono: '🔁', titulo: '¿Dónde se copia a mano?', texto: 'Datos que se traspasan de un sistema (o planilla) a otro, a pulso.' },
-        ],
-      },
+
     ],
   },
 
@@ -1218,7 +1209,7 @@ export const detectiveDatos = {
   campos: [
     {
       campo: 'Propietario',
-      valores: ['Juan Pérez Soto', 'J. Pérez', 'JUAN PEREZ S.'],
+      valores: ['Juan Pérez Soto', 'J. Pérez', 'Juan Pérez Soto'],
       conflicto: false,
       explica:
         'Es la misma persona escrita de tres formas. No es un conflicto real, pero sin un estándar ' +
@@ -1313,13 +1304,22 @@ export const madurezDatos = {
 
 // SECCIÓN FINAL — "Levantamiento de dolencias": lista en vivo para proyectar.
 export const dolencias = {
+  preguntas: [
+    { n: 1, q: '¿Qué tarea repetitiva te quita más tiempo cada semana?', pista: '¿Cuántas horas le dedicas? ¿Hace cuánto tiempo es así?' },
+    { n: 2, q: '¿Qué dato necesitas seguido y nunca está donde debería?', pista: '¿Dónde terminas buscándolo? ¿A quién terminas preguntándole?' },
+    { n: 3, q: '¿Qué documento se posterga siempre porque nadie quiere redactarlo?', pista: 'Oficios, respuestas, informes de gestión, actas…' },
+    { n: 4, q: '¿Dónde copias o retipeas información de un sistema a otro, a mano?', pista: 'Ese traspaso que "siempre se ha hecho así".' },
+    { n: 5, q: '¿Qué pregunta te hacen una y otra vez, que podría responderse sola?', pista: 'De otras áreas, de regiones, de la ciudadanía…' },
+    { n: 6, q: '¿En qué decisión de tu área desconfías de los datos disponibles?', pista: '¿Por qué? ¿Hay versiones distintas del mismo dato?' },
+    { n: 7, q: 'Si pudieras eliminar UNA fricción mañana, ¿cuál sería?', pista: '¿Qué cambiaría en tu semana si desapareciera?' },
+  ],
   categorias: [
     { id: 'datos', etiqueta: 'Datos', icono: '📊' },
     { id: 'documentos', etiqueta: 'Documentos', icono: '📄' },
     { id: 'procesos', etiqueta: 'Procesos repetitivos', icono: '🔁' },
     { id: 'otra', etiqueta: 'Otra', icono: '💬' },
   ],
-  placeholder: 'Ej.: cada mes copio a mano los datos de incendios desde 3 planillas distintas…',
+  placeholder: 'Escribe la fricción…',
   leccion:
     'Esta lista es el insumo más valioso de la jornada: con ella la UIA prioriza qué resolver ' +
     'primero. Copia la lista al portapapeles y envíala a la UIA antes de cerrar la sesión.',

@@ -1,9 +1,6 @@
 import { useState } from 'react'
 import { dolencias } from '../data/contenido'
 
-// Sección final: levantamiento de dolencias en vivo. El facilitador (o cada
-// participante) anota fricciones, las categoriza y copia la lista para la UIA.
-// Solo estado local: la lista vive mientras la pantalla esté abierta.
 export default function Dolencias() {
   const [texto, setTexto] = useState('')
   const [categoria, setCategoria] = useState(dolencias.categorias[0].id)
@@ -31,7 +28,7 @@ export default function Dolencias() {
       setCopiado(true)
       setTimeout(() => setCopiado(false), 2500)
     } catch {
-      // sin permiso de portapapeles: no romper la sesión
+      // sin permiso de portapapeles
     }
   }
 
@@ -39,6 +36,20 @@ export default function Dolencias() {
 
   return (
     <div className="dolencias">
+      {/* 7 preguntas guía */}
+      <div className="dolencias__preguntas">
+        {dolencias.preguntas.map((p) => (
+          <div key={p.n} className="dolencias__pregunta">
+            <span className="dolencias__pregunta-n">{p.n}</span>
+            <div>
+              <p className="dolencias__pregunta-q">{p.q}</p>
+              <p className="dolencias__pregunta-pista">{p.pista}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Formulario de entrada */}
       <div className="dolencias__form">
         <div className="dolencias__cats">
           {dolencias.categorias.map((c) => (
@@ -68,7 +79,7 @@ export default function Dolencias() {
 
       {lista.length === 0 ? (
         <p className="dolencias__vacio">
-          Aún no hay fricciones anotadas. Usa las preguntas de arriba para destrabar la conversación.
+          Aún no hay fricciones anotadas. Usa las preguntas de arriba y escribe cada una abajo.
         </p>
       ) : (
         <>

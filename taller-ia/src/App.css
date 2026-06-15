@@ -2312,6 +2312,232 @@
   font-weight: 600;
 }
 
+/* ===== Red neuronal: paso y etiquetas (redesign) ===== */
+.red__paso {
+  background: #2a3d33;
+  color: #b8ddb8;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  margin-bottom: 12px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.3s;
+  opacity: 0.5;
+}
+.red__paso--on {
+  opacity: 1;
+  color: #e8f3e9;
+  font-weight: 500;
+}
+.red__neurona--ganadora {
+  fill: #e53935;
+  stroke: #ffcdd2;
+}
+.red__label {
+  font-size: 11px;
+  font-family: system-ui, sans-serif;
+}
+.red__label--entrada {
+  fill: #81c784;
+}
+.red__label--salida {
+  fill: #ffb74d;
+}
+
+/* ===== Attention redesign (barras interactivas) ===== */
+.attn__instruccion {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: var(--texto);
+}
+.attn__palabras {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.attn__palabra {
+  background: var(--panel);
+  border: 2px solid var(--borde);
+  border-radius: 20px;
+  padding: 7px 16px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--texto-suave);
+  transition: all 0.15s;
+}
+.attn__palabra:hover {
+  border-color: var(--verde-claro);
+  color: var(--verde);
+}
+.attn__palabra--on {
+  background: var(--verde);
+  border-color: var(--verde);
+  color: #fff;
+  font-weight: 700;
+}
+.attn__barras-attn {
+  background: var(--panel);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: var(--sombra);
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.attn__barra-fila {
+  display: grid;
+  grid-template-columns: 90px 1fr 44px;
+  align-items: center;
+  gap: 10px;
+}
+.attn__barra-tok {
+  font-size: 14px;
+  font-weight: 600;
+  text-align: right;
+  color: var(--texto-suave);
+}
+.attn__barra-tok--resalta {
+  color: var(--verde);
+  font-size: 15px;
+}
+.attn__barra-pct {
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--verde);
+}
+.attn__pred {
+  background: var(--panel);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: var(--sombra);
+}
+.attn__pred-frase {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 14px;
+  margin: 0 0 12px;
+  color: var(--texto-suave);
+}
+.attn__pred-barras {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.attn__pred-nota {
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: var(--texto-suave);
+  font-style: italic;
+}
+
+/* ===== Alucina redesign ===== */
+.aluc__badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+.aluc__badge--antes {
+  background: #ef6c00;
+  color: #fff;
+}
+.aluc__badge--despues {
+  background: var(--verde-claro);
+  color: #fff;
+}
+.aluc__tag-aluci {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #b71c1c;
+  background: #fdecea;
+  border-radius: 6px;
+  padding: 4px 10px;
+}
+.aluc__tag-aluci--revelado {
+  color: #7b3800;
+  background: #fff3e0;
+}
+.aluc__tag-ok {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--verde);
+  background: var(--verde-pastel);
+  border-radius: 6px;
+  padding: 4px 10px;
+}
+.aluc__rlhf-titulo {
+  font-weight: 600;
+  margin: 0 0 12px;
+  font-size: 15px;
+}
+.aluc__feedback--mal {
+  background: #fdecea;
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.aluc__marcador {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--verde);
+  margin: 10px 0;
+}
+
+/* ===== Dolencias: 7 preguntas guía ===== */
+.dolencias__preguntas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.dolencias__pregunta {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: var(--panel);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 14px 16px;
+  box-shadow: var(--sombra);
+}
+.dolencias__pregunta-n {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--verde);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.dolencias__pregunta-q {
+  margin: 0 0 4px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.dolencias__pregunta-pista {
+  margin: 0;
+  font-size: 13px;
+  color: var(--texto-suave);
+  font-style: italic;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 860px) {
   .layout {
