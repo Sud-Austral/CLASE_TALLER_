@@ -1209,11 +1209,12 @@ export const detectiveDatos = {
   campos: [
     {
       campo: 'Propietario',
-      valores: ['Juan Pérez Soto', 'J. Pérez', 'Juan Pérez Soto'],
-      conflicto: false,
+      valores: ['Juan Pérez Soto', 'J. Pérez', 'Diego González'],
+      conflicto: true,
       explica:
-        'Es la misma persona escrita de tres formas. No es un conflicto real, pero sin un estándar ' +
-        'de escritura los sistemas no pueden cruzarse automáticamente: alguien termina haciéndolo a mano.',
+        'El Registro SAG tiene registrado un propietario completamente distinto. Esto es un conflicto ' +
+        'real: no se sabe quién es el titular legal del predio. Nadie puede tramitar ni fiscalizar ' +
+        'hasta que alguien defina cuál sistema tiene la razón.',
     },
     {
       campo: 'RUT',
