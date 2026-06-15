@@ -141,7 +141,7 @@ export default function Perceptron() {
 
         <div className="perceptron__eq">
           <code>
-            z = ({w.toFixed(2)})·x + y + ({b.toFixed(2)})
+            z = ({w.toFixed(2)})·x + (1.00)·y + ({b.toFixed(2)})
           </code>
           <span className="perceptron__eq-nota">
             Si z ≥ 0 → <strong>clase roja</strong>. Si z &lt; 0 → <strong>clase azul</strong>.
@@ -154,11 +154,17 @@ export default function Perceptron() {
             className="btn btn--primary"
             onClick={() => setEntrenando(true)}
             disabled={entrenando || perfecto}
+            title={perfecto ? 'Ya están separados: la máquina no tiene nada que aprender' : undefined}
           >
             {entrenando ? 'Aprendiendo…' : '▶ Aplicar regla de aprendizaje'}
           </button>
-          <button className="btn" onClick={reiniciar}>↺ Reiniciar</button>
+          <button className="btn" onClick={reiniciar}>↺ Reiniciar sliders</button>
         </div>
+        {perfecto && (
+          <p className="perceptron__nota" style={{ color: '#2e7d32', fontWeight: 600 }}>
+            ✅ Ya están separados — la máquina no tiene nada que corregir. Usa ↺ para volver a empezar.
+          </p>
+        )}
 
         <p className="perceptron__nota">
           Mueve <strong>w</strong> para inclinar la recta y <strong>b</strong> para desplazarla,

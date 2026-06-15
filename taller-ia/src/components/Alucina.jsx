@@ -39,7 +39,7 @@ export default function Alucina() {
               </span>
             ))}
           </div>
-          {elegida === null && <div className="aluc__tag-aluci">⚠️ Contiene un dato inventado</div>}
+          {elegida !== null && elegida !== rlhf.correcta && <div className="aluc__tag-aluci">⚠️ Contiene un dato inventado</div>}
           {elegida !== null && (
             <div className="aluc__tag-aluci aluc__tag-aluci--revelado">
               ⚠️ "Art. 14 bis" y la tasa del 3% no existen en la ley.
@@ -48,7 +48,7 @@ export default function Alucina() {
         </div>
 
         <div className="aluc__col aluc__col--despues">
-          <div className="aluc__badge aluc__badge--despues">Con RLHF</div>
+          <div className="aluc__badge aluc__badge--despues">Con corrección humana (RLHF)</div>
           <div className="aluc__respuesta">
             {despues.partes.map((p, i) => (
               <span key={i} className={p.honesto ? 'aluc__honesto' : ''}>

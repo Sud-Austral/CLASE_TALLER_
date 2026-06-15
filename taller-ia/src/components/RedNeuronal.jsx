@@ -49,25 +49,26 @@ export default function RedNeuronal() {
     let capa = 0
     setActiva(0)
     setPaso(0)
+    let tid
     const id = setInterval(() => {
       capa += 1
       if (capa >= CAPAS.length) {
         clearInterval(id)
         setCorriendo(false)
-        setTimeout(() => { setActiva(-1); setPaso(-1) }, 1200)
+        tid = setTimeout(() => { setActiva(-1); setPaso(-1) }, 1200)
       } else {
         setActiva(capa)
         setPaso(capa)
       }
     }, 600)
-    return () => clearInterval(id)
+    return () => { clearInterval(id); clearTimeout(tid) }
   }, [corriendo])
 
   return (
     <div className="red">
       {/* Panel de paso actual */}
       <div className={'red__paso' + (paso >= 0 ? ' red__paso--on' : '')}>
-        {paso >= 0 ? PASOS[paso] : 'Pulsa "Ver el forward pass" para ver cómo fluye la información.'}
+        {paso >= 0 ? PASOS[paso] : 'Pulsa "Ver cómo piensa la red" para ver cómo fluye la información.'}
       </div>
 
       <div className="red__lienzo">
@@ -112,7 +113,7 @@ export default function RedNeuronal() {
           ))}
 
           {/* Etiquetas salida */}
-          {nodos[3].map((n, i) => (
+          {nodos[CAPAS.length - 1].map((n, i) => (
             <text key={i} x={n.x + 18} y={n.y + 4} className="red__label red__label--salida">
               {SALIDAS[i]}
             </text>
@@ -121,7 +122,7 @@ export default function RedNeuronal() {
           {/* Títulos de capa */}
           <text x={nodos[0][0].x} y={H - 8} className="red__etiqueta" textAnchor="middle">Entrada</text>
           <text x={(nodos[1][0].x + nodos[2][0].x) / 2} y={H - 8} className="red__etiqueta" textAnchor="middle">Capas ocultas</text>
-          <text x={nodos[3][0].x} y={H - 8} className="red__etiqueta" textAnchor="middle">Salida</text>
+          <text x={nodos[CAPAS.length - 1][0].x} y={H - 8} className="red__etiqueta" textAnchor="middle">Salida</text>
         </svg>
       </div>
 
@@ -131,7 +132,7 @@ export default function RedNeuronal() {
           onClick={() => setCorriendo(true)}
           disabled={corriendo}
         >
-          {corriendo ? 'Procesando…' : '▶ Ver el forward pass'}
+          {corriendo ? 'Procesando…' : '▶ Ver cómo piensa la red'}
         </button>
         <div className="red__leyenda">
           <span><i className="red__punto red__punto--entrada" /> Entradas (datos del área)</span>

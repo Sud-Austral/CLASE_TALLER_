@@ -625,7 +625,7 @@ export const secciones = [
           'Un perceptrón solo traza una recta. Pero si conectamos muchas neuronas en capas, la ' +
           'red puede aprender fronteras curvas y patrones complejos: así reconoce imágenes, ' +
           'entiende texto o clasifica expedientes. Cada conexión tiene un peso; la información ' +
-          'fluye de izquierda a derecha (forward pass). Pulsa para verla "pensar".',
+          'fluye de izquierda a derecha. Pulsa para verla "pensar".',
       },
     ],
   },
@@ -695,9 +695,9 @@ export const secciones = [
           'seguridad? La respuesta está en lo único que se le pidió al entrenarlo: dar la palabra ' +
           'siguiente más plausible. Plausible, no verdadera. Por eso recuerda bien lo que aparecía ' +
           'mucho en sus textos, pero cuando le pides un artículo exacto o una cifra que casi no ' +
-          'vio, no tiene un botón "no sé": rellena con algo que suena a ley chilena. El ' +
-          'fine-tuning y el entrenamiento con retroalimentación humana (RLHF) lo hacen más útil y ' +
-          'honesto, pero no le enseñan datos nuevos —solo cambian cómo prioriza lo que ya tenía—. ' +
+          'vio, no tiene un botón "no sé": rellena con algo que suena a ley chilena. ' +
+          'El ajuste con ejemplos correctos (fine-tuning) y el entrenamiento con aprobación humana ' +
+          '(RLHF) lo hacen más útil y honesto, pero no le enseñan datos nuevos —solo cambian cómo prioriza lo que ya tenía—. ' +
           'Por eso el modelo sigue pudiendo equivocarse, y por eso la firma sigue siendo tuya.',
       },
       {

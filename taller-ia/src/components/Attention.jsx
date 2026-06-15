@@ -64,10 +64,9 @@ export default function Attention() {
         </p>
         <button
           className="btn btn--primary"
-          onClick={() => setPredicho(true)}
-          disabled={predicho}
+          onClick={() => setPredicho((v) => !v)}
         >
-          🔮 ¿Qué palabra sigue?
+          {predicho ? '🙈 Ocultar predicción' : '🔮 ¿Qué palabra sigue?'}
         </button>
         {predicho && (
           <div className="attn__pred-barras">

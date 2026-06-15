@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { dolencias } from '../data/contenido'
 
 export default function Dolencias() {
@@ -6,6 +6,8 @@ export default function Dolencias() {
   const [categoria, setCategoria] = useState(dolencias.categorias[0].id)
   const [lista, setLista] = useState([])
   const [copiado, setCopiado] = useState(false)
+  const [errorClip, setErrorClip] = useState(false)
+  const tidRef = useRef(null)
 
   const agregar = () => {
     const t = texto.trim()
@@ -26,9 +28,11 @@ export default function Dolencias() {
     try {
       await navigator.clipboard.writeText(`Fricciones levantadas en la jornada UIA:\n${cuerpo}`)
       setCopiado(true)
-      setTimeout(() => setCopiado(false), 2500)
+      setErrorClip(false)
+      clearTimeout(tidRef.current)
+      tidRef.current = setTimeout(() => setCopiado(false), 2500)
     } catch {
-      // sin permiso de portapapeles
+      setErrorClip(true)
     }
   }
 
@@ -104,6 +108,11 @@ export default function Dolencias() {
             <button className="btn btn--primary" onClick={copiar}>
               {copiado ? '✅ Copiada' : '📋 Copiar lista para la UIA'}
             </button>
+            {errorClip && (
+              <span className="dolencias__error-clip">
+                No se pudo copiar automáticamente. Selecciona el texto manualmente.
+              </span>
+            )}
           </div>
         </>
       )}

@@ -2030,6 +2030,12 @@
   padding: 14px 16px;
   line-height: 1.6;
 }
+.dolencias__error-clip {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  color: #c62828;
+}
 
 /* ===== Roles de datos (gobernanza G2) ===== */
 .rdatos__roles {
