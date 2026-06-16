@@ -21,6 +21,7 @@ export default function RedNeuronal() {
   const [activa, setActiva] = useState(-1)
   const [corriendo, setCorriendo] = useState(false)
   const [paso, setPaso] = useState(-1)
+  const [completado, setCompletado] = useState(false)
 
   const nodos = useMemo(() => {
     const margenX = 80
@@ -55,6 +56,7 @@ export default function RedNeuronal() {
       if (capa >= CAPAS.length) {
         clearInterval(id)
         setCorriendo(false)
+        setCompletado(true)
         tid = setTimeout(() => { setActiva(-1); setPaso(-1) }, 1200)
       } else {
         setActiva(capa)
@@ -68,7 +70,11 @@ export default function RedNeuronal() {
     <div className="red">
       {/* Panel de paso actual */}
       <div className={'red__paso' + (paso >= 0 ? ' red__paso--on' : '')}>
-        {paso >= 0 ? PASOS[paso] : 'Pulsa "Ver cómo piensa la red" para ver cómo fluye la información.'}
+        {paso >= 0
+        ? PASOS[paso]
+        : completado
+          ? '✅ Completado — pulsa para repetir la animación.'
+          : 'Pulsa "Ver cómo piensa la red" para ver cómo fluye la información.'}
       </div>
 
       <div className="red__lienzo">
@@ -129,7 +135,7 @@ export default function RedNeuronal() {
       <div className="red__controles">
         <button
           className="btn btn--primary"
-          onClick={() => setCorriendo(true)}
+          onClick={() => { setCorriendo(true); setCompletado(false) }}
           disabled={corriendo}
         >
           {corriendo ? 'Procesando…' : '▶ Ver cómo piensa la red'}

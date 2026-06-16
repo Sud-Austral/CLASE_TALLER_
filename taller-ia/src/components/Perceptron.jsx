@@ -91,6 +91,7 @@ export default function Perceptron() {
     let cw = w, cw2 = 1, cb = b
     const tasa = 0.05
 
+    let rafId
     function paso() {
       if (cancelado) return
       let corrigio = false
@@ -106,11 +107,11 @@ export default function Perceptron() {
       }
       setW(cw)
       setB(cb)
-      if (corrigio) requestAnimationFrame(paso)
+      if (corrigio) rafId = requestAnimationFrame(paso)
       else setEntrenando(false)
     }
-    const id = requestAnimationFrame(paso)
-    return () => { cancelado = true; cancelAnimationFrame(id) }
+    rafId = requestAnimationFrame(paso)
+    return () => { cancelado = true; cancelAnimationFrame(rafId) }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [entrenando])
 

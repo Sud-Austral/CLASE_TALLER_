@@ -20,7 +20,7 @@ export const secciones = [
         texto:
           'Nada de ciencia ficción. Primero vamos a poner los cimientos —los datos y cómo ' +
           'gobernarlos—, después vas a entender qué es realmente la IA, verla resolver casos ' +
-          'reales de CONAF y practicar tú mismo en 15 actividades interactivas. Al final, la IA ' +
+          'reales de CONAF y practicar tú mismo en las actividades interactivas. Al final, la IA ' +
           'dejará de ser una caja negra: será una herramienta más en tu escritorio.',
       },
       {
@@ -67,8 +67,8 @@ export const secciones = [
           { hora: '09:10', dur: '30 min', icono: '🎤', titulo: 'Charla: datos y transformación digital en el Estado', desc: 'El marco general: por qué el Estado —y CONAF— está moviéndose hacia la gestión de datos.' },
           { hora: '09:40', dur: '20 min', icono: '🗂️', titulo: 'Gobernanza de datos', desc: 'Los cimientos antes de la IA: 3 actividades prácticas — detectar datos inconsistentes, roles del dato y autodiagnóstico de madurez.' },
           { hora: '10:00', dur: '15 min', icono: '☕', titulo: 'Coffee break', desc: 'Pausa activa.' },
-          { hora: '10:15', dur: '20 min', icono: '🧠🧪', titulo: 'Taller de IA + Laboratorio', desc: 'Qué es (y qué no es) la IA, demos en vivo, riesgos clave y ejercicios guiados: prompts, alucinaciones, privacidad y cómo funciona un LLM.' },
-          { hora: '10:35', dur: '1h 15min', icono: '🗣️', titulo: 'Fricciones y oportunidades', desc: 'Las fricciones reales del área: qué procesos duelen y dónde los datos o la IA podrían ayudar. La lista se anota en vivo.' },
+          { hora: '10:15', dur: '45 min', icono: '🧠🧪', titulo: 'Taller de IA + Laboratorio', desc: 'Qué es (y qué no es) la IA, demos en vivo, riesgos clave y ejercicios guiados: prompts, alucinaciones, privacidad y cómo funciona un LLM.' },
+          { hora: '11:00', dur: '50 min', icono: '🗣️', titulo: 'Fricciones y oportunidades', desc: 'Las fricciones reales del área: qué procesos duelen y dónde los datos o la IA podrían ayudar. La lista se anota en vivo.' },
           { hora: '11:50', dur: '10 min', icono: '🏁', titulo: 'Cierre y compromisos', desc: 'Síntesis, kit para llevar y un compromiso concreto por participante.' },
         ],
       },
@@ -117,7 +117,7 @@ export const secciones = [
       },
       {
         tipo: 'lista',
-        titulo: 'Las 5 actividades del plan',
+        titulo: 'Las 5 actividades del PMG-MEI 2026',
         items: [
           'A1 · Talleres directivos — exposición de beneficios al equipo directivo.',
           'A2 · Personas clave — identificar y designar para capacitación en MGDE.',
@@ -238,7 +238,7 @@ export const secciones = [
           'longitud distintos. Las tres respuestas son válidas de formas diferentes.',
         clave: 'La IA no es una bola de cristal con una única respuesta mágica. Es una herramienta con la que hay que aprender a dialogar. CONAF tiene licencia paga para Gemini Pro.',
          irA: 'comparar-ia',
-        irTexto: 'Pruébalo con la Ley 20.283',
+        irTexto: 'Ver la comparativa de modelos →',
       },
       {
         tipo: 'demo',
@@ -260,6 +260,7 @@ export const secciones = [
           'estructura, colores e imágenes. ¿Te llegó un PDF de 50 páginas un viernes a las 4? ' +
           'Pide "5 puntos clave y 3 riesgos" y en 10 segundos sabes si leerlo completo.',
         clave: 'Menos tiempo en formato, menos ansiedad frente a documentos largos. El tiempo que ganan vuelve a lo que sí requiere su criterio.',
+        nota: '💻 Demo en vivo — el facilitador muestra esto en pantalla durante el taller.',
       },
       {
         tipo: 'demo',
@@ -270,6 +271,7 @@ export const secciones = [
           'borrador con empatía y claridad. Y al traducir, un buen prompt adapta el lenguaje ' +
           'técnico al contexto de una institución pública chilena.',
         clave: 'El profesional sigue al mando: la IA propone el borrador, ustedes deciden qué se queda.',
+        nota: '💻 Demo en vivo — el facilitador muestra esto en pantalla durante el taller.',
       },
     ],
   },
@@ -365,15 +367,6 @@ export const secciones = [
         ],
       },
       {
-        tipo: 'destacado',
-        icono: '🎯',
-        titulo: 'Misión',
-        texto:
-          'Consolidar la gestión del conocimiento institucional de CONAF, asegurando datos íntegros, ' +
-          'accesibles y comparables, y sistemas que respondan con agilidad. La UIA actúa como órgano ' +
-          'rector de la gobernanza de datos (Resolución Nº 333/2017).',
-      },
-      {
         tipo: 'tarjetas',
         titulo: 'Tres líneas de acción',
         items: [
@@ -450,7 +443,8 @@ export const secciones = [
         texto:
           'La IA puede mentir con total seguridad. Abajo hay un "análisis" de la Ley 20.283 ' +
           'generado por IA: la mayoría es correcto, pero algunas frases tienen datos inventados. ' +
-          'Haz clic en las que creas FALSAS. Luego comprueba tu olfato de fiscalizador.',
+          'Haz clic en las que creas FALSAS. Luego comprueba tu olfato de fiscalizador. ' +
+          '(¿Quieres entender POR QUÉ ocurre? Lo explica la sección "Por qué sabe pero alucina".)',
       },
     ],
   },
@@ -581,7 +575,7 @@ export const secciones = [
           'x₁, x₂ — entradas (las características del dato).',
           'w₁, w₂ — pesos: cuánto influye cada entrada.',
           'b — sesgo (bias): desplaza la frontera de decisión.',
-          'función escalón — convierte la suma z en una salida de dos clases (+1 / −1).',
+          'función escalón — como un interruptor: si la suma supera el umbral, enciende (+1); si no, apaga (−1).',
         ],
       },
       {
@@ -642,7 +636,7 @@ export const secciones = [
         tipo: 'parrafo',
         texto:
           'Ya viste cómo un perceptrón decide con una suma ponderada y cómo una red apila muchos ' +
-          'de esos perceptrones. Falta una pieza para entender un LLM: el significado de una ' +
+          'de esos perceptrones. Falta una pieza para entender un modelo de lenguaje (LLM): el significado de una ' +
           'palabra depende de las que la rodean. "Corta" no es lo mismo en "corta el árbol" que ' +
           'en "la corta del expediente". Attention es el mecanismo que deja que cada palabra mire ' +
           'a todas las demás de la frase y decida a cuáles prestar atención —repartiendo un 100% ' +
@@ -655,13 +649,13 @@ export const secciones = [
         tipo: 'formula',
         plegable: true,
         titulo: 'Cómo funciona (self-attention)',
-        formula: 'A = softmax( Q·Kᵀ / √d ) ·V        Q = X·Wq   K = X·Wk   V = X·Wv',
+        formula: 'Atención = pesos_dinámicos × contenido',
         items: [
           'Q "qué busco", K "qué ofrezco", V "qué aporto" — tres versiones de cada token, con pesos aprendidos (como las w).',
           'Q·Kᵀ — producto punto: mide cuánto le importa cada otro token (es el mismo w·x).',
           'softmax — reparte el 100% de la atención: cada fila suma 1.',
           'A·V — suma ponderada de los Value, igual que Σ wᵢ·xᵢ, pero con pesos dinámicos.',
-          'predecir la siguiente palabra: logits = salida·W + b → softmax sobre el vocabulario → elegir.',
+          'predecir la siguiente palabra: las sumas sin normalizar (logits) → softmax sobre el vocabulario → elegir la más probable.',
         ],
       },
       {
@@ -709,7 +703,7 @@ export const secciones = [
           'Premia PLAUSIBILIDAD, nunca VERDAD → sabe lo frecuente; ante lo ausente, rellena con lo más plausible = alucinación.',
           'Ronda 2 — misma actualización de pesos (el gesto de Rosenblatt), otra señal de error:',
           'Fine-tuning: pares "instrucción → buena respuesta" escritos por humanos.',
-          'RLHF: humanos comparan respuestas A vs B → un modelo de recompensa R → subir R.',
+          'RLHF: humanos comparan respuestas A vs B y eligen la mejor → el modelo aprende a preferir las que los humanos aprueban.',
           'No añade hechos nuevos; redistribuye probabilidad. Por eso: verificar siempre.',
         ],
       },
@@ -769,7 +763,7 @@ export const secciones = [
         kicker: 'LO LOGRASTE',
         titulo: 'La IA dejó de ser una caja negra',
         texto:
-          'Recorriste la gobernanza de datos, qué es la IA, sus riesgos y quince actividades ' +
+          'Recorriste la gobernanza de datos, qué es la IA, sus riesgos y las actividades ' +
           'prácticas. Ahora tienes cinco herramientas que antes no usabas: detectar datos ' +
           'inconsistentes, escribir prompts con estructura, cazar alucinaciones, proteger datos ' +
           'sensibles y entender qué hay bajo el capó.',
@@ -1035,22 +1029,24 @@ export const publicos = {
         'como pequeño propietario tiene un concurso solo para usted y un 15% más de bono.',
     },
     {
-      id: 'nino',
-      etiqueta: 'Estudiante de colegio',
-      icono: '🎒',
+      id: 'alcalde',
+      etiqueta: 'Municipio / Alcalde',
+      icono: '🏛️',
       respuesta:
-        'Imagina que el bosque nativo es un tesoro de Chile lleno de árboles, animales y agua ' +
-        'limpia. Esta ley es como un reglamento que dice: nadie puede cortar esos árboles sin ' +
-        'permiso, y si alguien cuida bien el bosque, el Estado le da un premio.',
+        'La Ley 20.283 obliga a que toda corta de bosque nativo en su comuna cuente con un Plan ' +
+        'de Manejo aprobado por CONAF antes de iniciar. El municipio puede colaborar con CONAF en ' +
+        'la fiscalización local, apoyar el acceso al fondo de incentivos para conservación comunal ' +
+        'y canalizar denuncias ciudadanas de cortas no autorizadas.',
     },
     {
-      id: 'abogado',
-      etiqueta: 'Abogado',
-      icono: '⚖️',
+      id: 'empresa',
+      etiqueta: 'Empresa forestal',
+      icono: '🌲',
       respuesta:
-        'La Ley 20.283 articula un régimen de planificación (Plan de Manejo, Art. 5), restricciones ' +
-        'ambientales absolutas (Art. 17, 19), fomento vía fondo concursable (Título IV) y un régimen ' +
-        'sancionatorio administrativo-penal (Título VII), con remisión al Art. 193 del Código Penal.',
+        'Para operar en bosque nativo, el marco legal es claro: Plan de Manejo aprobado por CONAF, ' +
+        'restricciones en glaciares (Art. 17), especies amenazadas (Art. 19) y cuencas (Art. 22). ' +
+        'El incumplimiento activa sanciones administrativas y penales. El fondo de incentivos aplica ' +
+        'si el manejo es sustentable y cumple los criterios del Título IV.',
     },
   ],
   leccion:
@@ -1160,8 +1156,8 @@ export const attention = {
   ],
   leccion:
     'Cada palabra repartió un 100% de atención entre las demás y se "recargó" con las relevantes. ' +
-    'Apila esto muchas veces y tienes un Transformer — la arquitectura detrás de ChatGPT, Claude y ' +
-    'Gemini. Predecir la siguiente palabra vuelve a ser, al final, una suma ponderada y un softmax: ' +
+    'Apila esto en cientos de capas y tienes la arquitectura detrás de ChatGPT, Claude y Gemini. ' +
+    'Predecir la siguiente palabra vuelve a ser, al final, una suma ponderada: ' +
     'el mismo z = w·x + b del perceptrón, a una escala enorme.',
 }
 

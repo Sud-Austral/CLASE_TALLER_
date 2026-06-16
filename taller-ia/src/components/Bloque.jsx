@@ -35,11 +35,12 @@ export default function Bloque({ bloque, ir }) {
       return (
         <div className="bloque-demo">
           <div className="bloque-demo__cabecera">
-            <span className="bloque-demo__n">Demo {bloque.n}</span>
+            {bloque.n && <span className="bloque-demo__n">Demo {bloque.n}</span>}
             <h3>{bloque.titulo}</h3>
           </div>
           <p>{bloque.texto}</p>
           {bloque.clave && <p className="bloque-demo__clave">💡 {bloque.clave}</p>}
+          {bloque.nota && <p className="bloque-demo__nota">{bloque.nota}</p>}
           {bloque.irA && ir && (
             <button className="bloque-demo__cta" onClick={() => ir(bloque.irA)}>
               {bloque.irTexto || 'Ir al ejercicio'} →
@@ -127,7 +128,7 @@ export default function Bloque({ bloque, ir }) {
       return (
         <div className="programa">
           {bloque.items.map((it, i) => (
-            <div className="programa__item" key={i}>
+            <div className={'programa__item' + (it.icono === '☕' ? ' programa__item--pausa' : '')} key={i}>
               <div className="programa__hora">
                 <strong>{it.hora}</strong>
                 <span>{it.dur}</span>
@@ -136,6 +137,7 @@ export default function Bloque({ bloque, ir }) {
               <div className="programa__detalle">
                 <div className="programa__cabecera">
                   <h4>{it.titulo}</h4>
+                  {it.quien && <span className="programa__quien">{it.quien}</span>}
                 </div>
                 <p>{it.desc}</p>
               </div>

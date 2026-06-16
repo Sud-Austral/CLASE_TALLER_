@@ -31,7 +31,7 @@ export default function Alucina() {
       {/* Comparación lado a lado */}
       <div className="aluc__cols">
         <div className="aluc__col aluc__col--antes">
-          <div className="aluc__badge aluc__badge--antes">Solo pre-entrenado</div>
+          <div className="aluc__badge aluc__badge--antes">{antes.etiqueta}</div>
           <div className="aluc__respuesta">
             {antes.partes.map((p, i) => (
               <span key={i} className={p.alucinacion ? 'aluc__alucinacion' : ''}>
@@ -48,7 +48,7 @@ export default function Alucina() {
         </div>
 
         <div className="aluc__col aluc__col--despues">
-          <div className="aluc__badge aluc__badge--despues">Con corrección humana (RLHF)</div>
+          <div className="aluc__badge aluc__badge--despues">{despues.etiqueta}</div>
           <div className="aluc__respuesta">
             {despues.partes.map((p, i) => (
               <span key={i} className={p.honesto ? 'aluc__honesto' : ''}>
@@ -66,7 +66,7 @@ export default function Alucina() {
 
       {/* RLHF: el usuario es el entrenador */}
       <div className="aluc__rlhf">
-        <p className="aluc__rlhf-titulo">⚖️ Tú eres el entrenador: ¿cuál respuesta enviarías?</p>
+        <p className="aluc__rlhf-titulo">⚖️ {rlhf.pregunta}</p>
         <div className="aluc__rlhf-btns">
           {rlhf.opciones.map((op, i) => {
             let clase = 'btn'
@@ -88,19 +88,15 @@ export default function Alucina() {
             <div className="aluc__marcador">
               {aciertos} de {rondas} ronda{rondas !== 1 ? 's' : ''} correctas
               <div className="aluc__medidor">
-                <div className="aluc__medidor-fill" style={{ width: `${(aciertos / rondas) * 100}%` }} />
+                <div className="aluc__medidor-fill" style={{ width: `${rondas > 0 ? (aciertos / rondas) * 100 : 0}%` }} />
               </div>
             </div>
-            <button className="btn" onClick={reiniciar}>↺ Otra ronda</button>
+            <button className="btn" onClick={reiniciar}>↺ Ver de nuevo</button>
           </div>
         )}
       </div>
 
-      <p className="aluc__leccion">
-        💡 El modelo optimiza <strong>plausibilidad</strong>, no verdad. El RLHF ajusta la
-        "preferencia" del modelo con señales humanas, pero no implanta conocimiento nuevo. Por eso
-        sigue alucinando — y por eso <strong>la IA propone, tú confirmas</strong>.
-      </p>
+      <p className="aluc__leccion">💡 {alucina.leccion}</p>
     </div>
   )
 }

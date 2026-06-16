@@ -50,6 +50,7 @@ const GRUPOS = [
 // Badge mostrado bajo la cabecera según el grupo de la sección.
 const BADGES = {
   gobernanza: '🗂️ Actividad de gobernanza',
+  taller: '📖 El Taller de IA',
   lab: '🧪 Laboratorio',
 }
 

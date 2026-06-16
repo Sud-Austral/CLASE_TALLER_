@@ -7,7 +7,7 @@ const TOKENS_CORTO = [1, 3, 4, 5, 6, 8] // índices: corta, bosque, nativo, requ
 const ETIQUETAS = ['corta', 'bosque', 'nativo', 'requiere', 'plan', 'manejo']
 
 export default function Attention() {
-  const { tokens, cabezas, prediccion } = attention
+  const { cabezas, prediccion } = attention
   const [selToken, setSelToken] = useState(0) // índice en ETIQUETAS / TOKENS_CORTO
   const [predicho, setPredicho] = useState(false)
 
@@ -21,7 +21,7 @@ export default function Attention() {
     <div className="attn">
       {/* 1. Elige la palabra que "mira" */}
       <p className="attn__instruccion">
-        Elige una palabra — la IA le da más peso a las que resaltan más:
+        Elige una palabra y mira a cuáles de las otras les presta más atención la IA:
       </p>
       <div className="attn__palabras">
         {ETIQUETAS.map((t, i) => (
@@ -36,6 +36,7 @@ export default function Attention() {
       </div>
 
       {/* 2. Barras de atención */}
+      <p className="attn__cabeza-nombre">🔍 {cabezas[0].nombre}</p>
       <div className="attn__barras-attn">
         {ETIQUETAS.map((t, i) => {
           const v = pesos[i]
