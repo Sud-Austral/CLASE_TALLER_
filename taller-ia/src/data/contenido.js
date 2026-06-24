@@ -28,7 +28,7 @@ export const secciones = [
         titulo: 'El recorrido de hoy',
         items: [
           { icono: '🗂️', titulo: '1 · Gobernanza de datos', texto: 'Los cimientos: 3 actividades para entender por qué los datos importan (15–20 min).' },
-          { icono: '📖', titulo: '2 · El Taller de IA', texto: 'Qué es la IA, demos en vivo, sus riesgos y cómo la usa la UIA.' },
+          { icono: '📖', titulo: '2 · El Taller de IA', texto: 'Qué es realmente la IA y qué riesgos hay que cuidar.' },
           { icono: '🧪', titulo: '3 · El Laboratorio', texto: '12 ejercicios interactivos de IA para practicar tú mismo.' },
           { icono: '🗣️', titulo: '4 · Fricciones y oportunidades', texto: 'Levantamos las fricciones reales de tu área y cerramos con compromisos.' },
         ],
@@ -87,6 +87,85 @@ export const secciones = [
           'este sitio; el taller y el laboratorio usan las secciones siguientes en orden. La ' +
           'sección "Fricciones y oportunidades" tiene su propia pantalla para proyectar y anotar ' +
           'en vivo, además de una guía en PDF con 7 preguntas.',
+      },
+    ],
+  },
+
+  {
+    id: 'unidad',
+    grupo: 'inicio',
+    icono: '🤝',
+    titulo: 'La UIA',
+    subtitulo: '¿Para qué sirve nuestra Unidad?',
+    bloques: [
+      {
+        tipo: 'parrafo',
+        texto:
+          'No venimos a decirles cómo hacer su trabajo. Ustedes son los expertos en fiscalización, ' +
+          'bosques y presupuestos. Nosotros somos el puente hacia las herramientas.',
+      },
+      {
+        tipo: 'tarjetas',
+        items: [
+          { icono: '🔎', titulo: 'Evaluar herramientas', texto: 'Identificamos qué solución se adapta a su equipo y proceso.' },
+          { icono: '💬', titulo: 'Estructurar prompts', texto: 'Cómo pedirle a la IA exactamente lo que necesitan.' },
+          { icono: '⚙️', titulo: 'Integrar IA en procesos', texto: 'Incorporarla operativamente, sin saltarse la seguridad.' },
+        ],
+      },
+      {
+        tipo: 'dosColumnas',
+        titulo: 'El modelo de colaboración',
+        columnas: [
+          { titulo: 'Ustedes aportan', texto: 'El conocimiento del negocio: fiscalización, territorio, presupuestos, procesos operativos de CONAF.' },
+          { titulo: 'Nosotros aportamos', texto: 'El conocimiento de las herramientas: qué IA usar, cómo usarla bien y con seguridad.' },
+        ],
+      },
+    ],
+  },
+
+  {
+    id: 'plan',
+    grupo: 'inicio',
+    icono: '🗺️',
+    titulo: 'Plan UIA 2026–2030',
+    subtitulo: 'Datos, sistemas e IA al servicio de CONAF',
+    bloques: [
+      {
+        tipo: 'lista',
+        titulo: 'Cinco brechas que CONAF no puede seguir cargando',
+        items: [
+          'Inexistencia de gobernanza de datos — sin tuición técnica, decisiones no alineadas.',
+          'Deuda técnica y obsolescencia — alta dependencia de proveedores.',
+          'Brechas en información estratégica — duplicidad de esfuerzos y datos inconsistentes.',
+          'Demoras en evaluación sectorial — plazos altos e inconsistencias entre áreas.',
+          'Ausencia de estandarización — sin protocolos oficiales entre gerencias.',
+        ],
+      },
+      {
+        tipo: 'tarjetas',
+        titulo: 'Tres líneas de acción',
+        items: [
+          { icono: '🗂️', titulo: '3.1 Gobernanza de datos', texto: 'Validar, estandarizar, mantener y articular con el Estado la información oficial.' },
+          { icono: '🚀', titulo: '3.2 Desarrollo e innovación', texto: 'Automatización e IA aplicadas a procesos sustantivos.' },
+          { icono: '🎓', titulo: '3.3 Formación y cambio', texto: 'Acompañar la adopción priorizando la comprensión por sobre la imposición.' },
+        ],
+      },
+      {
+        tipo: 'tarjetas',
+        titulo: 'Servicios sustantivos asistidos por IA',
+        items: [
+          { icono: '📄', titulo: 'Permisos sectoriales', texto: 'IA para agilizar Planes de Manejo: pre-revisión, extracción, apoyo al evaluador. Decisión final siempre humana.' },
+          { icono: '📚', titulo: 'Normativa forestal', texto: 'Chatbot RAG sobre ~1.500 documentos normativos, con citas verificables a la fuente.' },
+        ],
+      },
+      {
+        tipo: 'timeline',
+        titulo: 'Horizonte 2026 — 2030',
+        items: [
+          { año: '2026', texto: 'Instalación y primeros resultados visibles. Que se note que la UIA está.' },
+          { año: '2027–2028', texto: 'Construcción de capacidades y productos sustantivos. Que produzca cosas que se usen.' },
+          { año: '2029–2030', texto: 'Consolidación y proyección al SERNAFOR. Capacidad instalada.' },
+        ],
       },
     ],
   },
@@ -223,60 +302,6 @@ export const secciones = [
   },
 
   {
-    id: 'demos',
-    grupo: 'taller',
-    icono: '🛠️',
-    titulo: 'Demos',
-    subtitulo: 'La IA aplicada al día a día',
-    bloques: [
-      {
-        tipo: 'demo',
-        n: '1',
-        titulo: 'Distintos modelos, distintas respuestas',
-        texto:
-          'ChatGPT, Claude y Gemini reciben el mismo prompt. El resultado: estructura, tono y ' +
-          'longitud distintos. Las tres respuestas son válidas de formas diferentes.',
-        clave: 'La IA no es una bola de cristal con una única respuesta mágica. Es una herramienta con la que hay que aprender a dialogar. CONAF tiene licencia paga para Gemini Pro.',
-         irA: 'comparar-ia',
-        irTexto: 'Ver la comparativa de modelos →',
-      },
-      {
-        tipo: 'demo',
-        n: '2',
-        titulo: 'El prompt lo cambia todo',
-        texto:
-          'Un prompt genérico ("hazme una presentación sobre presupuestos") entrega algo vago. ' +
-          'Un prompt preciso —rol + cantidad + foco + formato— entrega algo que sí se puede usar.',
-        clave: 'El prompt es el factor que TÚ controlas, y el que más cambia el resultado. Esa habilidad —escribir buenas instrucciones— es la más importante que vamos a desarrollar juntos.',
-        irA: 'prompt',
-        irTexto: 'Arma tu propio prompt',
-      },
-      {
-        tipo: 'demo',
-        n: '3 · 4',
-        titulo: 'Aliviar la fricción del día a día',
-        texto:
-          'Armar una presentación desde cero toma ~3 horas; con Gamma, en 15 segundos tienes ' +
-          'estructura, colores e imágenes. ¿Te llegó un PDF de 50 páginas un viernes a las 4? ' +
-          'Pide "5 puntos clave y 3 riesgos" y en 10 segundos sabes si leerlo completo.',
-        clave: 'Menos tiempo en formato, menos ansiedad frente a documentos largos. El tiempo que ganan vuelve a lo que sí requiere su criterio.',
-        nota: '💻 Demo en vivo — el facilitador muestra esto en pantalla durante el taller.',
-      },
-      {
-        tipo: 'demo',
-        n: '5 · 6',
-        titulo: 'El correo difícil y la traducción con contexto',
-        texto:
-          'Cuando tienes que dar una mala noticia y miras la pantalla en blanco, la IA entrega un ' +
-          'borrador con empatía y claridad. Y al traducir, un buen prompt adapta el lenguaje ' +
-          'técnico al contexto de una institución pública chilena.',
-        clave: 'El profesional sigue al mando: la IA propone el borrador, ustedes deciden qué se queda.',
-        nota: '💻 Demo en vivo — el facilitador muestra esto en pantalla durante el taller.',
-      },
-    ],
-  },
-
-  {
     id: 'riesgos',
     grupo: 'taller',
     icono: '⚠️',
@@ -312,85 +337,6 @@ export const secciones = [
       {
         tipo: 'frase',
         texto: 'La IA es un apoyo, no un reemplazo. Las decisiones, la verificación y la firma siguen siendo suyas.',
-      },
-    ],
-  },
-
-  {
-    id: 'unidad',
-    grupo: 'taller',
-    icono: '🤝',
-    titulo: 'La UIA',
-    subtitulo: '¿Para qué sirve nuestra Unidad?',
-    bloques: [
-      {
-        tipo: 'parrafo',
-        texto:
-          'No venimos a decirles cómo hacer su trabajo. Ustedes son los expertos en fiscalización, ' +
-          'bosques y presupuestos. Nosotros somos el puente hacia las herramientas.',
-      },
-      {
-        tipo: 'tarjetas',
-        items: [
-          { icono: '🔎', titulo: 'Evaluar herramientas', texto: 'Identificamos qué solución se adapta a su equipo y proceso.' },
-          { icono: '💬', titulo: 'Estructurar prompts', texto: 'Cómo pedirle a la IA exactamente lo que necesitan.' },
-          { icono: '⚙️', titulo: 'Integrar IA en procesos', texto: 'Incorporarla operativamente, sin saltarse la seguridad.' },
-        ],
-      },
-      {
-        tipo: 'dosColumnas',
-        titulo: 'El modelo de colaboración',
-        columnas: [
-          { titulo: 'Ustedes aportan', texto: 'El conocimiento del negocio: fiscalización, territorio, presupuestos, procesos operativos de CONAF.' },
-          { titulo: 'Nosotros aportamos', texto: 'El conocimiento de las herramientas: qué IA usar, cómo usarla bien y con seguridad.' },
-        ],
-      },
-    ],
-  },
-
-  {
-    id: 'plan',
-    grupo: 'taller',
-    icono: '🗺️',
-    titulo: 'Plan UIA 2026–2030',
-    subtitulo: 'Datos, sistemas e IA al servicio de CONAF',
-    bloques: [
-      {
-        tipo: 'lista',
-        titulo: 'Cinco brechas que CONAF no puede seguir cargando',
-        items: [
-          'Inexistencia de gobernanza de datos — sin tuición técnica, decisiones no alineadas.',
-          'Deuda técnica y obsolescencia — alta dependencia de proveedores.',
-          'Brechas en información estratégica — duplicidad de esfuerzos y datos inconsistentes.',
-          'Demoras en evaluación sectorial — plazos altos e inconsistencias entre áreas.',
-          'Ausencia de estandarización — sin protocolos oficiales entre gerencias.',
-        ],
-      },
-      {
-        tipo: 'tarjetas',
-        titulo: 'Tres líneas de acción',
-        items: [
-          { icono: '🗂️', titulo: '3.1 Gobernanza de datos', texto: 'Validar, estandarizar, mantener y articular con el Estado la información oficial.' },
-          { icono: '🚀', titulo: '3.2 Desarrollo e innovación', texto: 'Automatización e IA aplicadas a procesos sustantivos.' },
-          { icono: '🎓', titulo: '3.3 Formación y cambio', texto: 'Acompañar la adopción priorizando la comprensión por sobre la imposición.' },
-        ],
-      },
-      {
-        tipo: 'tarjetas',
-        titulo: 'Servicios sustantivos asistidos por IA',
-        items: [
-          { icono: '📄', titulo: 'Permisos sectoriales', texto: 'IA para agilizar Planes de Manejo: pre-revisión, extracción, apoyo al evaluador. Decisión final siempre humana.' },
-          { icono: '📚', titulo: 'Normativa forestal', texto: 'Chatbot RAG sobre ~1.500 documentos normativos, con citas verificables a la fuente.' },
-        ],
-      },
-      {
-        tipo: 'timeline',
-        titulo: 'Horizonte 2026 — 2030',
-        items: [
-          { año: '2026', texto: 'Instalación y primeros resultados visibles. Que se note que la UIA está.' },
-          { año: '2027–2028', texto: 'Construcción de capacidades y productos sustantivos. Que produzca cosas que se usen.' },
-          { año: '2029–2030', texto: 'Consolidación y proyección al SERNAFOR. Capacidad instalada.' },
-        ],
       },
     ],
   },
@@ -515,9 +461,9 @@ export const secciones = [
       {
         tipo: 'parrafo',
         texto:
-          'Vas a pegar este correo de fiscalización en una IA para mejorar su redacción. Pero ' +
-          'antes: marca todos los datos sensibles que hay que ocultar. Trata a la IA como a un ' +
-          'conocido de la calle.',
+          'Vas a pedirle a una IA que te redacte una notificación de fiscalización. Pero antes de ' +
+          'enviar el prompt: marca todos los datos sensibles que hay que ocultar. Trata a la IA ' +
+          'como a un conocido de la calle.',
       },
     ],
   },
@@ -1059,25 +1005,25 @@ export const publicos = {
 // Cada token tiene un rol: 'relleno' (no clicable), 'sensible' (debe ocultarse)
 // o 'senuelo' (clicable y parece dato, pero es público → NO hay que ocultarlo).
 export const privacidad = {
-  intro: 'Marca SOLO los datos que NO deberías pegar en una IA pública (ojo: no todo lo que parece dato es sensible):',
+  intro: 'Marca SOLO los datos que NO deberías incluir en el prompt (ojo: no todo lo que parece dato es sensible):',
   tokens: [
-    { t: 'Estimado ', rol: 'relleno' },
+    { t: 'Redáctame una notificación formal de fiscalización para ', rol: 'relleno' },
     { t: 'Juan Pérez Soto', rol: 'sensible', tipo: 'Nombre' },
     { t: ', RUT ', rol: 'relleno' },
     { t: '12.345.678-9', rol: 'sensible', tipo: 'RUT' },
-    { t: ', se le notifica que el predio ', rol: 'relleno' },
+    { t: ', dueño del predio ', rol: 'relleno' },
     { t: 'Rol 245-17', rol: 'sensible', tipo: 'Rol del predio' },
-    { t: ' de la comuna de ', rol: 'relleno' },
+    { t: ' en la comuna de ', rol: 'relleno' },
     { t: 'Curacautín', rol: 'senuelo', tipo: 'Comuna (dato público)' },
-    { t: ' fue fiscalizado. Se detectó una corta no autorizada según la ', rol: 'relleno' },
+    { t: ', por una corta no autorizada según la ', rol: 'relleno' },
     { t: 'Ley 20.283', rol: 'senuelo', tipo: 'Norma pública' },
-    { t: '. Contacto: ', rol: 'relleno' },
+    { t: '. Incluye sus datos de contacto (', rol: 'relleno' },
     { t: 'jperez@gmail.com', rol: 'sensible', tipo: 'Correo personal' },
     { t: ' / ', rol: 'relleno' },
     { t: '+56 9 8765 4321', rol: 'sensible', tipo: 'Teléfono' },
-    { t: '. Favor regularizar en ', rol: 'relleno' },
+    { t: ') y dale un plazo de ', rol: 'relleno' },
     { t: '10 días hábiles', rol: 'senuelo', tipo: 'Plazo (no identifica a nadie)' },
-    { t: '.', rol: 'relleno' },
+    { t: ' para regularizar.', rol: 'relleno' },
   ],
   leccion:
     'Lo sensible (nombre, RUT, rol del predio, correo, teléfono) identifica a una persona y debe ' +
@@ -1222,11 +1168,12 @@ export const detectiveDatos = {
     },
     {
       campo: 'Superficie',
-      valores: ['45,2 ha', '52,4 ha', '45,2 ha'],
-      conflicto: true,
+      valores: ['45,2 ha', '45.2 ha', '45,20 ha'],
+      conflicto: false,
       explica:
-        '¿45,2 o 52,4 hectáreas? Con 7 ha de diferencia cambia la bonificación, la multa y el plan ' +
-        'de manejo. Conflicto real: alguien tiene que definir cuál es la fuente oficial.',
+        'La misma superficie escrita de tres formas: coma o punto decimal, con o sin cero final. ' +
+        'No es contradicción, es falta de estándar — pero basta para que un cruce automático ' +
+        'cuente dos predios donde hay uno.',
     },
     {
       campo: 'Comuna',

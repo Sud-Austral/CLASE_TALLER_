@@ -11,11 +11,17 @@ export default function Attention() {
   const [selToken, setSelToken] = useState(0) // índice en ETIQUETAS / TOKENS_CORTO
   const [predicho, setPredicho] = useState(false)
 
-  // Tomamos la cabeza 0 (sintáctica) con los 6 tokens clave
+  // Tomamos la cabeza 0 (sintáctica) con los 6 tokens clave.
+  // Filtramos la auto-atención: la palabra elegida siempre se mira a sí misma y
+  // dominaría la barra. Mostramos cuánto mira a las OTRAS palabras (renormalizado a 100%).
   const M = cabezas[0].matriz
   const fila = TOKENS_CORTO[selToken]
-  const pesos = TOKENS_CORTO.map((j) => M[fila][j])
-  const max = Math.max(...pesos)
+  const otros = ETIQUETAS
+    .map((t, i) => ({ t, i, w: M[fila][TOKENS_CORTO[i]] }))
+    .filter((o) => o.i !== selToken)
+  const suma = otros.reduce((s, o) => s + o.w, 0)
+  const barras = otros.map((o) => ({ ...o, v: suma > 0 ? o.w / suma : 0 }))
+  const max = Math.max(...barras.map((b) => b.v))
 
   return (
     <div className="attn">
@@ -38,13 +44,12 @@ export default function Attention() {
       {/* 2. Barras de atención */}
       <p className="attn__cabeza-nombre">🔍 {cabezas[0].nombre}</p>
       <div className="attn__barras-attn">
-        {ETIQUETAS.map((t, i) => {
-          const v = pesos[i]
-          const intensidad = max > 0 ? v / max : 0
+        {barras.map((b) => {
+          const intensidad = max > 0 ? b.v / max : 0
           return (
-            <div className="attn__barra-fila" key={i}>
+            <div className="attn__barra-fila" key={b.i}>
               <span className={'attn__barra-tok' + (intensidad > 0.7 ? ' attn__barra-tok--resalta' : '')}>
-                {t}
+                {b.t}
               </span>
               <div className="attn__barra-track">
                 <div
@@ -52,7 +57,7 @@ export default function Attention() {
                   style={{ width: `${intensidad * 100}%`, opacity: 0.35 + intensidad * 0.65 }}
                 />
               </div>
-              <span className="attn__barra-pct">{Math.round(v * 100)}%</span>
+              <span className="attn__barra-pct">{Math.round(b.v * 100)}%</span>
             </div>
           )
         })}
