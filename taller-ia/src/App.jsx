@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import { secciones } from './data/contenido'
 import Bloque from './components/Bloque'
+import Icon from './components/Icon'
 import Perceptron from './components/Perceptron'
 import PromptBuilder from './components/PromptBuilder'
 import AnalisisLey from './components/AnalisisLey'
@@ -57,7 +58,25 @@ const BADGES = {
 function App() {
   const [activa, setActiva] = useState(secciones[0].id)
   const [menuAbierto, setMenuAbierto] = useState(false)
+  const [tema, setTema] = useState(() => {
+    const g = typeof localStorage !== 'undefined' && localStorage.getItem('tema')
+    if (g === 'dark' || g === 'light') return g
+    return typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light'
+  })
   const seccion = secciones.find((s) => s.id === activa) ?? secciones[0]
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = tema
+    document.documentElement.style.colorScheme = tema
+    try {
+      localStorage.setItem('tema', tema)
+    } catch {}
+  }, [tema])
+
+  const alternarTema = () => setTema((t) => (t === 'dark' ? 'light' : 'dark'))
 
   function ir(id) {
     setActiva(id)
@@ -79,19 +98,39 @@ function App() {
           className="topbar__burger"
           onClick={() => setMenuAbierto((v) => !v)}
           aria-label="Abrir menú"
+          aria-expanded={menuAbierto}
         >
-          ☰
+          <Icon name="menu" />
         </button>
         <div className="topbar__marca">
-          <span className="topbar__logo">🌲</span>
+          <span className="topbar__logo">
+            <Icon name="leaf" size={18} />
+          </span>
           <div>
             <strong>Taller de IA</strong>
             <span className="topbar__sub">UIA · CONAF</span>
           </div>
         </div>
+        <span className="topbar__spacer" />
+        <button
+          className="topbar__burger"
+          onClick={alternarTema}
+          aria-label={tema === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'}
+        >
+          <Icon name={tema === 'dark' ? 'sun' : 'moon'} size={22} />
+        </button>
       </header>
 
       <aside className={'nav' + (menuAbierto ? ' nav--abierto' : '')}>
+        <div className="nav__marca">
+          <span className="nav__marca-logo">
+            <Icon name="leaf" size={22} />
+          </span>
+          <span className="nav__marca-txt">
+            <span className="nav__marca-tit">Taller de IA</span>
+            <span className="nav__marca-sub">UIA · CONAF</span>
+          </span>
+        </div>
         <nav>
           {GRUPOS.map((g) => {
             const items = secciones.filter((s) => (s.grupo ?? 'taller') === g.id)
@@ -115,7 +154,15 @@ function App() {
             )
           })}
         </nav>
-        <p className="nav__pie">UIA · CONAF · 2026</p>
+        <button
+          className="tema-toggle"
+          onClick={alternarTema}
+          aria-label={tema === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'}
+        >
+          <Icon name={tema === 'dark' ? 'sun' : 'moon'} size={16} />
+          {tema === 'dark' ? 'Modo claro' : 'Modo oscuro'}
+        </button>
+        <p className="nav__pie">Gobierno de Chile · UIA · CONAF · 2026</p>
       </aside>
 
       {menuAbierto && <div className="overlay" onClick={() => setMenuAbierto(false)} />}

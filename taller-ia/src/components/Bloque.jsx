@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import heroImg from '../assets/hero.png'
 
 // Renderiza un bloque de contenido según su `tipo`.
 // Los tipos vienen de src/data/contenido.js.
@@ -7,11 +8,23 @@ export default function Bloque({ bloque, ir }) {
   switch (bloque.tipo) {
     case 'hero':
       return (
-        <div className="bloque-hero">
-          {bloque.kicker && <span className="kicker">{bloque.kicker}</span>}
-          <h2>{bloque.titulo}</h2>
-          <p>{bloque.texto}</p>
-        </div>
+        <section className="hero">
+          <div className="hero__contenido">
+            {bloque.kicker && <span className="hero__kicker">{bloque.kicker}</span>}
+            <h2 className="hero__titulo">{bloque.titulo}</h2>
+            <p className="hero__texto">{bloque.texto}</p>
+            {ir && (
+              <div className="hero__acciones">
+                <button className="btn btn--accent btn--lg" onClick={() => ir('programa')}>
+                  Empezar el recorrido →
+                </button>
+              </div>
+            )}
+          </div>
+          <div className="hero__ilustracion" aria-hidden="true">
+            <img src={heroImg} alt="" width="343" height="361" />
+          </div>
+        </section>
       )
 
     case 'parrafo':
